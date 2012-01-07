@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.google.code.qualitas</groupId>
+	<artifactId>qualitas-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>qualitas-parent</name>
+	<url>http://code.google.com/p/qualitas/</url>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.api</groupId>
+				<artifactId>qualitas-engines-api-core</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.api</groupId>
+				<artifactId>qualitas-engines-api-deployment</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.ode</groupId>
+				<artifactId>qualitas-engines-ode-core</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.ode</groupId>
+				<artifactId>qualitas-engines-ode-deployment</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceVersion>1.6</project.build.sourceVersion>
+		<project.build.targetVersion>1.6</project.build.targetVersion>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${project.build.sourceVersion}</source>
+					<target>${project.build.targetVersion}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
