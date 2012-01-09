@@ -1,21 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<parent>
-		<artifactId>qualitas</artifactId>
-		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../qualitas</relativePath>
-	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.google.code.qualitas</groupId>
-	<artifactId>qualitas-buildtools</artifactId>
+	<artifactId>qualitas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
-	<name>qualitas-buildtools</name>
+	<name>qualitas</name>
+	<url>http://code.google.com/p/qualitas/</url>
 
 	<properties>
-		<maven.test.skip>true</maven.test.skip>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceVersion>1.6</project.build.sourceVersion>
+		<project.build.targetVersion>1.6</project.build.targetVersion>
 	</properties>
+
 </project>
