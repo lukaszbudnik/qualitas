@@ -46,6 +46,13 @@
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
+			<dependency>
+				<groupId>com.google.qualitas.utils</groupId>
+				<artifactId>qualitas-utils-zip</artifactId>
+				<version>1.0.0</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<properties>

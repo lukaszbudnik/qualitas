@@ -1,5 +1,7 @@
 package com.google.code.qualitas.engines.api.core;
 
+import java.io.IOException;
+
 /**
  * The Interface ProcessBundle.
  */
@@ -16,15 +18,19 @@ public interface ProcessBundle {
      * 
      * @param bundle
      *            the contents of bundle
+     * @throws IOException
+     *             the IO exception
      */
-    void setBundle(byte[] bundle);
+    void setBundle(byte[] bundle) throws IOException;
 
     /**
      * Builds the bundle.
      * 
      * @return the byte[]
+     * @throws IOException
+     *             the IO exception
      */
-    byte[] buildBundle();
+    byte[] buildBundle() throws IOException;
 
     /**
      * Sets the main process name.
@@ -45,16 +51,20 @@ public interface ProcessBundle {
      * Gets the qualitas descriptor.
      * 
      * @return the qualitas descriptor
+     * @throws IOException
+     *             the IO exception
      */
-    Entry getQualitasDescriptor();
+    Entry getQualitasDescriptor() throws IOException;
 
     /**
      * Checks if is instrumentable. Returns true if scenario bundle contains
      * qualitas descriptor.
      * 
      * @return true, if is instrumentable
+     * @throws IOException
+     *             the IO exception
      */
-    boolean isInstrumentable();
+    boolean isInstrumentable() throws IOException;
 
     /**
      * Gets entry by name.
@@ -62,24 +72,30 @@ public interface ProcessBundle {
      * @param name
      *            the name
      * @return the entry
+     * @throws IOException
+     *             the IO exception
      */
-    Entry getEntry(String name);
+    Entry getEntry(String name) throws IOException;
 
     /**
      * Adds given entry.
      * 
      * @param entry
      *            the entry
+     * @throws IOException
+     *             the IO exception
      */
-    void addEntry(Entry entry);
+    void addEntry(Entry entry) throws IOException;
 
     /**
      * Removes given entry.
      * 
      * @param entryName
      *            the entry name
+     * @throws IOException
+     *             the IO exception
      */
-    void removeEntry(String entryName);
+    void removeEntry(String entryName) throws IOException;
 
     /**
      * Renames existing entry.
@@ -88,11 +104,16 @@ public interface ProcessBundle {
      *            the old name
      * @param newName
      *            the new name
+     * @throws IOException
+     *             the IO exception
      */
-    void renameEntry(String oldName, String newName);
+    void renameEntry(String oldName, String newName) throws IOException;
 
     /**
      * Releases and removes all allocated resources..
+     * 
+     * @throws IOException
+     *             the IO exception
      */
-    void cleanUp();
+    void cleanUp() throws IOException;
 }

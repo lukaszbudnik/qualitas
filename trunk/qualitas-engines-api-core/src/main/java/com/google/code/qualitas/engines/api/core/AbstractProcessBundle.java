@@ -1,5 +1,7 @@
 package com.google.code.qualitas.engines.api.core;
 
+import java.io.IOException;
+
 /**
  * The Class AbstractProcessBundle.
  */
@@ -40,7 +42,7 @@ public abstract class AbstractProcessBundle implements ProcessBundle {
      * ()
      */
     @Override
-    public Entry getQualitasDescriptor() {
+    public Entry getQualitasDescriptor() throws IOException {
         return getEntry(QUALITAS_DESCRIPTOR_NAME);
     }
 
@@ -52,7 +54,7 @@ public abstract class AbstractProcessBundle implements ProcessBundle {
      * ()
      */
     @Override
-    public boolean isInstrumentable() {
+    public boolean isInstrumentable() throws IOException {
         return getQualitasDescriptor() != null;
     }
 
