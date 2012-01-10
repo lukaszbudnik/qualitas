@@ -24,8 +24,8 @@ public class OdeProcessBundle extends AbstractProcessBundle {
     /** The Constant ODE_DESCRIPTOR_NAME. */
     private static final String ODE_DESCRIPTOR_NAME = "deploy.xml";
 
-    /** The Constant BPEL_EXTENSION. */
-    private static final String BPEL_EXTENSION = ".bpel";
+    /** The Constant WS_BPEL_EXTENSION. */
+    private static final String WS_BPEL_EXTENSION = ".bpel";
 
     /** The Constant WSDL_EXTENSION. */
     private static final String WSDL_EXTENSION = ".wsdl";
@@ -213,7 +213,7 @@ public class OdeProcessBundle extends AbstractProcessBundle {
      * @throws IOException the IO exception
      */
     public Entry getProcessDefinition(String processName) throws IOException {
-        return getEntry(processName + BPEL_EXTENSION);
+        return getEntry(processName + WS_BPEL_EXTENSION);
     }
 
     /**
