@@ -138,7 +138,9 @@ public class OdeProcessBundle extends AbstractProcessBundle {
     @Override
     public void removeEntry(String entryName) throws IOException {
         File file = new File(tmpDir, entryName);
-        FileUtils.forceDelete(file);
+        if (file.exists()) {
+            FileUtils.forceDelete(file);
+        }
     }
 
     /*
