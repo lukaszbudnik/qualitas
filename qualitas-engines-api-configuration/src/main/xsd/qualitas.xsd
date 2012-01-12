@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+	targetNamespace="http://code.google.com/p/qualitas/engines/api/configuration"
+	version="1.0" xmlns:tns="http://code.google.com/p/qualitas/engines/api/configuration"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="configuration" type="tns:qualitasConfiguration" />
+	<xs:complexType name="qualitasConfiguration">
+		<xs:sequence>
+			<xs:element form="unqualified" name="analyst"
+				type="tns:analystConfiguration" />
+			<xs:element form="unqualified" minOccurs="0" name="monitor"
+				type="tns:monitorConfiguration" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="analystConfiguration">
+		<xs:sequence>
+			<xs:element form="unqualified" name="globalParameters"
+				type="tns:analystGlobalParameters" />
+			<xs:element form="unqualified" minOccurs="0" name="partners"
+				type="tns:analystPartners" />
+		</xs:sequence>
+		<xs:attribute name="analysisEnabled" type="xs:boolean" />
+	</xs:complexType>
+	<xs:complexType name="analystPartners">
+		<xs:sequence>
+			<xs:element name="partner" type="tns:analystPartner"
+				maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="analystPartner">
+		<xs:sequence>
+			<xs:element form="unqualified" minOccurs="0" name="parameters"
+				type="tns:analystParameters" />
+			<xs:element form="unqualified" minOccurs="0" name="services"
+				type="tns:analystServices" />
+		</xs:sequence>
+		<xs:attribute name="name" use="required" type="xs:string" />
+		<xs:attribute name="anlysisEnabled" use="optional" type="xs:boolean" />
+	</xs:complexType>
+	<xs:complexType name="analystServices">
+		<xs:sequence>
+			<xs:element name="service" type="tns:analystService"
+				maxOccurs="unbounded"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="analystService">
+		<xs:sequence>
+			<xs:element form="unqualified" minOccurs="0" name="parameters"
+				type="tns:analystParameters" />
+		</xs:sequence>
+		<xs:attribute name="name" use="required" type="xs:string" />
+		<xs:attribute name="anlysisEnabled" use="optional" type="xs:boolean" />
+	</xs:complexType>
+	<xs:complexType name="analystGlobalParameters">
+		<xs:sequence>
+			<xs:element form="unqualified" name="cost" type="tns:value" />
+			<xs:element form="unqualified" name="costWeight" type="tns:weight" />
+			<xs:element form="unqualified" name="effort" type="tns:value" />
+			<xs:element form="unqualified" name="effortWeight" type="tns:weight" />
+			<xs:element form="unqualified" name="reputation" type="tns:value" />
+			<xs:element form="unqualified" name="reputationWeight"
+				type="tns:weight" />
+			<xs:element form="unqualified" name="minInputSize" type="tns:value" />
+			<xs:element form="unqualified" name="maxInputSize" type="tns:value" />
+			<xs:element form="unqualified" name="inputSizeWeight"
+				type="tns:weight" />
+			<xs:element form="unqualified" name="minOutputSize" type="tns:value" />
+			<xs:element form="unqualified" name="maxOutputSize" type="tns:value" />
+			<xs:element form="unqualified" name="outputSizeWeight"
+				type="tns:weight" />
+			<xs:element form="unqualified" name="minExecutionTime"
+				type="tns:value" />
+			<xs:element form="unqualified" name="maxExecutionTime"
+				type="tns:value" />
+			<xs:element form="unqualified" name="executionTimeWeight"
+				type="tns:weight" />
+			<xs:element form="unqualified" minOccurs="0"
+				name="executionTimeThreshold" type="tns:value" />
+			<xs:element form="unqualified" name="geolocationDistanceWeight"
+				type="tns:weight" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="analystParameters">
+		<xs:sequence>
+			<xs:element form="unqualified" minOccurs="0" name="cost"
+				type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0" name="costWeight"
+				type="tns:weight" />
+			<xs:element form="unqualified" minOccurs="0" name="effort"
+				type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0" name="effortWeight"
+				type="tns:weight" />
+			<xs:element form="unqualified" minOccurs="0" name="reputation"
+				type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0"
+				name="reputationWeight" type="tns:weight" />
+			<xs:element form="unqualified" minOccurs="0" name="minInputSize"
+				type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0" name="maxInputSize"
+				type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0" name="inputSizeWeight"
+				type="tns:weight" />
+			<xs:element form="unqualified" minOccurs="0" name="minOutputSize"
+				type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0" name="maxOutputSize"
+				type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0"
+				name="outputSizeWeight" type="tns:weight" />
+			<xs:element form="unqualified" minOccurs="0"
+				name="minExecutionTime" type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0"
+				name="maxExecutionTime" type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0"
+				name="executionTimeWeight" type="tns:weight" />
+			<xs:element form="unqualified" minOccurs="0"
+				name="executionTimeThreshold" type="tns:value" />
+			<xs:element form="unqualified" minOccurs="0"
+				name="geolocationDistanceWeight" type="tns:weight" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="monitorConfiguration">
+		<xs:sequence>			<xs:element name="partners" type="tns:monitorPartners"				maxOccurs="1" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="monitorPartners">
+		<xs:sequence>
+			<xs:element form="unqualified" minOccurs="0" name="partners"
+				type="tns:monitorPartner" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="monitorPartner">
+		<xs:sequence>
+			<xs:element form="unqualified" minOccurs="0" maxOccurs="unbounded"
+				name="services" type="tns:monitorServices" />
+		</xs:sequence>
+		<xs:attribute name="name" use="required" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="monitorServices">
+		<xs:sequence>
+			<xs:element form="unqualified" minOccurs="0" maxOccurs="unbounded"
+				name="service" type="tns:monitorService" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="monitorService">
+		<xs:attribute name="name" use="required" type="xs:string" />
+		<xs:attribute name="mep" use="required" type="xs:string" />
+	</xs:complexType>
+	<xs:simpleType name="weight">
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0" />
+			<xs:maxInclusive value="100" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="value">
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
