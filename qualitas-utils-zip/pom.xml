@@ -3,41 +3,36 @@
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${qualitas.version}</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
   <groupId>com.google.qualitas.utils</groupId>
   <artifactId>qualitas-utils-zip</artifactId>
-  <version>1.0.0</version>
+  <version>${qualitas.version}</version>
   <packaging>jar</packaging>
 
   <name>qualitas-utils-zip</name>
-  <url>http://maven.apache.org</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.2</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
     	<groupId>commons-logging</groupId>
-    	<artifactId>commons-logging-api</artifactId>
-    	<version>1.1</version>
+    	<artifactId>commons-logging</artifactId>
+    	<version>${commons-logging.version}</version>
     	<type>jar</type>
     	<scope>compile</scope>
     </dependency>
     <dependency>
     	<groupId>commons-io</groupId>
     	<artifactId>commons-io</artifactId>
-    	<version>1.4</version>
+    	<version>${commons-io.version}</version>
     	<type>jar</type>
     	<scope>compile</scope>
     </dependency>

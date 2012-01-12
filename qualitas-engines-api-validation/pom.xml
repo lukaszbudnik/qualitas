@@ -3,33 +3,29 @@
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${qualitas.version}</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
   <groupId>com.google.qualitas.engines.api</groupId>
   <artifactId>qualitas-engines-api-validation</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>${qualitas.version}</version>
   <packaging>jar</packaging>
 
   <name>qualitas-engines-api-validation</name>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.2</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
     	<groupId>com.google.code.qualitas.engines.api</groupId>
     	<artifactId>qualitas-engines-api-core</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
+    	<version>${qualitas.version}</version>
     	<type>jar</type>
     	<scope>compile</scope>
     </dependency>

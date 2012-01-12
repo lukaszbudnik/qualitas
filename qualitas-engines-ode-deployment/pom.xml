@@ -3,14 +3,14 @@
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${qualitas.version}</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.google.code.qualitas.engines.ode</groupId>
 	<artifactId>qualitas-engines-ode-deployment</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${qualitas.version}</version>
 	<packaging>jar</packaging>
 
 	<name>qualitas-engines-ode-deployment</name>
@@ -18,28 +18,28 @@
 		<dependency>
 			<groupId>com.google.code.qualitas.engines.api</groupId>
 			<artifactId>qualitas-engines-api-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${qualitas.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.qualitas.engines.api</groupId>
 			<artifactId>qualitas-engines-api-deployment</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${qualitas.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging-api</artifactId>
-			<version>1.1</version>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ode</groupId>
 			<artifactId>ode-axis2</artifactId>
-			<version>1.3.5</version>
+			<version>${ode-axis2.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 			<exclusions>
@@ -72,14 +72,14 @@
 		<dependency>
 			<groupId>com.google.code.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${qualitas.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -89,7 +89,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>failsafe-maven-plugin</artifactId>
-				<version>2.4.3-alpha-1</version>
+				<version>${failsafe-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -99,14 +99,14 @@
 					</execution>
 				</executions>
 				<configuration>
-					<encoding>utf-8</encoding>
+					<encoding>${project.build.sourceEncoding}</encoding>
 					<!-- use -Dmaven.failsafe.debug <debugForkedProcess>true</debugForkedProcess> -->
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.25</version>
+				<version>${maven-jetty-plugin.version}</version>
 				<configuration>
 					<webApp>${basedir}/src/test/resources/ode.war</webApp>
 					<contextPath>/ode</contextPath>

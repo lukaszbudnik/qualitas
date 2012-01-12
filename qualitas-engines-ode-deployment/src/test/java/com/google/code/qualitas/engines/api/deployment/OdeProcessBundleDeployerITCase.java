@@ -30,7 +30,7 @@ public class OdeProcessBundleDeployerITCase {
 	}
 
 	@AfterClass
-	public static void tearDownClass() {
+	public static void tearDownClass() throws IOException {
 		odeProcessBundle.cleanUp();
 	}
 

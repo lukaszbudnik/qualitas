@@ -16,7 +16,7 @@ import com.google.qualitas.engines.api.validation.ProcessBundleValidationResult;
 public class OdeProcessBundleValidatorTest {
 
     private static final String APACHE_ODE_PLATFORM = "win";
-    private static final String APACHE_ODE_PATH = "C:/Studies/Programs/apache-ode-war-1.3.2";
+    private static final String APACHE_ODE_PATH = "C:\\Studies\\Programs\\apache-ode-war-1.3.4";
     private static OdeProcessBundle odeProcessBundle;
     private static OdeProcessBundle odeProcessBundleError;
     private static OdeProcessBundleValidator odeProcessBundleValidator;

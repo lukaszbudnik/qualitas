@@ -3,63 +3,70 @@
 	<parent>
 		<artifactId>qualitas</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${qualitas.version}</version>
 		<relativePath>../qualitas</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.google.code.qualitas</groupId>
 	<artifactId>qualitas-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${qualitas.version}</version>
 	<packaging>pom</packaging>
 
 	<name>qualitas-parent</name>
-	<url>http://code.google.com/p/qualitas/</url>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>com.google.code.qualitas.engines.api</groupId>
 				<artifactId>qualitas-engines-api-core</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${qualitas.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.google.code.qualitas.engines.api</groupId>
 				<artifactId>qualitas-engines-api-deployment</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${qualitas.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.google.code.qualitas.engines.ode</groupId>
 				<artifactId>qualitas-engines-ode-core</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${qualitas.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.google.code.qualitas.engines.ode</groupId>
 				<artifactId>qualitas-engines-ode-deployment</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${qualitas.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.google.qualitas.utils</groupId>
 				<artifactId>qualitas-utils-zip</artifactId>
-				<version>1.0.0</version>
+				<version>${qualitas.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.sourceVersion>1.6</project.build.sourceVersion>
 		<project.build.targetVersion>1.6</project.build.targetVersion>
 		<jaxb.version>2.1.13</jaxb.version>
+		<jaxb2-maven-plugin.version>1.3</jaxb2-maven-plugin.version>
+		<junit.version>4.8.2</junit.version>
+		<commons-logging.version>1.1</commons-logging.version>
+		<commons-io.version>1.4</commons-io.version>
+		<ode-axis2.version>1.3.5</ode-axis2.version>
+		<failsafe-maven-plugin.version>2.4.3-alpha-1</failsafe-maven-plugin.version>
+		<maven-jetty-plugin.version>6.1.25</maven-jetty-plugin.version>
+		<commons-exec.version>1.0.1</commons-exec.version>
+		<maven-checkstyle-plugin.version>2.8</maven-checkstyle-plugin.version>
 	</properties>
 
 	<build>
@@ -76,12 +83,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.8</version>
+				<version>${maven-checkstyle-plugin.version}</version>
 				<dependencies>
 					<dependency>
 						<groupId>com.google.code.qualitas</groupId>
 						<artifactId>qualitas-buildtools</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
+						<version>${qualitas.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -91,7 +98,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>2.8</version>
+					<version>${maven-checkstyle-plugin.version}</version>
 					<executions>
 						<execution>
 							<id>validate</id>

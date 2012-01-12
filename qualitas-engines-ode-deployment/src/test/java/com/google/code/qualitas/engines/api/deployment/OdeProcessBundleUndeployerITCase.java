@@ -26,7 +26,7 @@ public class OdeProcessBundleUndeployerITCase {
 	}
 
 	@AfterClass
-	public static void tearDownClass() {
+	public static void tearDownClass() throws IOException {
 		odeProcessBundle.cleanUp();
 	}
 

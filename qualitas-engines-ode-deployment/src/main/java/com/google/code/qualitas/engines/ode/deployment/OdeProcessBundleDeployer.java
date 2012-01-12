@@ -40,7 +40,7 @@ public class OdeProcessBundleDeployer implements
 
         try {
             manager.deploy(processBundle);
-        } catch (RemoteDeploymentException e) {
+        } catch (Exception e) {
             bundleDeploymentResult.setSuccess(false);
             bundleDeploymentResult.setErrorMessage(e.getMessage());
         }

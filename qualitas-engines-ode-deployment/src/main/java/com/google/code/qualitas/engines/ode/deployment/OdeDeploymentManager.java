@@ -1,5 +1,6 @@
 package com.google.code.qualitas.engines.ode.deployment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,8 +25,7 @@ import com.google.code.qualitas.engines.api.core.OdeProcessBundle;
 public class OdeDeploymentManager {
 
     /** The log. */
-    private static final Log LOG = LogFactory
-            .getLog(OdeDeploymentManager.class);
+    private static final Log LOG = LogFactory.getLog(OdeDeploymentManager.class);
 
     /** The factory. */
     private OMFactory factory;
@@ -58,8 +58,7 @@ public class OdeDeploymentManager {
     @SuppressWarnings("unchecked")
     public List<String> getProcesses() throws RemoteDeploymentException {
         OMElement listDeployedPackagesResponse = doGetProcesses();
-        OMElement deployedPackages = listDeployedPackagesResponse
-                .getFirstElement();
+        OMElement deployedPackages = listDeployedPackagesResponse.getFirstElement();
         Iterator<OMElement> iter = deployedPackages.getChildElements();
         List<String> processesList = new ArrayList<String>();
         while (iter.hasNext()) {
@@ -77,16 +76,17 @@ public class OdeDeploymentManager {
      * @return the string
      * @throws RemoteDeploymentException
      *             the remote deployment exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
-    public String deploy(OdeProcessBundle processBundle)
-            throws RemoteDeploymentException {
+    public String deploy(OdeProcessBundle processBundle) throws RemoteDeploymentException,
+            IOException {
 
         OMElement deploy = createDeployMessage(processBundle);
 
         OMElement deployResponse = doDeploy(deploy);
 
-        String packageName = deployResponse.getFirstElement().getFirstElement()
-                .getText();
+        String packageName = deployResponse.getFirstElement().getFirstElement().getText();
 
         return packageName;
     }
@@ -134,15 +134,13 @@ public class OdeDeploymentManager {
      * @throws RemoteDeploymentException
      *             the remote deployment exception
      */
-    private OMElement doDeploy(OMElement deploy)
-            throws RemoteDeploymentException {
+    private OMElement doDeploy(OMElement deploy) throws RemoteDeploymentException {
         OMElement result = null;
 
         try {
             result = sendToOdeDeploymentService(deploy);
         } catch (AxisFault e) {
-            String msg = "Could not deploy "
-                    + deploy.getFirstElement().getText();
+            String msg = "Could not deploy " + deploy.getFirstElement().getText();
             LOG.error(msg, e);
             throw new RemoteDeploymentException(msg, e);
         }
@@ -156,15 +154,16 @@ public class OdeDeploymentManager {
      * @param processBundle
      *            the process bundle
      * @return the oM element
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
-    private OMElement createDeployMessage(OdeProcessBundle processBundle) {
+    private OMElement createDeployMessage(OdeProcessBundle processBundle) throws IOException {
         String processName = processBundle.getMainProcessName();
 
-        OMNamespace pmapins = factory.createOMNamespace(
-                Namespaces.ODE_PMAPI_NS, "pmapi");
+        OMNamespace pmapins = factory.createOMNamespace(Namespaces.ODE_PMAPI_NS, "pmapi");
 
-        OMNamespace deployapins = factory.createOMNamespace(
-                Namespaces.ODE_DEPLOYAPI_NS, "deployapi");
+        OMNamespace deployapins = factory.createOMNamespace(Namespaces.ODE_DEPLOYAPI_NS,
+                "deployapi");
 
         OMElement deploy = factory.createOMElement("deploy", pmapins);
         deploy.declareNamespace(deployapins);
@@ -176,8 +175,7 @@ public class OdeDeploymentManager {
         OMElement zip = factory.createOMElement("zip", deployapins);
 
         String base64Enc = Base64.encode(processBundle.buildBundle());
-        OMText zipContent = factory.createOMText(base64Enc, "application/zip",
-                false);
+        OMText zipContent = factory.createOMText(base64Enc, "application/zip", false);
         zip.addChild(zipContent);
 
         deploy.addChild(name);
@@ -196,10 +194,8 @@ public class OdeDeploymentManager {
      * @throws RemoteDeploymentException
      *             the remote deployment exception
      */
-    private OMElement doUndeploy(String process)
-            throws RemoteDeploymentException {
-        OMNamespace pmapins = factory.createOMNamespace(
-                Namespaces.ODE_PMAPI_NS, "pmapi");
+    private OMElement doUndeploy(String process) throws RemoteDeploymentException {
+        OMNamespace pmapins = factory.createOMNamespace(Namespaces.ODE_PMAPI_NS, "pmapi");
         OMElement undeploy = factory.createOMElement("undeploy", pmapins);
         OMElement packageName = factory.createOMElement("packageName", pmapins);
         packageName.setText(process);
@@ -225,8 +221,8 @@ public class OdeDeploymentManager {
      *             the remote deployment exception
      */
     private OMElement doGetProcesses() throws RemoteDeploymentException {
-        OMElement listDeployedPackages = client.buildMessage(
-                "listDeployedPackages", new String[] {}, new Object[] {});
+        OMElement listDeployedPackages = client.buildMessage("listDeployedPackages",
+                new String[] {}, new Object[] {});
 
         OMElement result = null;
 
@@ -250,8 +246,7 @@ public class OdeDeploymentManager {
      * @throws AxisFault
      *             the axis fault
      */
-    private OMElement sendToOdeDeploymentService(OMElement msg)
-            throws AxisFault {
+    private OMElement sendToOdeDeploymentService(OMElement msg) throws AxisFault {
         return client.send(msg, odeUrl);
     }
 

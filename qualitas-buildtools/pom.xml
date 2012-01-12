@@ -3,14 +3,14 @@
 	<parent>
 		<artifactId>qualitas</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${qualitas.version}</version>
 		<relativePath>../qualitas</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.google.code.qualitas</groupId>
 	<artifactId>qualitas-buildtools</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${qualitas.version}</version>
 	<packaging>jar</packaging>
 
 	<name>qualitas-buildtools</name>
