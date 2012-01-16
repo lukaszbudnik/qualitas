@@ -1,7 +1,5 @@
 package com.google.qualitas.engines.api.validation;
 
-import java.io.IOException;
-
 import com.google.code.qualitas.engines.api.core.ProcessBundle;
 
 /**
@@ -10,7 +8,7 @@ import com.google.code.qualitas.engines.api.core.ProcessBundle;
  * @param <T>
  *            the generic type
  */
-public interface ProcessBundleValidator<T extends ProcessBundle> {
+public interface Validator<T extends ProcessBundle> {
 
     /**
      * Checks if is supported.
@@ -42,11 +40,10 @@ public interface ProcessBundleValidator<T extends ProcessBundle> {
      * 
      * @param processBundle
      *            the processBundle
-     * @return the process bundle validation result
-     * @throws IOException
-     *             the IO exception
+     * @throws ValidationException
+     *             the validation exception
      */
-    ProcessBundleValidationResult validate(T processBundle) throws IOException;
+    void validate(T processBundle) throws ValidationException;
 
     /**
      * Validate.
@@ -55,10 +52,9 @@ public interface ProcessBundleValidator<T extends ProcessBundle> {
      *            the processBundle
      * @param processName
      *            the process name
-     * @return the process bundle validation result
-     * @throws IOException
-     *             the IO exception
+     * @throws ValidationException
+     *             the validation exception
      */
-    ProcessBundleValidationResult validate(T processBundle, String processName) throws IOException;
+    void validate(T processBundle, String processName) throws ValidationException;
 
 }
