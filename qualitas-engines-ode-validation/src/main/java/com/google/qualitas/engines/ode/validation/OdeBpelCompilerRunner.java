@@ -6,22 +6,14 @@ import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteStreamHandler;
 import org.apache.commons.exec.PumpStreamHandler;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * The Class OdeBpelCompilerRunner.
  */
 public class OdeBpelCompilerRunner {
 
-    /** The Constant LOG. */
-    private static final Log LOG = LogFactory.getLog(OdeBpelCompilerRunner.class);
-
     /** The command line. */
     private CommandLine commandLine;
-
-    /** The error message. */
-    private String errorMessage;
 
     /**
      * The Constructor.
@@ -37,40 +29,23 @@ public class OdeBpelCompilerRunner {
 
     /**
      * Compile.
-     * 
+     *
      * @return true, if compile
+     * @throws Exception the exception
      */
-    public boolean compile() {
+    public void compile() throws Exception {
         DefaultExecutor executor = new DefaultExecutor();
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         ByteArrayOutputStream error = new ByteArrayOutputStream();
         ExecuteStreamHandler handler = new PumpStreamHandler(output, error);
         executor.setStreamHandler(handler);
 
-        try {
-            executor.execute(commandLine);
-        } catch (Exception e) {
-            String msg = "Exception cuaght while invoking Apache ODE bpelc tool";
-            LOG.error(msg, e);
-            errorMessage = msg;
-            return false;
-        } finally {
-            if (error.size() > 0) {
-                errorMessage = new String(error.toByteArray());
-                return false;
-            }
+        executor.execute(commandLine);
+
+        if (error.size() > 0) {
+            String errorMessage = new String(error.toByteArray());
+            throw new Exception(errorMessage);
         }
 
-        return true;
     }
-
-    /**
-     * Gets the error message.
-     * 
-     * @return the error message
-     */
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
 }

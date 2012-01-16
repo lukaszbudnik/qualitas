@@ -3,15 +3,13 @@ package com.google.qualitas.engines.ode.validation;
 import java.io.File;
 import java.io.IOException;
 
-import junit.framework.Assert;
-
 import org.apache.commons.io.FileUtils;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.google.code.qualitas.engines.api.core.OdeProcessBundle;
-import com.google.qualitas.engines.api.validation.ProcessBundleValidationResult;
+import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.qualitas.engines.api.validation.ValidationException;
 
 public class OdeProcessBundleValidatorTest {
 
@@ -19,7 +17,7 @@ public class OdeProcessBundleValidatorTest {
     private static final String APACHE_ODE_PATH = "C:\\Studies\\Programs\\apache-ode-war-1.3.4";
     private static OdeProcessBundle odeProcessBundle;
     private static OdeProcessBundle odeProcessBundleError;
-    private static OdeProcessBundleValidator odeProcessBundleValidator;
+    private static OdeValidator odeProcessBundleValidator;
 
     @BeforeClass
     public static void setUpClass() throws IOException {
@@ -35,7 +33,7 @@ public class OdeProcessBundleValidatorTest {
         odeProcessBundleError.setBundle(zippedArchiveError);
         odeProcessBundleError.setMainProcessName("XhGPWWhile");
 
-        odeProcessBundleValidator = new OdeProcessBundleValidator();
+        odeProcessBundleValidator = new OdeValidator();
         odeProcessBundleValidator.setExternalToolHome(APACHE_ODE_PATH);
         odeProcessBundleValidator.setExternalToolPlatform(APACHE_ODE_PLATFORM);
     }
@@ -57,23 +55,19 @@ public class OdeProcessBundleValidatorTest {
     }
 
     @Test
-    public void testValidateODEArchive() throws IOException {
-        ProcessBundleValidationResult result = odeProcessBundleValidator.validate(odeProcessBundle);
-        Assert.assertTrue(result.isSuccess());
+    public void testValidateODEArchive() throws ValidationException {
+        odeProcessBundleValidator.validate(odeProcessBundle);
     }
 
     @Test
-    public void testValidateODEArchiveString() throws IOException {
-        ProcessBundleValidationResult result = odeProcessBundleValidator.validate(odeProcessBundle,
+    public void testValidateODEArchiveString() throws ValidationException {
+        odeProcessBundleValidator.validate(odeProcessBundle,
                 "XhGPWWhile");
-        Assert.assertTrue(result.isSuccess());
     }
 
-    @Test
-    public void testValidateODEArchiveError() throws IOException {
-        ProcessBundleValidationResult result = odeProcessBundleValidator.validate(odeProcessBundleError);
-        Assert.assertFalse(result.isSuccess());
-        System.out.println(result.getErrorMessage());
+    @Test(expected = ValidationException.class)
+    public void testValidateODEArchiveError() throws ValidationException {
+        odeProcessBundleValidator.validate(odeProcessBundleError);
     }
 
 }
