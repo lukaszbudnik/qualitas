@@ -12,6 +12,13 @@ public interface ProcessBundle {
      * descriptor.
      */
     String QUALITAS_DESCRIPTOR_NAME = "qualitas.xml";
+    
+    /**
+     * Gets the process type.
+     *
+     * @return the process type
+     */
+    ProcessType getProcessType();
 
     /**
      * Sets the bundle.
