@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.core;
+package com.google.code.qualitas.engines.ode.core;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +10,9 @@ import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.code.qualitas.engines.api.core.Entry;
+import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
 
 public class OdeProcessBundleTest {
 

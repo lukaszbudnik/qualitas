@@ -46,5 +46,12 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.utils</groupId>
+			<artifactId>qualitas-utils-xslt</artifactId>
+			<version>${qualitas.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 </project>

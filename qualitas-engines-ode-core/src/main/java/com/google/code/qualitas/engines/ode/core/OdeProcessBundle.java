@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.core;
+package com.google.code.qualitas.engines.ode.core;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +8,9 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.google.code.qualitas.engines.api.core.AbstractProcessBundle;
+import com.google.code.qualitas.engines.api.core.Entry;
+import com.google.code.qualitas.engines.api.core.ProcessType;
 import com.google.qualitas.utils.zip.ZipUtils;
 
 /**
@@ -45,6 +48,14 @@ public class OdeProcessBundle extends AbstractProcessBundle {
     public OdeProcessBundle() {
     }
 
+    /* (non-Javadoc)
+     * @see com.google.code.qualitas.engines.api.core.ProcessBundle#getProcessType()
+     */
+    @Override
+    public ProcessType getProcessType() {
+        return ProcessType.WS_BPEL_2_0;
+    }
+    
     /*
      * (non-Javadoc)
      * 
