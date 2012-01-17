@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:ns="http://examples.bpel.nuntius.xh.org/xhGPWWhileArtifacts" xmlns:ns0="http://examples.ws.nuntius.xh.org" xmlns:tns="http://examples.bpel.nuntius.xh.org/xhGPWWhile" xmlns:wsdl="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" exitOnStandardFault="yes" name="XhGPWWhile" suppressJoinFailure="yes" targetNamespace="http://examples.bpel.nuntius.xh.org/xhGPWWhile">
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="XhGPWWhile.wsdl" namespace="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="XhGPWWhileArtifacts.wsdl" namespace="http://examples.bpel.nuntius.xh.org/xhGPWWhileArtifacts"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="StockQuotesService.wsdl" namespace="http://examples.ws.nuntius.xh.org"/>
+  <bpws:partnerLinks>
+    <bpws:partnerLink myRole="xhGPWWhileProvider" name="xhGPWWhilePartnerLink" partnerLinkType="wsdl:xhGPWWhilePartnerLinkType"/>
+    <bpws:partnerLink name="stockQuotesServicePartnerLink" partnerLinkType="ns:stockQuotesServicePartnerLinkType" partnerRole="stockQuotesServiceProvider"/>
+  </bpws:partnerLinks>
+  <bpws:variables>
+    <bpws:variable messageType="wsdl:buyRequest" name="input"/>
+    <bpws:variable messageType="wsdl:buyResponse" name="output"/>
+    <bpws:variable messageType="ns0:getStockQuoteResponse" name="getStockQuoteResponse"/>
+    <bpws:variable messageType="ns0:getStockQuoteRequest" name="getStockQuoteRequest"/>
+    <bpws:variable messageType="ns0:setStockQuoteResponse" name="setStockQuoteResponse"/>
+    <bpws:variable messageType="ns0:setStockQuoteRequest" name="setStockQuoteRequest"/>
+    <bpws:variable messageType="ns0:isStockOpenResponse" name="isStockOpenResponse"/>
+    <bpws:variable messageType="ns0:isStockOpenRequest" name="isStockQpenRequest"/>
+    <bpws:variable type="xsd:boolean" name="result"/>
+    <bpws:variable name="QualitasProcessInstanceId" type="xsd:long"/>
+  </bpws:variables>
+  <bpws:sequence name="main">
+    <bpws:receive createInstance="yes" name="receiveInput" operation="buy" partnerLink="xhGPWWhilePartnerLink" portType="wsdl:XhGPWWhilePortType" variable="input"/>
+    <bpws:assign name="QualitasProcessInstanceIdAssign">
+      <bpws:copy>
+        <bpws:from header="QualitasProcessInstanceId" variable="input"/>
+        <bpws:to variable="QualitasProcessInstanceId"/>
+      </bpws:copy>
+    </bpws:assign>
+    <bpws:invoke inputVariable="isStockQpenRequest" name="IsStockOpen" operation="isStockOpen" outputVariable="isStockOpenResponse" partnerLink="stockQuotesServicePartnerLink" portType="ns0:StockQuotesServicePortType"/>
+    <bpws:if name="If">
+      <bpws:condition>$isStockOpenResponse.parameters/ns0:return</bpws:condition>
+      <bpws:sequence name="WaitForLowestPriceAndBuy">
+        <bpws:sequence name="InitializeAndAssignVariables">
+          <bpws:assign name="InitializeGetStockQuoteRequest" validate="no">
+            <bpws:copy>
+              <bpws:from>
+                <bpws:literal>
+                  <ns0:getStockQuoteRequest>
+                    <ns0:company>null</ns0:company>
+                  </ns0:getStockQuoteRequest>
+                </bpws:literal>
+              </bpws:from>
+              <bpws:to part="parameters" variable="getStockQuoteRequest"/>
+            </bpws:copy>
+          </bpws:assign>
+          <bpws:assign name="AssignGetStockQuoteRequest" validate="no">
+            <bpws:copy>
+              <bpws:from part="parameters" variable="input">
+                <bpws:query>wsdl:companyName</bpws:query>
+              </bpws:from>
+              <bpws:to part="parameters" variable="getStockQuoteRequest">
+                <bpws:query>ns0:company</bpws:query>
+              </bpws:to>
+            </bpws:copy>
+          </bpws:assign>
+        </bpws:sequence>
+        <bpws:invoke inputVariable="getStockQuoteRequest" name="GetStockQuote" operation="getStockQuote" outputVariable="getStockQuoteResponse" partnerLink="stockQuotesServicePartnerLink" portType="ns0:StockQuotesServicePortType"/>
+        <bpws:while name="WhileLowestPriceReached">
+          <bpws:condition>$input.parameters/wsdl:price &lt; $getStockQuoteResponse.parameters/ns0:return</bpws:condition>
+          <bpws:sequence name="CheckCurrentPrice">
+            <bpws:wait name="Wait">
+              <bpws:for>'PT10S'</bpws:for>
+            </bpws:wait>
+            <bpws:invoke inputVariable="getStockQuoteRequest" name="GetStockQuote" operation="getStockQuote" outputVariable="getStockQuoteResponse" partnerLink="stockQuotesServicePartnerLink" portType="ns0:StockQuotesServicePortType"/>
+          </bpws:sequence>
+        </bpws:while>
+        <bpws:assign name="InitializeSetStockQuoteRequest" validate="no">
+          <bpws:copy>
+            <bpws:from>
+              <bpws:literal>
+                <ns0:setStockQuoteRequest>
+                  <ns0:company>null</ns0:company>
+                  <ns0:value>0</ns0:value>
+                </ns0:setStockQuoteRequest>
+              </bpws:literal>
+            </bpws:from>
+            <bpws:to part="parameters" variable="setStockQuoteRequest"/>
+          </bpws:copy>
+        </bpws:assign>
+        <bpws:assign name="AssignSetStockQuoteRequest" validate="no">
+          <bpws:copy>
+            <bpws:from part="parameters" variable="input">
+              <bpws:query>wsdl:companyName</bpws:query>
+            </bpws:from>
+            <bpws:to part="parameters" variable="setStockQuoteRequest">
+              <bpws:query>ns0:company</bpws:query>
+            </bpws:to>
+          </bpws:copy>
+          <bpws:copy>
+            <bpws:from part="parameters" variable="input">
+              <bpws:query>wsdl:price</bpws:query>
+            </bpws:from>
+            <bpws:to part="parameters" variable="setStockQuoteRequest">
+              <bpws:query>ns0:value</bpws:query>
+            </bpws:to>
+          </bpws:copy>
+        </bpws:assign>
+        <bpws:invoke inputVariable="setStockQuoteRequest" name="BuyCompanyStockQuote" operation="setStockQuote" outputVariable="setStockQuoteResponse" partnerLink="stockQuotesServicePartnerLink" portType="ns0:StockQuotesServicePortType"/>
+        <bpws:assign name="AssignStockClosed" validate="no">
+          <bpws:copy>
+            <bpws:from>
+              <bpws:literal>true</bpws:literal>
+            </bpws:from>
+            <bpws:to variable="result"/>
+          </bpws:copy>
+        </bpws:assign>
+      </bpws:sequence>
+      <bpws:else>
+        <bpws:sequence name="Sequence">
+          <bpws:assign name="AssignStockClosed" validate="no">
+            <bpws:copy>
+              <bpws:from>
+                <bpws:literal>false</bpws:literal>
+              </bpws:from>
+              <bpws:to variable="result"/>
+            </bpws:copy>
+          </bpws:assign>
+        </bpws:sequence>
+      </bpws:else>
+    </bpws:if>
+    <bpws:assign>
+      <bpws:copy>
+        <bpws:from>
+          <bpws:literal>
+            <wsdl:buyResponse>
+              <wsdl:out/>
+            </wsdl:buyResponse>
+          </bpws:literal>
+        </bpws:from>
+        <bpws:to part="parameters" variable="output"/>
+      </bpws:copy>
+      <bpws:copy>
+        <bpws:from variable="result"/>
+        <bpws:to part="parameters" variable="output">
+          <bpws:query>wsdl:out</bpws:query>
+        </bpws:to>
+      </bpws:copy>
+    </bpws:assign>
+    <bpws:reply name="replyOutput" operation="buy" partnerLink="xhGPWWhilePartnerLink" portType="wsdl:XhGPWWhilePortType" variable="output"/>
+  </bpws:sequence>
+</bpws:process>

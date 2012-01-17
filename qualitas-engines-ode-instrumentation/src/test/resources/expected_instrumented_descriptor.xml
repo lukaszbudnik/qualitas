@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns:monitor="http://code.google.com/p/qualitas/execution/monitor" xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:pns="http://examples.bpel.nuntius.xh.org/xhGPWWhile" xmlns:wns="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl" xmlns:ns="http://examples.ws.nuntius.xh.org">
+  <process name="pns:XhGPWWhile">
+    <active>true</active>
+    <provide partnerLink="xhGPWWhilePartnerLink">
+      <service name="wns:XhGPWWhileService" port="XhGPWWhilePort"/>
+    </provide>
+    <invoke partnerLink="QualitasExecutionMonitorImplService">
+      <service name="monitor:QualitasExecutionMonitorImplService" port="QualitasExecutionMonitorImplPort"/>
+    </invoke>
+    <invoke partnerLink="stockQuotesServicePartnerLink">
+      <service name="ns:StockQuotesService" port="StockQuotesServiceSOAP11port_http"/>
+    </invoke>
+  </process>
+</deploy>
