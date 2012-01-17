@@ -3,12 +3,12 @@ package com.google.code.qualitas.engines.api.deployment;
 import com.google.code.qualitas.engines.api.core.ProcessBundle;
 
 /**
- * The Interface ProcessBundleUndeployer.
+ * The Interface ProcessBundleDeployer.
  * 
  * @param <T>
  *            the generic type
  */
-public interface ProcessBundleUndeployer<T extends ProcessBundle> {
+public interface Deployer<T extends ProcessBundle> {
 
     /**
      * Checks if passed process bundle is supported.
@@ -36,12 +36,13 @@ public interface ProcessBundleUndeployer<T extends ProcessBundle> {
     void setDeploymentServiceEndpoint(String deploymentServiceEndpoint);
 
     /**
-     * Undeploys process bundle from a remote host.
+     * Deploys process bundle to a remote host.
      * 
      * @param processBundle
      *            the process bundle
-     * @return deployment result object
+     * @throws DeploymentException
+     *             the deployment exception
      */
-    ProcessBundleDeploymentResult undeploy(T processBundle);
+    void deploy(T processBundle) throws DeploymentException;
 
 }
