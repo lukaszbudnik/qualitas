@@ -1,16 +1,22 @@
 package com.google.code.qualitas.engines.ode.deployment;
 
-import com.google.code.qualitas.engines.api.core.OdeProcessBundle;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.google.code.qualitas.engines.api.core.ProcessBundle;
-import com.google.code.qualitas.engines.api.deployment.ProcessBundleDeploymentResult;
-import com.google.code.qualitas.engines.api.deployment.ProcessBundleUndeployer;
+import com.google.code.qualitas.engines.api.deployment.DeploymentException;
+import com.google.code.qualitas.engines.api.deployment.Undeployer;
+import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.deployment.manager.OdeDeploymentManager;
 
 /**
  * The Class OdeProcessBundleUndeployer.
  */
-public class OdeProcessBundleUndeployer implements
-        ProcessBundleUndeployer<OdeProcessBundle> {
+public class OdeUndeployer implements Undeployer<OdeProcessBundle> {
 
+    /** The log. */
+    private static final Log LOG = LogFactory.getLog(OdeUndeployer.class);
+    
     /** The default deployment service endpoint. */
     private String defaultDeploymentServiceEndpoint;
 
@@ -25,8 +31,13 @@ public class OdeProcessBundleUndeployer implements
      * #deploy(com.google.code.qualitas.engines.api.core.ProcessBundle)
      */
     @Override
-    public ProcessBundleDeploymentResult undeploy(OdeProcessBundle processBundle) {
+    public void undeploy(OdeProcessBundle processBundle) throws DeploymentException {
+        undeploy(processBundle.getMainProcessName());
+    }
+    
 
+    @Override
+    public void undeploy(String processName) throws DeploymentException {
         String odeUrl;
         if (this.deploymentServiceEndpoint == null) {
             odeUrl = this.deploymentServiceEndpoint;
@@ -36,18 +47,13 @@ public class OdeProcessBundleUndeployer implements
 
         OdeDeploymentManager manager = new OdeDeploymentManager(odeUrl);
 
-        ProcessBundleDeploymentResult bundleDeploymentResult = new ProcessBundleDeploymentResult();
-
         try {
-            manager.undeploy(processBundle.getMainProcessName());
-        } catch (RemoteDeploymentException e) {
-            bundleDeploymentResult.setSuccess(false);
-            bundleDeploymentResult.setErrorMessage(e.getMessage());
+            manager.undeploy(processName);
+        } catch (Exception e) {
+            String msg = "Caught exception while trying to undeploy bundle " + processName;
+            LOG.error(msg, e);
+            throw new DeploymentException(msg, e);
         }
-
-        bundleDeploymentResult.setSuccess(true);
-
-        return bundleDeploymentResult;
     }
 
     /*
@@ -70,8 +76,7 @@ public class OdeProcessBundleUndeployer implements
      * #setDefaultDeploymentServiceEndpoint(java.lang.String)
      */
     @Override
-    public void setDefaultDeploymentServiceEndpoint(
-            String defaultDeploymentServiceEndpoint) {
+    public void setDefaultDeploymentServiceEndpoint(String defaultDeploymentServiceEndpoint) {
         this.defaultDeploymentServiceEndpoint = defaultDeploymentServiceEndpoint;
     }
 
