@@ -10,6 +10,8 @@ import com.google.code.qualitas.engines.api.core.ProcessBundle;
 import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
 import com.google.qualitas.engines.api.validation.ValidationException;
 import com.google.qualitas.engines.api.validation.Validator;
+import com.google.qualitas.engines.ode.validation.bpelc.CompilationException;
+import com.google.qualitas.engines.ode.validation.bpelc.OdeBpelCompilerRunner;
 
 /**
  * The Class OdeProcessBundleValidator.
@@ -110,7 +112,7 @@ public class OdeValidator implements Validator<OdeProcessBundle> {
 
         try {
             bpelc.compile();
-        } catch (Exception e) {
+        } catch (CompilationException e) {
             String msg = "Bpelc failed to compile " + pathToBpelFile;
             LOG.error(msg, e);
             throw new ValidationException(msg, e);
@@ -122,6 +124,7 @@ public class OdeValidator implements Validator<OdeProcessBundle> {
         } catch (IOException e) {
             // there is no harm if cbp file ends in the archive
             // it is OK to ignore this exception
+            LOG.info("Could not remove ODE's compiled CBP file " + pathToBpelFile);
         }
 
     }
