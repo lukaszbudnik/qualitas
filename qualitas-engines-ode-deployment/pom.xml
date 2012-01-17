@@ -110,13 +110,14 @@
 				<configuration>
 					<webApp>${basedir}/src/test/resources/ode.war</webApp>
 					<contextPath>/ode</contextPath>
+					<daemon>true</daemon>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
 							<port>9090</port>
 							<integralPort>9095</integralPort>
 						</connector>
 					</connectors>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<scanIntervalSeconds>0</scanIntervalSeconds>
 					<stopPort>9095</stopPort>
 					<stopKey>STOP</stopKey>
 				</configuration>
@@ -127,10 +128,6 @@
 						<goals>
 							<goal>run-exploded</goal>
 						</goals>
-						<configuration>
-							<scanIntervalSeconds>0</scanIntervalSeconds>
-							<daemon>true</daemon>
-						</configuration>
 					</execution>
 					<execution>
 						<id>stop-jetty</id>

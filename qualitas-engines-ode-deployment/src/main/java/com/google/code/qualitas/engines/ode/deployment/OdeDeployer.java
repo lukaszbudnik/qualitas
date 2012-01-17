@@ -1,15 +1,21 @@
 package com.google.code.qualitas.engines.ode.deployment;
 
-import com.google.code.qualitas.engines.api.core.OdeProcessBundle;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.google.code.qualitas.engines.api.core.ProcessBundle;
-import com.google.code.qualitas.engines.api.deployment.ProcessBundleDeployer;
-import com.google.code.qualitas.engines.api.deployment.ProcessBundleDeploymentResult;
+import com.google.code.qualitas.engines.api.deployment.Deployer;
+import com.google.code.qualitas.engines.api.deployment.DeploymentException;
+import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.deployment.manager.OdeDeploymentManager;
 
 /**
  * The Class OdeProcessBundleDeployer.
  */
-public class OdeProcessBundleDeployer implements
-        ProcessBundleDeployer<OdeProcessBundle> {
+public class OdeDeployer implements Deployer<OdeProcessBundle> {
+
+    /** The log. */
+    private static final Log LOG = LogFactory.getLog(OdeDeployer.class);
 
     /** The default deployment service endpoint. */
     private String defaultDeploymentServiceEndpoint;
@@ -25,7 +31,7 @@ public class OdeProcessBundleDeployer implements
      * #deploy(com.google.code.qualitas.engines.api.core.ProcessBundle)
      */
     @Override
-    public ProcessBundleDeploymentResult deploy(OdeProcessBundle processBundle) {
+    public void deploy(OdeProcessBundle processBundle) throws DeploymentException {
 
         String odeUrl;
         if (this.deploymentServiceEndpoint == null) {
@@ -36,18 +42,15 @@ public class OdeProcessBundleDeployer implements
 
         OdeDeploymentManager manager = new OdeDeploymentManager(odeUrl);
 
-        ProcessBundleDeploymentResult bundleDeploymentResult = new ProcessBundleDeploymentResult();
-
         try {
             manager.deploy(processBundle);
         } catch (Exception e) {
-            bundleDeploymentResult.setSuccess(false);
-            bundleDeploymentResult.setErrorMessage(e.getMessage());
+            String msg = "Caught exception while trying to deploy bundle "
+                    + processBundle.getMainProcessName();
+            LOG.error(msg, e);
+            throw new DeploymentException(msg, e);
         }
 
-        bundleDeploymentResult.setSuccess(true);
-
-        return bundleDeploymentResult;
     }
 
     /*
@@ -70,8 +73,7 @@ public class OdeProcessBundleDeployer implements
      * #setDefaultDeploymentServiceEndpoint(java.lang.String)
      */
     @Override
-    public void setDefaultDeploymentServiceEndpoint(
-            String defaultDeploymentServiceEndpoint) {
+    public void setDefaultDeploymentServiceEndpoint(String defaultDeploymentServiceEndpoint) {
         this.defaultDeploymentServiceEndpoint = defaultDeploymentServiceEndpoint;
     }
 

@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.deployment;
+package com.google.code.qualitas.engines.ode.deployment.manager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.ode.axis2.service.ServiceClientUtil;
 import org.apache.ode.utils.Namespaces;
 
-import com.google.code.qualitas.engines.api.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
 
 /**
  * The Class OdeDeploymentManager.
@@ -55,10 +55,10 @@ public class OdeDeploymentManager {
      * @throws RemoteDeploymentException
      *             the remote deployment exception
      */
-    @SuppressWarnings("unchecked")
     public List<String> getProcesses() throws RemoteDeploymentException {
         OMElement listDeployedPackagesResponse = doGetProcesses();
         OMElement deployedPackages = listDeployedPackagesResponse.getFirstElement();
+        @SuppressWarnings("unchecked")
         Iterator<OMElement> iter = deployedPackages.getChildElements();
         List<String> processesList = new ArrayList<String>();
         while (iter.hasNext()) {
