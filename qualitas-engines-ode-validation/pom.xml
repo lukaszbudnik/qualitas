@@ -8,7 +8,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.google.qualitas.engines.ode</groupId>
+	<groupId>com.google.code.qualitas.engines.ode</groupId>
 	<artifactId>qualitas-engines-ode-validation</artifactId>
 	<version>${qualitas.version}</version>
 	<packaging>jar</packaging>

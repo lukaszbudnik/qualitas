@@ -1,4 +1,4 @@
-package com.google.qualitas.engines.ode.validation;
+package com.google.code.qualitas.engines.ode.validation;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.validation.OdeValidator;
 import com.google.qualitas.engines.api.validation.ValidationException;
 
 public class OdeProcessBundleValidatorTest {
