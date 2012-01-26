@@ -1,18 +1,20 @@
 package com.google.code.qualitas.engines.ode.deployment;
 
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.ProcessBundle;
+import com.google.code.qualitas.engines.api.core.Bundle;
 import com.google.code.qualitas.engines.api.deployment.Deployer;
 import com.google.code.qualitas.engines.api.deployment.DeploymentException;
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.core.AbstractOdeComponent;
+import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.engines.ode.deployment.manager.OdeDeploymentManager;
 
 /**
  * The Class OdeProcessBundleDeployer.
  */
-public class OdeDeployer implements Deployer<OdeProcessBundle> {
+public class OdeDeployer extends AbstractOdeComponent implements Deployer {
 
     /** The log. */
     private static final Log LOG = LogFactory.getLog(OdeDeployer.class);
@@ -31,8 +33,10 @@ public class OdeDeployer implements Deployer<OdeProcessBundle> {
      * #deploy(com.google.code.qualitas.engines.api.core.ProcessBundle)
      */
     @Override
-    public void deploy(OdeProcessBundle processBundle) throws DeploymentException {
+    public void deploy(Bundle bundle) throws DeploymentException {
 
+        OdeBundle odeBundle = (OdeBundle) bundle;
+        
         String odeUrl;
         if (this.deploymentServiceEndpoint == null) {
             odeUrl = this.deploymentServiceEndpoint;
@@ -43,26 +47,14 @@ public class OdeDeployer implements Deployer<OdeProcessBundle> {
         OdeDeploymentManager manager = new OdeDeploymentManager(odeUrl);
 
         try {
-            manager.deploy(processBundle);
+            manager.deploy(odeBundle);
         } catch (Exception e) {
             String msg = "Caught exception while trying to deploy bundle "
-                    + processBundle.getMainProcessName();
+                    + odeBundle.getMainProcessName();
             LOG.error(msg, e);
             throw new DeploymentException(msg, e);
         }
 
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.google.code.qualitas.engines.api.deployment.ProcessBundleDeployer
-     * #isSupported(com.google.code.qualitas.engines.api.core.ProcessBundle)
-     */
-    @Override
-    public boolean isSupported(ProcessBundle processBundle) {
-        return (processBundle instanceof OdeProcessBundle);
     }
 
     /*

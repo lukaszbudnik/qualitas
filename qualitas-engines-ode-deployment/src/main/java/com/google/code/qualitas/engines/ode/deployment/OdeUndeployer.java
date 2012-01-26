@@ -3,16 +3,16 @@ package com.google.code.qualitas.engines.ode.deployment;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.ProcessBundle;
+import com.google.code.qualitas.engines.api.core.Bundle;
 import com.google.code.qualitas.engines.api.deployment.DeploymentException;
 import com.google.code.qualitas.engines.api.deployment.Undeployer;
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.core.AbstractOdeComponent;
 import com.google.code.qualitas.engines.ode.deployment.manager.OdeDeploymentManager;
 
 /**
  * The Class OdeProcessBundleUndeployer.
  */
-public class OdeUndeployer implements Undeployer<OdeProcessBundle> {
+public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
 
     /** The log. */
     private static final Log LOG = LogFactory.getLog(OdeUndeployer.class);
@@ -31,7 +31,7 @@ public class OdeUndeployer implements Undeployer<OdeProcessBundle> {
      * #deploy(com.google.code.qualitas.engines.api.core.ProcessBundle)
      */
     @Override
-    public void undeploy(OdeProcessBundle processBundle) throws DeploymentException {
+    public void undeploy(Bundle processBundle) throws DeploymentException {
         undeploy(processBundle.getMainProcessName());
     }
     
@@ -54,18 +54,6 @@ public class OdeUndeployer implements Undeployer<OdeProcessBundle> {
             LOG.error(msg, e);
             throw new DeploymentException(msg, e);
         }
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.google.code.qualitas.engines.api.deployment.ProcessBundleDeployer
-     * #isSupported(com.google.code.qualitas.engines.api.core.ProcessBundle)
-     */
-    @Override
-    public boolean isSupported(ProcessBundle processBundle) {
-        return (processBundle instanceof OdeProcessBundle);
     }
 
     /*

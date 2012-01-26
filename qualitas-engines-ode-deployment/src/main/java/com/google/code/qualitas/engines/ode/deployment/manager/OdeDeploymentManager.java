@@ -17,7 +17,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.ode.axis2.service.ServiceClientUtil;
 import org.apache.ode.utils.Namespaces;
 
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.core.OdeBundle;
 
 /**
  * The Class OdeDeploymentManager.
@@ -71,18 +71,17 @@ public class OdeDeploymentManager {
     /**
      * Deploy.
      * 
-     * @param processBundle
-     *            the process bundle
+     * @param odeBundle
+     *            the ode bundle
      * @return the string
      * @throws RemoteDeploymentException
      *             the remote deployment exception
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    public String deploy(OdeProcessBundle processBundle) throws RemoteDeploymentException,
-            IOException {
+    public String deploy(OdeBundle odeBundle) throws RemoteDeploymentException, IOException {
 
-        OMElement deploy = createDeployMessage(processBundle);
+        OMElement deploy = createDeployMessage(odeBundle);
 
         OMElement deployResponse = doDeploy(deploy);
 
@@ -151,14 +150,14 @@ public class OdeDeploymentManager {
     /**
      * Creates the deploy message.
      * 
-     * @param processBundle
-     *            the process bundle
+     * @param odeBundle
+     *            the ode bundle
      * @return the oM element
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    private OMElement createDeployMessage(OdeProcessBundle processBundle) throws IOException {
-        String processName = processBundle.getMainProcessName();
+    private OMElement createDeployMessage(OdeBundle odeBundle) throws IOException {
+        String processName = odeBundle.getMainProcessName();
 
         OMNamespace pmapins = factory.createOMNamespace(Namespaces.ODE_PMAPI_NS, "pmapi");
 
@@ -174,7 +173,7 @@ public class OdeDeploymentManager {
         OMElement processPackage = factory.createOMElement("package", null);
         OMElement zip = factory.createOMElement("zip", deployapins);
 
-        String base64Enc = Base64.encode(processBundle.buildBundle());
+        String base64Enc = Base64.encode(odeBundle.buildBundle());
         OMText zipContent = factory.createOMText(base64Enc, "application/zip", false);
         zip.addChild(zipContent);
 

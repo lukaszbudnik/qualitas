@@ -6,17 +6,17 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.engines.ode.deployment.OdeUndeployer;
 
 public class OdeUndeployerITCase {
 
-    private static OdeProcessBundle odeProcessBundle;
+    private static OdeBundle odeProcessBundle;
     private static OdeUndeployer odeUndeployer;
 
     @BeforeClass
     public static void setUpClass() throws IOException {
-        odeProcessBundle = new OdeProcessBundle();
+        odeProcessBundle = new OdeBundle();
         odeProcessBundle.setMainProcessName("XhHelloWorld2");
         // undeployer
         odeUndeployer = new OdeUndeployer();

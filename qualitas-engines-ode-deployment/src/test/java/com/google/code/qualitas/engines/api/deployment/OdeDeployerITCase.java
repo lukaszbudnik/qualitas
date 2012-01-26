@@ -8,17 +8,17 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.engines.ode.deployment.OdeDeployer;
 
 public class OdeDeployerITCase {
 
-    private static OdeProcessBundle odeProcessBundle;
+    private static OdeBundle odeProcessBundle;
     private static OdeDeployer odeDeployer;
 
     @BeforeClass
     public static void setUpClass() throws IOException {
-        odeProcessBundle = new OdeProcessBundle();
+        odeProcessBundle = new OdeBundle();
         byte[] zippedArchive = FileUtils.readFileToByteArray(new File(
                 "src/test/resources/XhGPWWhile.zip"));
         odeProcessBundle.setBundle(zippedArchive);

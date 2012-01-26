@@ -67,6 +67,10 @@
 					<artifactId>ode-bpel-store</artifactId>
 					<groupId>org.apache.ode</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>spring</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
