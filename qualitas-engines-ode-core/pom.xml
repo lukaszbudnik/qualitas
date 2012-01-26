@@ -44,7 +44,7 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.qualitas.utils</groupId>

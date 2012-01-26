@@ -8,7 +8,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.AbstractProcessBundle;
+import com.google.code.qualitas.engines.api.core.AbstractBundle;
 import com.google.code.qualitas.engines.api.core.Entry;
 import com.google.code.qualitas.engines.api.core.ProcessType;
 import com.google.qualitas.utils.zip.ZipUtils;
@@ -16,10 +16,10 @@ import com.google.qualitas.utils.zip.ZipUtils;
 /**
  * The Class OdeProcessBundle.
  */
-public class OdeProcessBundle extends AbstractProcessBundle {
+public class OdeBundle extends AbstractBundle {
 
     /** The Constant LOG. */
-    private static final Log LOG = LogFactory.getLog(OdeProcessBundle.class);
+    private static final Log LOG = LogFactory.getLog(OdeBundle.class);
 
     /** The Constant ROOT_TMP_DIR. */
     private static final String ROOT_TMP_DIR = System.getProperty("java.io.tmpdir");
@@ -45,7 +45,7 @@ public class OdeProcessBundle extends AbstractProcessBundle {
     /**
      * Instantiates a new ode process bundle.
      */
-    public OdeProcessBundle() {
+    public OdeBundle() {
     }
 
     /* (non-Javadoc)
@@ -53,7 +53,7 @@ public class OdeProcessBundle extends AbstractProcessBundle {
      */
     @Override
     public ProcessType getProcessType() {
-        return ProcessType.WS_BPEL_2_0;
+        return ProcessType.WS_BPEL_2_0_APACHE_ODE;
     }
     
     /*

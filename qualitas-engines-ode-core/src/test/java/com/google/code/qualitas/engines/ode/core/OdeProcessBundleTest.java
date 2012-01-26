@@ -12,15 +12,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.code.qualitas.engines.api.core.Entry;
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.core.OdeBundle;
 
 public class OdeProcessBundleTest {
 
-	private OdeProcessBundle odeArchive;
+	private OdeBundle odeArchive;
 
 	@Before
 	public void setUp() throws IOException {
-		odeArchive = new OdeProcessBundle();
+		odeArchive = new OdeBundle();
 		byte[] zippedArchive = FileUtils.readFileToByteArray(new File("src/test/resources/XhGPWWhile.zip"));
 		odeArchive.setBundle(zippedArchive);
 	}
