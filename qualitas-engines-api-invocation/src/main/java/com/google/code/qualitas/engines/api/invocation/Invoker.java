@@ -1,20 +1,11 @@
 package com.google.code.qualitas.engines.api.invocation;
 
-import com.google.code.qualitas.engines.api.core.ProcessType;
+import com.google.code.qualitas.engines.api.component.Component;
 
 /**
  * The Interface Executor.
  */
-public interface Invoker {
-
-    /**
-     * Checks if is supported.
-     * 
-     * @param processType
-     *            the process type
-     * @return true, if checks if is supported
-     */
-    boolean isSupported(ProcessType processType);
+public interface Invoker extends Component {
 
     /**
      * Sets remote default service endpoint.
