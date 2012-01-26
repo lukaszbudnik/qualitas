@@ -16,7 +16,8 @@ public class OdeInvoker extends AbstractWebServiceInvoker {
      * .google.code.qualitas.engines.api.core.ProcessType)
      */
     public boolean isSupported(ProcessType processType) {
-        return processType == ProcessType.WS_BPEL_1_0 || processType == ProcessType.WS_BPEL_2_0;
+        return processType == ProcessType.WS_BPEL_1_0_APACHE_ODE
+                || processType == ProcessType.WS_BPEL_2_0_APACHE_ODE;
     }
 
 }
