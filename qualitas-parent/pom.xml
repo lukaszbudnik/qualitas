@@ -110,7 +110,6 @@
 								<failsOnError>true</failsOnError>
 								<suppressionsLocation>qualitas-checkstyle-suppressions.xml</suppressionsLocation>
 								<encoding>${project.build.sourceEncoding}</encoding>
-								<excludes>**/archetype-resources/**/*.java</excludes>
 							</configuration>
 							<goals>
 								<goal>checkstyle</goal>
