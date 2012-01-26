@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>qualitas-parent</artifactId>
+		<groupId>com.google.code.qualitas</groupId>
+		<version>${qualitas.version}</version>
+		<relativePath>../qualitas-parent</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.google.code.qualitas.engines.ode</groupId>
+	<artifactId>qualitas-engines-ode-factory</artifactId>
+	<version>${qualitas.version}</version>
+	<packaging>jar</packaging>
+
+	<name>qualitas-engines-ode-factory</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.api</groupId>
+			<artifactId>qualitas-engines-api-factory</artifactId>
+			<version>${qualitas.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-core</artifactId>
+			<version>${qualitas.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<configuration>
+							<failsOnError>false</failsOnError>
+						</configuration>
+						<goals>
+							<goal>checkstyle</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
