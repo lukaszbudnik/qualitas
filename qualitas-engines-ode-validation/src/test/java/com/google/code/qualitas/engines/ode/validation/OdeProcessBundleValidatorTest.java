@@ -8,27 +8,27 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.api.validation.ValidationException;
+import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.engines.ode.validation.OdeValidator;
-import com.google.qualitas.engines.api.validation.ValidationException;
 
 public class OdeProcessBundleValidatorTest {
 
     private static final String APACHE_ODE_PLATFORM = "win";
     private static final String APACHE_ODE_PATH = "C:\\Studies\\Programs\\apache-ode-war-1.3.4";
-    private static OdeProcessBundle odeProcessBundle;
-    private static OdeProcessBundle odeProcessBundleError;
+    private static OdeBundle odeProcessBundle;
+    private static OdeBundle odeProcessBundleError;
     private static OdeValidator odeProcessBundleValidator;
 
     @BeforeClass
     public static void setUpClass() throws IOException {
-        odeProcessBundle = new OdeProcessBundle();
+        odeProcessBundle = new OdeBundle();
         byte[] zippedArchive = FileUtils.readFileToByteArray(new File(
                 "src/test/resources/XhGPWWhile.zip"));
         odeProcessBundle.setBundle(zippedArchive);
         odeProcessBundle.setMainProcessName("XhGPWWhile");
 
-        odeProcessBundleError = new OdeProcessBundle();
+        odeProcessBundleError = new OdeBundle();
         byte[] zippedArchiveError = FileUtils.readFileToByteArray(new File(
                 "src/test/resources/XhGPWWhileError.zip"));
         odeProcessBundleError.setBundle(zippedArchiveError);

@@ -6,17 +6,18 @@ import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.ProcessBundle;
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.api.core.Bundle;
+import com.google.code.qualitas.engines.api.validation.ValidationException;
+import com.google.code.qualitas.engines.api.validation.Validator;
+import com.google.code.qualitas.engines.ode.core.AbstractOdeComponent;
+import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.engines.ode.validation.bpelc.CompilationException;
 import com.google.code.qualitas.engines.ode.validation.bpelc.OdeBpelCompilerRunner;
-import com.google.qualitas.engines.api.validation.ValidationException;
-import com.google.qualitas.engines.api.validation.Validator;
 
 /**
  * The Class OdeProcessBundleValidator.
  */
-public class OdeValidator implements Validator<OdeProcessBundle> {
+public class OdeValidator extends AbstractOdeComponent implements Validator {
 
     /** The Constant COMPILED_WS_BPEL_EXTENSION. */
     private static final String COMPILED_WS_BPEL_EXTENSION = ".cbp";
@@ -29,17 +30,6 @@ public class OdeValidator implements Validator<OdeProcessBundle> {
 
     /** The platform. */
     private String platform;
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.google.qualitas.engines.api.validation.ProcessBundleValidator
-     * #isSupported(com.google.code.qualitas.engines.api.core.ProcessBundle)
-     */
-    @Override
-    public boolean isSupported(ProcessBundle processBundle) {
-        return (processBundle instanceof OdeProcessBundle);
-    }
 
     /*
      * (non-Javadoc)
@@ -71,8 +61,7 @@ public class OdeValidator implements Validator<OdeProcessBundle> {
      * (com.google.code.qualitas.engines.api.core.ProcessBundle)
      */
     @Override
-    public void validate(OdeProcessBundle processBundle)
-            throws ValidationException {
+    public void validate(Bundle processBundle) throws ValidationException {
         validate(processBundle, null);
     }
 
@@ -85,9 +74,11 @@ public class OdeValidator implements Validator<OdeProcessBundle> {
      * java.lang.String)
      */
     @Override
-    public void validate(OdeProcessBundle processBundle, 
-            String processName)
+    public void validate(Bundle processBundle, String processName)
             throws ValidationException {
+        
+        OdeBundle odeProcessBundle = (OdeBundle) processBundle;
+        
         String command = home + "/bin/bpelc";
 
         if ("win".equalsIgnoreCase(platform)) {
@@ -99,10 +90,10 @@ public class OdeValidator implements Validator<OdeProcessBundle> {
         String pathToBpelFile = null;
 
         if (processName == null) {
-            processName = processBundle.getMainProcessName();
+            processName = odeProcessBundle.getMainProcessName();
         }
 
-        pathToBpelFile = processBundle.getDirTempPath() + File.separator + processName;
+        pathToBpelFile = odeProcessBundle.getDirTempPath() + File.separator + processName;
 
         pathToBpelFile += ".bpel";
 
@@ -120,7 +111,7 @@ public class OdeValidator implements Validator<OdeProcessBundle> {
 
         try {
             // remove ODE's compiled CBP file
-            processBundle.removeEntry(processName + COMPILED_WS_BPEL_EXTENSION);
+            odeProcessBundle.removeEntry(processName + COMPILED_WS_BPEL_EXTENSION);
         } catch (IOException e) {
             // there is no harm if cbp file ends in the archive
             // it is OK to ignore this exception
