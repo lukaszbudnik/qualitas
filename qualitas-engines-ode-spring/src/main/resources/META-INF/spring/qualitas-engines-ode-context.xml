@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.9.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean class="com.google.code.qualitas.engines.ode.factory.OdeBundleFactory" />
+	<bean class="com.google.code.qualitas.engines.ode.invocation.OdeInvoker" />
+	<bean
+		class="com.google.code.qualitas.engines.ode.instrumentation.OdeInstrumentor" />
+	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeDeployer" />
+	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeUndeployer" />
+	<bean class="com.google.code.qualitas.engines.ode.validation.OdeValidator" />
+</beans>
