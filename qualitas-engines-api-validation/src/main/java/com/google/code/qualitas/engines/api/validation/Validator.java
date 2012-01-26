@@ -1,23 +1,13 @@
-package com.google.qualitas.engines.api.validation;
+package com.google.code.qualitas.engines.api.validation;
 
-import com.google.code.qualitas.engines.api.core.ProcessBundle;
+import com.google.code.qualitas.engines.api.component.Component;
+import com.google.code.qualitas.engines.api.core.Bundle;
 
 /**
  * The Interface ProcessBundleValidator.
  * 
- * @param <T>
- *            the generic type
  */
-public interface Validator<T extends ProcessBundle> {
-
-    /**
-     * Checks if is supported.
-     * 
-     * @param processBundle
-     *            the process bundle
-     * @return true, if checks if is supported
-     */
-    boolean isSupported(ProcessBundle processBundle);
+public interface Validator extends Component {
 
     /**
      * Sets the external tool home.
@@ -43,7 +33,7 @@ public interface Validator<T extends ProcessBundle> {
      * @throws ValidationException
      *             the validation exception
      */
-    void validate(T processBundle) throws ValidationException;
+    void validate(Bundle processBundle) throws ValidationException;
 
     /**
      * Validate.
@@ -55,6 +45,6 @@ public interface Validator<T extends ProcessBundle> {
      * @throws ValidationException
      *             the validation exception
      */
-    void validate(T processBundle, String processName) throws ValidationException;
+    void validate(Bundle processBundle, String processName) throws ValidationException;
 
 }
