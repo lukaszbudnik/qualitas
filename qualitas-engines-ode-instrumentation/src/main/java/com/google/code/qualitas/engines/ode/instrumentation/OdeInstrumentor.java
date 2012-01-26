@@ -9,19 +9,20 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.google.code.qualitas.engines.api.core.Entry;
-import com.google.code.qualitas.engines.api.core.ProcessBundle;
+import com.google.code.qualitas.engines.api.core.Bundle;
 import com.google.code.qualitas.engines.api.instrumentation.InstrumentationException;
 import com.google.code.qualitas.engines.api.instrumentation.InstrumentationPhase;
 import com.google.code.qualitas.engines.api.instrumentation.InstrumentationPhaseType;
 import com.google.code.qualitas.engines.api.instrumentation.Instrumentor;
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.core.AbstractOdeComponent;
+import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.utils.xslt.XSLTUtils;
 
 /**
  * The Class OdeProcessBundleInstrumentor.
  */
 @InstrumentationPhase(InstrumentationPhaseType.PreInstrumentation)
-public class OdeInstrumentor implements Instrumentor<OdeProcessBundle> {
+public class OdeInstrumentor  extends AbstractOdeComponent implements Instrumentor {
 
     /** The Constant LOG. */
     private static final Log LOG = LogFactory.getLog(OdeInstrumentor.class);
@@ -38,27 +39,17 @@ public class OdeInstrumentor implements Instrumentor<OdeProcessBundle> {
      * (non-Javadoc)
      * 
      * @see
-     * com.google.code.qualitas.engines.api.instrumentation.Instrumentor#isSupported
-     * (com.google.code.qualitas.engines.api.core.ProcessBundle)
-     */
-    @Override
-    public boolean isSupported(ProcessBundle processBundle) {
-        return (processBundle instanceof OdeProcessBundle);
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
      * com.google.code.qualitas.engines.api.instrumentation.Instrumentor#instrument
      * (com.google.code.qualitas.engines.api.core.ProcessBundle)
      */
     @Override
-    public void instrument(OdeProcessBundle processBundle) throws InstrumentationException {
+    public void instrument(Bundle processBundle) throws InstrumentationException {
 
+        OdeBundle odeProcessBundle = (OdeBundle) processBundle;
+        
         // 1. enhance process
         try {
-            enhanceProcessDefinition(processBundle);
+            enhanceProcessDefinition(odeProcessBundle);
         } catch (Exception e) {
             String msg = "Could not instrument process definition "
                     + processBundle.getMainProcessName();
@@ -68,7 +59,7 @@ public class OdeInstrumentor implements Instrumentor<OdeProcessBundle> {
 
         // 2. enhance descriptor
         try {
-            enhanceDescriptor(processBundle);
+            enhanceDescriptor(odeProcessBundle);
         } catch (Exception e) {
             String msg = "Could not instrument descriptor " + processBundle.getMainProcessName();
             LOG.debug(msg, e);
@@ -87,7 +78,7 @@ public class OdeInstrumentor implements Instrumentor<OdeProcessBundle> {
      * @throws TransformerException
      *             the transformer exception
      */
-    private void enhanceProcessDefinition(OdeProcessBundle processBundle) throws IOException,
+    private void enhanceProcessDefinition(OdeBundle processBundle) throws IOException,
             TransformerException {
         // read the stylesheet
         byte[] stylesheet = IOUtils.toByteArray(OdeInstrumentor.class
@@ -113,7 +104,7 @@ public class OdeInstrumentor implements Instrumentor<OdeProcessBundle> {
      * @throws TransformerException
      *             the transformer exception
      */
-    private void enhanceDescriptor(OdeProcessBundle processBundle) throws IOException,
+    private void enhanceDescriptor(OdeBundle processBundle) throws IOException,
             TransformerException {
         // read the stylesheet
         byte[] stylesheet = IOUtils.toByteArray(OdeInstrumentor.class

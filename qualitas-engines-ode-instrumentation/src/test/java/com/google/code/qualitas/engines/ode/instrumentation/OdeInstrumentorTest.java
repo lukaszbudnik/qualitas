@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import com.google.code.qualitas.engines.api.core.Entry;
 import com.google.code.qualitas.engines.api.instrumentation.InstrumentationException;
-import com.google.code.qualitas.engines.ode.core.OdeProcessBundle;
+import com.google.code.qualitas.engines.ode.core.OdeBundle;
 
 public class OdeInstrumentorTest {
 
@@ -22,13 +22,13 @@ public class OdeInstrumentorTest {
     private static final String EXPECTED_INSTRUMENTED_PROCESS_FILE =
         "src/test/resources/expected_instrumented_process.xml";
 
-    private static OdeProcessBundle processBundle;
+    private static OdeBundle processBundle;
 
     private static OdeInstrumentor instrumentor;
 
     @BeforeClass
     public static void setUpClass() throws IOException {
-        processBundle = new OdeProcessBundle();
+        processBundle = new OdeBundle();
         byte[] zippedArchive = FileUtils.readFileToByteArray(new File(
                 "src/test/resources/XhGPWWhile.zip"));
         processBundle.setBundle(zippedArchive);
@@ -44,7 +44,7 @@ public class OdeInstrumentorTest {
 
     @Test
     public void testIsSupported() {
-        boolean supported = instrumentor.isSupported(processBundle);
+        boolean supported = instrumentor.isSupported(processBundle.getProcessType());
         Assert.assertTrue(supported);
     }
 
