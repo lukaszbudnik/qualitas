@@ -1,23 +1,13 @@
 package com.google.code.qualitas.engines.api.deployment;
 
-import com.google.code.qualitas.engines.api.core.ProcessBundle;
+import com.google.code.qualitas.engines.api.component.Component;
+import com.google.code.qualitas.engines.api.core.Bundle;
 
 /**
  * The Interface ProcessBundleDeployer.
  * 
- * @param <T>
- *            the generic type
  */
-public interface Deployer<T extends ProcessBundle> {
-
-    /**
-     * Checks if passed process bundle is supported.
-     * 
-     * @param processBundle
-     *            the process bundle
-     * @return true, if is supported
-     */
-    boolean isSupported(ProcessBundle processBundle);
+public interface Deployer extends Component {
 
     /**
      * Sets remote default deployment service endpoint.
@@ -43,6 +33,6 @@ public interface Deployer<T extends ProcessBundle> {
      * @throws DeploymentException
      *             the deployment exception
      */
-    void deploy(T processBundle) throws DeploymentException;
+    void deploy(Bundle processBundle) throws DeploymentException;
 
 }
