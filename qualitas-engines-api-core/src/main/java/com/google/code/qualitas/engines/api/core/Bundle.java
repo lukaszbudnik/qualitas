@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * The Interface ProcessBundle.
  */
-public interface ProcessBundle {
+public interface Bundle {
 
     /**
      * Every uploaded archive which user want to enhance should have qualitas

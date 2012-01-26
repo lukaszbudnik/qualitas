@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * The Class AbstractProcessBundle.
  */
-public abstract class AbstractProcessBundle implements ProcessBundle {
+public abstract class AbstractBundle implements Bundle {
 
     /** The main process name. */
     private String mainProcessName;
