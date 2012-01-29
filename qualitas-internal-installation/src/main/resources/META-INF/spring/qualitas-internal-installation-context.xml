@@ -18,11 +18,11 @@
 			<process ref="validatorProcessor" />
 		</route>
 	</camelContext>
-
+	
 	<bean id="amqp" class="org.apache.camel.component.amqp.AMQPComponent">
 		<property name="connectionFactory" ref="amqConnectionFactory" />
 	</bean>
-
+	
 	<bean id="amqConnectionFactory" class="org.apache.qpid.client.AMQConnectionFactory">
 		<property name="host" value="localhost" />
 		<property name="port" value="5672" />
