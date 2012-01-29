@@ -12,13 +12,11 @@
 
 	<context:annotation-config />
 
-	<rabbit:connection-factory id="connectionFactory" />
+	<rabbit:connection-factory id="connectionFactory" host="localhost" port="5672" username="guest" password="guest"  virtual-host="/development" />
 
 	<rabbit:template id="amqpTemplate" connection-factory="connectionFactory"
-		routing-key="myqueue" />
+		routing-key="queue"  />
 
-	<rabbit:admin connection-factory="connectionFactory" />
-
-	<rabbit:queue name="myqueue" />
+	<rabbit:admin connection-factory="connectionFactory"  />
 
 </beans>
