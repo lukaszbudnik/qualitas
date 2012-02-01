@@ -32,13 +32,6 @@ public class HomeController {
     private static final Log LOG = LogFactory.getLog(HomeController.class);
 
     /**
-     * The Constructor.
-     */
-    public HomeController() {
-        LOG.info("in constructor");
-    }
-
-    /**
      * Index.
      * 
      * @param model
@@ -47,9 +40,6 @@ public class HomeController {
      */
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(Model model) {
-
-        LOG.info("in here?");
-
         model.addAttribute("message", "Hello World!");
         return "home/index";
     }
@@ -73,14 +63,14 @@ public class HomeController {
     public String indexUpload(Model model, @RequestParam("name") String name,
             @RequestParam("file") MultipartFile file) throws IOException, InstallationException {
 
-        LOG.info("UPLOADED " + file.getOriginalFilename());
+        LOG.debug("Uploaded file " + file.getOriginalFilename());
 
         byte[] bundle = IOUtils.toByteArray(file.getInputStream());
 
         installationService.install(bundle, file.getContentType(),
                 ProcessType.WS_BPEL_2_0_APACHE_ODE);
 
-        LOG.info("Sent!");
+        LOG.debug("File sent");
 
         model.addAttribute("message", file.getOriginalFilename());
 
