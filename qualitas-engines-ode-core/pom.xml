@@ -33,7 +33,7 @@
 			<version>${commons-io.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.google.qualitas.utils</groupId>
+			<groupId>com.google.code.qualitas.utils</groupId>
 			<artifactId>qualitas-utils-zip</artifactId>
 			<version>${qualitas.version}</version>
 			<type>jar</type>

@@ -32,6 +32,34 @@
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
+				<groupId>com.google.code.qualitas.engines.api</groupId>
+				<artifactId>qualitas-engines-api-factory</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.api</groupId>
+				<artifactId>qualitas-engines-api-instrumentation</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.api</groupId>
+				<artifactId>qualitas-engines-api-invocation</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.api</groupId>
+				<artifactId>qualitas-engines-api-validation</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
 				<groupId>com.google.code.qualitas.engines.ode</groupId>
 				<artifactId>qualitas-engines-ode-core</artifactId>
 				<version>${qualitas.version}</version>
@@ -46,8 +74,78 @@
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
+				<groupId>com.google.code.qualitas.engines.ode</groupId>
+				<artifactId>qualitas-engines-ode-factory</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.ode</groupId>
+				<artifactId>qualitas-engines-ode-instrumentation</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.ode</groupId>
+				<artifactId>qualitas-engines-ode-invocation</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.ode</groupId>
+				<artifactId>qualitas-engines-ode-validation</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.engines.ode</groupId>
+				<artifactId>qualitas-engines-ode-spring</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.integration.api</groupId>
+				<artifactId>qualitas-integration-api</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.integration.amqp</groupId>
+				<artifactId>qualitas-integration-amqp</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.internal.installation</groupId>
+				<artifactId>qualitas-internal-installation</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.qualitas.webapp</groupId>
+				<artifactId>qualitas-webapp</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
 				<groupId>com.google.qualitas.utils</groupId>
 				<artifactId>qualitas-utils-zip</artifactId>
+				<version>${qualitas.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.qualitas.utils</groupId>
+				<artifactId>qualitas-utils-xslt</artifactId>
 				<version>${qualitas.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>
@@ -68,6 +166,13 @@
 		<commons-exec.version>1.0.1</commons-exec.version>
 		<maven-checkstyle-plugin.version>2.8</maven-checkstyle-plugin.version>
 		<xalan.version>2.7.1</xalan.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<log4j.version>1.2.16</log4j.version>
+		<commons-fileupload.version>1.2.2</commons-fileupload.version>
+		<jetty-maven-plugin.version>7.5.3.v20111011</jetty-maven-plugin.version>
+		<spring.version>3.0.6.RELEASE</spring.version>
+		<camel.version>2.9.0</camel.version>
+		<spring-rabbit.version>1.0.0.RELEASE</spring-rabbit.version>
 	</properties>
 
 	<build>

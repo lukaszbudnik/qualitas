@@ -8,7 +8,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.google.qualitas.utils</groupId>
+  <groupId>com.google.code.qualitas.utils</groupId>
   <artifactId>qualitas-utils-zip</artifactId>
   <version>${qualitas.version}</version>
   <packaging>jar</packaging>

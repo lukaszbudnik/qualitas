@@ -23,7 +23,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.google.qualitas.engines.api</groupId>
+			<groupId>com.google.code.qualitas.engines.api</groupId>
 			<artifactId>qualitas-engines-api-validation</artifactId>
 			<version>${qualitas.version}</version>
 			<type>jar</type>
