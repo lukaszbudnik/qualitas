@@ -173,6 +173,8 @@
 		<spring.version>3.0.6.RELEASE</spring.version>
 		<camel.version>2.9.0</camel.version>
 		<spring-rabbit.version>1.0.0.RELEASE</spring-rabbit.version>
+		<cglib.version>2.2.2</cglib.version>
+		<servlet-api.version>2.5</servlet-api.version>
 	</properties>
 
 	<build>
