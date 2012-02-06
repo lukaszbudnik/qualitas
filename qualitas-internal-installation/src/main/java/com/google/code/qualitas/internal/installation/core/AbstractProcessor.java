@@ -41,6 +41,7 @@ public abstract class AbstractProcessor implements Processor {
                 return component;
             }
         }
+        
         throw new ComponentNotFound("Could not find a component of type " + type
                 + " for process bundle of type " + processType);
     }
