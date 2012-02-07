@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>qualitas-parent</artifactId>
+		<groupId>com.google.code.qualitas</groupId>
+		<version>${qualitas.version}</version>
+		<relativePath>../qualitas-parent</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.google.code.qualitas.services.security</groupId>
+	<artifactId>qualitas-services-security-spring</artifactId>
+	<version>${qualitas.version}</version>
+	<packaging>jar</packaging>
+
+	<name>qualitas-services-security-spring</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
