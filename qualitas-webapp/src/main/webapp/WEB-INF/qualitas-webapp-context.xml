@@ -1,12 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:camel="http://camel.apache.org/schema/spring" xmlns:context="http://www.springframework.org/schema/context" xmlns:rabbit="http://www.springframework.org/schema/rabbit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd  http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd  http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd ">
 
-	<import resource="classpath*:META-INF/spring/qualitas-integration-amqp-context.xml"/>
-	<import resource="classpath*:META-INF/spring/qualitas-internal-installation-context.xml"/>
+	<import
+		resource="classpath*:META-INF/spring/qualitas-integration-amqp-context.xml" />
+	<import
+		resource="classpath*:META-INF/spring/qualitas-internal-installation-context.xml" />
+		<import
+		resource="classpath*:META-INF/spring/qualitas-services-security-context.xml" />
 
-	<context:component-scan base-package="com.google.code.qualitas.webapp"/>
-	<context:annotation-config/>
+	<context:component-scan base-package="com.google.code.qualitas.webapp" />
+	<context:annotation-config />
 
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
 		</property>
@@ -15,8 +27,38 @@
 		</property>
 	</bean>
 
-	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
-		<property name="maxUploadSize" value="100000"/>
+	<bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver">
+		<property name="maxUploadSize" value="100000" />
 	</bean>
+
+	<security:global-method-security
+		secured-annotations="enabled">
+	</security:global-method-security>
+
+	<security:authentication-manager>
+		<security:authentication-provider
+			user-service-ref="qualitasUserDetailsService" />
+	</security:authentication-manager>
+
+	<security:http>
+		<security:logout />
+		<security:openid-login login-page="/q/authentication/login"
+			authentication-failure-url="/q/authentication/login?error=true"
+			default-target-url="/q/home/index">
+			<security:attribute-exchange>
+				<security:openid-attribute name="email"
+					type="http://schema.openid.net/contact/email" required="true"
+					count="2" />
+				<security:openid-attribute name="name"
+					type="http://schema.openid.net/namePerson/friendly" />
+			</security:attribute-exchange>
+		</security:openid-login>
+		<security:remember-me token-repository-ref="tokenRepo" />
+	</security:http>
+
+	<bean id="tokenRepo"
+		class="org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl" />
 
 </beans>

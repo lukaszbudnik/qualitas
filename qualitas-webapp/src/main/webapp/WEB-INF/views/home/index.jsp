@@ -9,10 +9,13 @@
 <title>Home</title>
 </head>
 <body>
-	This is home! ${message}
+	<p>This is home!</p>
 
-	<form method="post" action="/home/index" enctype="multipart/form-data">
-		<input type="text" name="name" /> <input type="file" name="file" /> <input
-			type="submit" />
+	<p>
+		Your OpenID username is: ${openIdUserName}</p>
+
+	<form method="post" enctype="multipart/form-data">
+		<input type="text" name="name" /> <input type="file" name="file" />
+		<input type="submit" />
 	</form>
 </html>

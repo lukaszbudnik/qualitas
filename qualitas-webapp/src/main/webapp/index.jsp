@@ -1,0 +1,1 @@
+<jsp:forward page="/q/home/index" />
