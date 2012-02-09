@@ -6,16 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; UTF-8">
-<title>Home</title>
+<title>Qualitas Web App</title>
 </head>
 <body>
-	<p>This is home!</p>
+	<h1>Welcome to Qualitas!</h1>
 
-	<p>
-		Your OpenID username is: ${openIdUserName}</p>
+	<p>Your OpenID username is: ${username}</p>
 
 	<form method="post" enctype="multipart/form-data">
-		<input type="text" name="name" /> <input type="file" name="file" />
+		<input type="file" name="file" />
 		<input type="submit" />
 	</form>
 </html>

@@ -11,7 +11,7 @@
 
 <c:url var="rootUrl" value="/resources/" />
 
-<title>JQuery Simple OpenID Selector Demo</title>
+<title>Qualitas Web App</title>
 <!-- Simple OpenID Selector -->
 <link type="text/css" rel="stylesheet" href="${rootUrl}css/openid.css" />
 <script type="text/javascript" src="${rootUrl}js/jquery-1.2.6.min.js"></script>
@@ -33,7 +33,7 @@ body {
 </head>
 <body>
 
-	<h1>Spring Security 3</h1>
+	<h1>Welcome to Qualitas!</h1>
 	<c:if test="${not empty param.error}">
 		<p style="color: red">
 			Your login attempt was not successful, try again.<br />
@@ -48,7 +48,7 @@ body {
 	<form action="${openIDLoginUrl}" method="post" id="openid_form">
 		<input type="hidden" name="action" value="verify" />
 		<fieldset>
-			<legend>Sign-in or Create New Account</legend>
+			<legend>Sign-in</legend>
 			<div id="openid_choice">
 				<p>Please click your account provider:</p>
 				<div id="openid_btns"></div>
@@ -61,7 +61,7 @@ body {
 			<noscript>
 				<p>
 					OpenID is service that allows you to log-on to many different
-					websites using a single indentity. Find out <a
+					web sites using a single identity. Find out <a
 						href="http://openid.net/what/">more about OpenID</a> and <a
 						href="http://openid.net/get/">how to get an OpenID enabled
 						account</a>.
