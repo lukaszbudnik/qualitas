@@ -1,6 +1,5 @@
 package com.google.code.qualitas.engines.ode.deployment;
 
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -36,7 +35,7 @@ public class OdeDeployer extends AbstractOdeComponent implements Deployer {
     public void deploy(Bundle bundle) throws DeploymentException {
 
         OdeBundle odeBundle = (OdeBundle) bundle;
-        
+
         String odeUrl;
         if (this.deploymentServiceEndpoint == null) {
             odeUrl = this.deploymentServiceEndpoint;

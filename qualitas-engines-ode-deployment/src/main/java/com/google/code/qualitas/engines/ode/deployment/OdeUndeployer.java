@@ -16,7 +16,7 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
 
     /** The log. */
     private static final Log LOG = LogFactory.getLog(OdeUndeployer.class);
-    
+
     /** The default deployment service endpoint. */
     private String defaultDeploymentServiceEndpoint;
 
@@ -34,7 +34,6 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
     public void undeploy(Bundle processBundle) throws DeploymentException {
         undeploy(processBundle.getMainProcessName());
     }
-    
 
     @Override
     public void undeploy(String processName) throws DeploymentException {

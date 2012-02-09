@@ -1,82 +1,56 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>${qualitas.version}</version>
+		<version>0.0.3-SNAPSHOT</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.google.code.qualitas.engines.ode</groupId>
-  <artifactId>qualitas-engines-ode-spring</artifactId>
-  <version>${qualitas.version}</version>
-  <packaging>jar</packaging>
+	<groupId>com.google.code.qualitas.engines.ode</groupId>
+	<artifactId>qualitas-engines-ode-spring</artifactId>
+	<version>0.0.3-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>qualitas-engines-ode-spring</name>
+	<name>qualitas-engines-ode-spring</name>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-context</artifactId>
-    	<version>${spring.version}</version>
-    	<type>jar</type>
-    	<scope>provided</scope>
-    </dependency>
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-test</artifactId>
-    	<version>${spring.version}</version>
-    	<type>jar</type>
-    	<scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.google.code.qualitas.engines.ode</groupId>
-    	<artifactId>qualitas-engines-ode-core</artifactId>
-    	<version>${qualitas.version}</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.google.code.qualitas.engines.ode</groupId>
-    	<artifactId>qualitas-engines-ode-factory</artifactId>
-    	<version>${qualitas.version}</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.google.code.qualitas.engines.ode</groupId>
-    	<artifactId>qualitas-engines-ode-deployment</artifactId>
-    	<version>${qualitas.version}</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.google.code.qualitas.engines.ode</groupId>
-    	<artifactId>qualitas-engines-ode-instrumentation</artifactId>
-    	<version>${qualitas.version}</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.google.code.qualitas.engines.ode</groupId>
-    	<artifactId>qualitas-engines-ode-invocation</artifactId>
-    	<version>${qualitas.version}</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.google.code.qualitas.engines.ode</groupId>
-    	<artifactId>qualitas-engines-ode-validation</artifactId>
-    	<version>${qualitas.version}</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-factory</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-deployment</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-instrumentation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-invocation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-validation</artifactId>
+		</dependency>
+	</dependencies>
 </project>

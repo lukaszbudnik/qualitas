@@ -1,4 +1,4 @@
-package com.google.qualitas.utils.zip;
+package com.google.code.qualitas.utils.zip;
 
 import java.io.File;
 import java.io.FileInputStream;

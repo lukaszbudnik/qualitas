@@ -3,14 +3,14 @@
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>${qualitas.version}</version>
+		<version>0.0.3-SNAPSHOT</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.google.code.qualitas.engines.ode</groupId>
 	<artifactId>qualitas-engines-ode-core</artifactId>
-	<version>${qualitas.version}</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>qualitas-engines-ode-core</name>
@@ -18,40 +18,26 @@
 		<dependency>
 			<groupId>com.google.code.qualitas.engines.api</groupId>
 			<artifactId>qualitas-engines-api-core</artifactId>
-			<version>${qualitas.version}</version>
-			<type>jar</type>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
-			<version>${commons-logging.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>${commons-io.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.qualitas.utils</groupId>
 			<artifactId>qualitas-utils-zip</artifactId>
-			<version>${qualitas.version}</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<type>jar</type>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.qualitas.utils</groupId>
 			<artifactId>qualitas-utils-xslt</artifactId>
-			<version>${qualitas.version}</version>
-			<type>jar</type>
-			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
 		</dependency>
 	</dependencies>
 </project>

@@ -1,4 +1,4 @@
-package com.google.qualitas.utils.zip;
+package com.google.code.qualitas.utils.zip;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.code.qualitas.utils.zip.ZipUtils;
 
 public class ZipUtilsTest {
 

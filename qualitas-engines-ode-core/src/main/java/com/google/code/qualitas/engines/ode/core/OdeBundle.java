@@ -11,7 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import com.google.code.qualitas.engines.api.core.AbstractBundle;
 import com.google.code.qualitas.engines.api.core.Entry;
 import com.google.code.qualitas.engines.api.core.ProcessType;
-import com.google.qualitas.utils.zip.ZipUtils;
+import com.google.code.qualitas.utils.zip.ZipUtils;
 
 /**
  * The Class OdeProcessBundle.

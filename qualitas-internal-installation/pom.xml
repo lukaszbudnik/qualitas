@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>${qualitas.version}</version>
+		<version>0.0.3-SNAPSHOT</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
@@ -13,47 +13,37 @@
 	<groupId>com.google.code.qualitas.internal.installation</groupId>
 	<artifactId>qualitas-internal-installation</artifactId>
 	<packaging>jar</packaging>
-	<version>${qualitas.version}</version>
+	<version>0.0.3-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
-			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-spring</artifactId>
-			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-amqp</artifactId>
-			<version>${camel.version}</version>
 		</dependency>
-		<!-- qualitas -->
 		<dependency>
 			<groupId>com.google.code.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-spring</artifactId>
-			<version>${qualitas.version}</version>
-			<type>jar</type>
-			<scope>compile</scope>
 		</dependency>
 		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -63,7 +53,6 @@
 			<plugin>
 				<groupId>org.apache.camel</groupId>
 				<artifactId>camel-maven-plugin</artifactId>
-				<version>${camel.version}</version>
 			</plugin>
 		</plugins>
 	</build>
