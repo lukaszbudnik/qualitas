@@ -65,13 +65,11 @@ public class HomeController {
      *            the model
      * @param username
      *            the username
-     * @param name
-     *            the name
      * @param file
      *            the file
      * @return the string
      * @throws IOException
-     *             the IO exception
+     *             Signals that an I/O exception has occurred.
      * @throws InstallationException
      *             the installation exception
      */
@@ -84,13 +82,13 @@ public class HomeController {
         byte[] bundle = IOUtils.toByteArray(file.getInputStream());
 
         InstallationOrder installationOrder = new InstallationOrder();
-        
+
         installationOrder.setBundle(bundle);
         installationOrder.setUsername(username);
         installationOrder.setContentType(file.getContentType());
         installationOrder.setProcessId(System.currentTimeMillis());
         installationOrder.setProcessType(ProcessType.WS_BPEL_2_0_APACHE_ODE);
-        
+
         installationService.install(installationOrder);
 
         LOG.debug("File sent");
