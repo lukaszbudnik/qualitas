@@ -2,9 +2,9 @@ syntax: glob
 .classpath
 .checkstyle
 .project
-.settings
-.hgignore
 .metadata
 derby.log
 syntax: regexp
+.settings/*
 target/*
+Servers/*
