@@ -56,12 +56,22 @@ public class OdeInstrumentorTest {
         String instrumentedDescriptor = new String(descriptor.getContent());
         String expectedInstrumentedDescriptor = FileUtils.readFileToString(new File(
                 EXPECTED_INSTRUMENTED_DESCRIPTOR_FILE));
+        
+        // remove \r and \n otherwise test fails on Linux
+        expectedInstrumentedDescriptor = expectedInstrumentedDescriptor.replaceAll("\n", "").replaceAll("\r", "");
+        instrumentedDescriptor = instrumentedDescriptor.replaceAll("\n", "").replaceAll("\r", "");
+        
         Assert.assertEquals(expectedInstrumentedDescriptor, instrumentedDescriptor);
         
         Entry process = processBundle.getMainProcessDefinition();
         String instrumentedProcess = new String(process.getContent());
         String expectedInstrumentedProcess = FileUtils.readFileToString(new File(
                 EXPECTED_INSTRUMENTED_PROCESS_FILE));
+        
+        // remove \r and \n otherwise test fails on Linux
+        expectedInstrumentedProcess = expectedInstrumentedProcess.replaceAll("\n", "").replaceAll("\r", "");
+        instrumentedProcess = instrumentedProcess.replaceAll("\n", "").replaceAll("\r", "");
+        
         Assert.assertEquals(expectedInstrumentedProcess, instrumentedProcess);
     }
 

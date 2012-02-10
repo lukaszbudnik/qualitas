@@ -392,7 +392,14 @@
 				<artifactId>servlet-api</artifactId>
 				<version>${servlet-api.version}</version>
 				<type>jar</type>
-				<scope>compile</scope>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+				<type>jar</type>
+				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -419,6 +426,7 @@
 		<spring-rabbit.version>1.0.0.RELEASE</spring-rabbit.version>
 		<cglib.version>2.2.2</cglib.version>
 		<servlet-api.version>2.5</servlet-api.version>
+		<jstl.version>1.2</jstl.version>
 		<axiom.version>1.2.12</axiom.version>
 		<axis2.version>1.6.1</axis2.version>
 	</properties>

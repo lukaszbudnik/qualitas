@@ -2,6 +2,8 @@ package com.google.code.qualitas.engines.ode.validation;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.AfterClass;
@@ -10,18 +12,17 @@ import org.junit.Test;
 
 import com.google.code.qualitas.engines.api.validation.ValidationException;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
-import com.google.code.qualitas.engines.ode.validation.OdeValidator;
 
 public class OdeProcessBundleValidatorTest {
 
-    private static final String APACHE_ODE_PLATFORM = "win";
-    private static final String APACHE_ODE_PATH = "C:\\Studies\\Programs\\apache-ode-war-1.3.4";
+    private static String odePlatform;
+    private static String odeHome;
     private static OdeBundle odeProcessBundle;
     private static OdeBundle odeProcessBundleError;
     private static OdeValidator odeProcessBundleValidator;
 
     @BeforeClass
-    public static void setUpClass() throws IOException {
+    public static void setUpClass() throws IOException {    	
         odeProcessBundle = new OdeBundle();
         byte[] zippedArchive = FileUtils.readFileToByteArray(new File(
                 "src/test/resources/XhGPWWhile.zip"));
@@ -34,9 +35,16 @@ public class OdeProcessBundleValidatorTest {
         odeProcessBundleError.setBundle(zippedArchiveError);
         odeProcessBundleError.setMainProcessName("XhGPWWhile");
 
+    	Properties properties = new Properties();
+    	InputStream is = OdeProcessBundleValidatorTest.class.getResourceAsStream("/environment.properties");
+    	properties.load(is);
+    	
+    	odePlatform = properties.getProperty("ode.platform");
+    	odeHome = properties.getProperty("ode.home");
+        
         odeProcessBundleValidator = new OdeValidator();
-        odeProcessBundleValidator.setExternalToolHome(APACHE_ODE_PATH);
-        odeProcessBundleValidator.setExternalToolPlatform(APACHE_ODE_PLATFORM);
+        odeProcessBundleValidator.setExternalToolHome(odeHome);
+        odeProcessBundleValidator.setExternalToolPlatform(odePlatform);
     }
 
     @AfterClass
@@ -47,12 +55,12 @@ public class OdeProcessBundleValidatorTest {
 
     @Test
     public void testSetExternalToolHome() {
-        odeProcessBundleValidator.setExternalToolHome(APACHE_ODE_PATH);
+        odeProcessBundleValidator.setExternalToolHome(odeHome);
     }
 
     @Test
     public void testSetExternalToolPlatform() {
-        odeProcessBundleValidator.setExternalToolPlatform(APACHE_ODE_PLATFORM);
+        odeProcessBundleValidator.setExternalToolPlatform(odePlatform);
     }
 
     @Test

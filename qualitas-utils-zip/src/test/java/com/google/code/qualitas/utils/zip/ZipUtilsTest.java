@@ -26,10 +26,14 @@ public class ZipUtilsTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		extractDirectoryName = TMP_DIR + "extract-zip-utils-dir" + System.currentTimeMillis();
+		String workingTmpDir = TMP_DIR;
+		if (!workingTmpDir.endsWith("/")) {
+		    workingTmpDir = workingTmpDir + "/";
+		}
+		extractDirectoryName = workingTmpDir + "extract-zip-utils-dir" + System.currentTimeMillis();
 		extractDirectory = new File(extractDirectoryName);
 		extractDirectory.deleteOnExit();
-		archiveName = TMP_DIR + "create-zip-utils-file" + System.currentTimeMillis() + ".zip";
+		archiveName = workingTmpDir + "create-zip-utils-file" + System.currentTimeMillis() + ".zip";
 		archive = new File(archiveName);
 		archive.deleteOnExit();
 	}

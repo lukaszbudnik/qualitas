@@ -104,6 +104,7 @@ public class OdeProcessBundleTest {
 		odeArchive.renameEntry(name, newName);
 		// test if name removed
 		files = tempDir.list();
+		Arrays.sort(files);
 		found = Arrays.binarySearch(files, name);
 		Assert.assertTrue(found < 0);
 		// test if newName exists
