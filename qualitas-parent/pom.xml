@@ -3,14 +3,14 @@
 	<parent>
 		<artifactId>qualitas</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>0.0.4-SNAPSHOT</version>
 		<relativePath>../qualitas</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.google.code.qualitas</groupId>
 	<artifactId>qualitas-parent</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>qualitas-parent</name>

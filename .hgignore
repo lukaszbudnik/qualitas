@@ -4,6 +4,7 @@ syntax: glob
 .project
 .metadata
 derby.log
+pom.xml.versionsBackup
 syntax: regexp
 .settings/*
 target/*

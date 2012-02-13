@@ -3,14 +3,14 @@
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
 		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>0.0.4-SNAPSHOT</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.google.code.qualitas.engines.ode</groupId>
 	<artifactId>qualitas-engines-ode-validation</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>qualitas-engines-ode-validation</name>
