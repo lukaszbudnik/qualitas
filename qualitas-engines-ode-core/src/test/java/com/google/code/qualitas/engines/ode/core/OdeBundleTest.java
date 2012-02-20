@@ -14,7 +14,7 @@ import org.junit.Test;
 import com.google.code.qualitas.engines.api.core.Entry;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
 
-public class OdeProcessBundleTest {
+public class OdeBundleTest {
 
 	private OdeBundle odeArchive;
 
@@ -136,10 +136,10 @@ public class OdeProcessBundleTest {
 	}
 
 	@Test
-	public void testGetQualitasDescriptor() throws IOException {
-		Entry descriptor = odeArchive.getQualitasDescriptor();
-		Assert.assertNotNull(descriptor);
-		Assert.assertEquals("qualitas.xml", descriptor.getName());
+	public void testGetQualitasConfiguration() throws IOException {
+		Entry configuration = odeArchive.getQualitasConfiguration();
+		Assert.assertNotNull(configuration);
+		Assert.assertEquals("qualitas.xml", configuration.getName());
 	}
 
 	@Test
