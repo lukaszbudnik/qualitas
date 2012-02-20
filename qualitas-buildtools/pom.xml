@@ -15,7 +15,4 @@
 
 	<name>qualitas-buildtools</name>
 
-	<properties>
-		<maven.test.skip>true</maven.test.skip>
-	</properties>
 </project>

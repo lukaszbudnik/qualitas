@@ -17,10 +17,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.google.code.qualitas.engines.api</groupId>
 			<artifactId>qualitas-engines-api-core</artifactId>
 		</dependency>

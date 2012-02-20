@@ -28,5 +28,9 @@
 			<groupId>org.apache.axis2</groupId>
 			<artifactId>axis2</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency>
 	</dependencies>
 </project>
