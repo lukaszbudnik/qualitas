@@ -13,4 +13,5 @@
 	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeDeployer" />
 	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeUndeployer" />
 	<bean class="com.google.code.qualitas.engines.ode.validation.OdeValidator" />
+	<bean class="com.google.code.qualitas.engines.ode.resolution.OdePropertiesResolver" />
 </beans>

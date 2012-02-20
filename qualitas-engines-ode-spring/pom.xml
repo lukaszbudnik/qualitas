@@ -52,5 +52,9 @@
 			<groupId>com.google.code.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-validation</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-resolver</artifactId>
+		</dependency>
 	</dependencies>
 </project>

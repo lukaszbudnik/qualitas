@@ -3,33 +3,34 @@ package com.google.code.qualitas.engines.ode.spring;
 import java.util.Map;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.google.code.qualitas.engines.api.deployment.Deployer;
 import com.google.code.qualitas.engines.api.deployment.Undeployer;
 import com.google.code.qualitas.engines.api.factory.BundleFactory;
 import com.google.code.qualitas.engines.api.instrumentation.Instrumentor;
 import com.google.code.qualitas.engines.api.invocation.Invoker;
+import com.google.code.qualitas.engines.api.resolver.PropertiesResolver;
 import com.google.code.qualitas.engines.api.validation.Validator;
 import com.google.code.qualitas.engines.ode.deployment.OdeDeployer;
 import com.google.code.qualitas.engines.ode.deployment.OdeUndeployer;
 import com.google.code.qualitas.engines.ode.factory.OdeBundleFactory;
 import com.google.code.qualitas.engines.ode.instrumentation.OdeInstrumentor;
 import com.google.code.qualitas.engines.ode.invocation.OdeInvoker;
+import com.google.code.qualitas.engines.ode.resolution.OdePropertiesResolver;
 import com.google.code.qualitas.engines.ode.validation.OdeValidator;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("/META-INF/spring/qualitas-engines-ode-context.xml")
 public class IoCTest {
 
-    private static ApplicationContext context;
-    
-    @BeforeClass
-    public static void setUpClass() {
-        String configLocation = "src/main/resources/META-INF/spring/qualitas-engines-ode-context.xml";
-        context = new FileSystemXmlApplicationContext(configLocation);
-    }
+    @Autowired
+    private ApplicationContext context;
 
     @Test
     public void factoryTest() {
@@ -42,7 +43,7 @@ public class IoCTest {
 
         Assert.assertTrue((factory instanceof OdeBundleFactory));
     }
-    
+
     @Test
     public void deployerTest() {
         Map<String, Deployer> deployersMap = context.getBeansOfType(Deployer.class);
@@ -103,4 +104,17 @@ public class IoCTest {
         Assert.assertTrue((invoker instanceof OdeInvoker));
     }
 
+    @Test
+    public void resolverTest() {
+        Map<String, PropertiesResolver> propertiesResolverMap = context
+                .getBeansOfType(PropertiesResolver.class);
+
+        Assert.assertNotNull(propertiesResolverMap);
+        Assert.assertEquals(1, propertiesResolverMap.size());
+
+        PropertiesResolver propertiesResolver = propertiesResolverMap.entrySet().iterator().next()
+                .getValue();
+
+        Assert.assertTrue((propertiesResolver instanceof OdePropertiesResolver));
+    }
 }
