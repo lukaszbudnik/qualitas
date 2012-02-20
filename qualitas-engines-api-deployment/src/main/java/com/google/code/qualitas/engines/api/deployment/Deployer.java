@@ -26,13 +26,13 @@ public interface Deployer extends Component {
     void setDeploymentServiceEndpoint(String deploymentServiceEndpoint);
 
     /**
-     * Deploys process bundle to a remote host.
+     * Deploys bundle to a remote host.
      * 
-     * @param processBundle
-     *            the process bundle
+     * @param bundle
+     *            the bundle
      * @throws DeploymentException
      *             the deployment exception
      */
-    void deploy(Bundle processBundle) throws DeploymentException;
+    void deploy(Bundle bundle) throws DeploymentException;
 
 }

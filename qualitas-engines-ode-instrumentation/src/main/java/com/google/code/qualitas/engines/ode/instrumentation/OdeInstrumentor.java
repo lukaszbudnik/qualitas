@@ -8,13 +8,13 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.Entry;
 import com.google.code.qualitas.engines.api.core.Bundle;
+import com.google.code.qualitas.engines.api.core.Entry;
 import com.google.code.qualitas.engines.api.instrumentation.InstrumentationException;
 import com.google.code.qualitas.engines.api.instrumentation.InstrumentationPhase;
 import com.google.code.qualitas.engines.api.instrumentation.InstrumentationPhaseType;
 import com.google.code.qualitas.engines.api.instrumentation.Instrumentor;
-import com.google.code.qualitas.engines.ode.core.AbstractOdeComponent;
+import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.utils.xslt.XSLTUtils;
 
@@ -43,16 +43,18 @@ public class OdeInstrumentor  extends AbstractOdeComponent implements Instrument
      * (com.google.code.qualitas.engines.api.core.ProcessBundle)
      */
     @Override
-    public void instrument(Bundle processBundle) throws InstrumentationException {
+    public void instrument(Bundle bundle) throws InstrumentationException {
 
-        OdeBundle odeProcessBundle = (OdeBundle) processBundle;
+        checkBundle(bundle);
+        
+        OdeBundle odeProcessBundle = (OdeBundle) bundle;
         
         // 1. enhance process
         try {
             enhanceProcessDefinition(odeProcessBundle);
         } catch (Exception e) {
             String msg = "Could not instrument process definition "
-                    + processBundle.getMainProcessName();
+                    + odeProcessBundle.getMainProcessName();
             LOG.debug(msg, e);
             throw new InstrumentationException(msg, e);
         }
@@ -61,7 +63,7 @@ public class OdeInstrumentor  extends AbstractOdeComponent implements Instrument
         try {
             enhanceDescriptor(odeProcessBundle);
         } catch (Exception e) {
-            String msg = "Could not instrument descriptor " + processBundle.getMainProcessName();
+            String msg = "Could not instrument descriptor " + odeProcessBundle.getMainProcessName();
             LOG.debug(msg, e);
             throw new InstrumentationException(msg, e);
         }

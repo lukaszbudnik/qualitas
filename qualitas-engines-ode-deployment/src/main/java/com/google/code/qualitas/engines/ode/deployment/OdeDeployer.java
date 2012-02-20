@@ -6,7 +6,7 @@ import org.apache.commons.logging.LogFactory;
 import com.google.code.qualitas.engines.api.core.Bundle;
 import com.google.code.qualitas.engines.api.deployment.Deployer;
 import com.google.code.qualitas.engines.api.deployment.DeploymentException;
-import com.google.code.qualitas.engines.ode.core.AbstractOdeComponent;
+import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.engines.ode.deployment.manager.OdeDeploymentManager;
 
@@ -33,6 +33,8 @@ public class OdeDeployer extends AbstractOdeComponent implements Deployer {
      */
     @Override
     public void deploy(Bundle bundle) throws DeploymentException {
+        
+        checkBundle(bundle);
 
         OdeBundle odeBundle = (OdeBundle) bundle;
 

@@ -23,7 +23,7 @@
 	</xs:complexType>
 	<xs:complexType name="analystPartners">
 		<xs:sequence>
-			<xs:element name="partner" type="tns:analystPartner"
+			<xs:element form="unqualified" name="partner" type="tns:analystPartner"
 				maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
@@ -39,7 +39,7 @@
 	</xs:complexType>
 	<xs:complexType name="analystServices">
 		<xs:sequence>
-			<xs:element name="service" type="tns:analystService"
+			<xs:element form="unqualified" name="service" type="tns:analystService"
 				maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
@@ -119,18 +119,18 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="monitorConfiguration">
-		<xs:sequence>			<xs:element name="partners" type="tns:monitorPartners"				maxOccurs="1" minOccurs="0"></xs:element>
+		<xs:sequence>			<xs:element form="unqualified" name="partners" type="tns:monitorPartners"				minOccurs="0"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="monitorPartners">
 		<xs:sequence>
-			<xs:element form="unqualified" minOccurs="0" name="partners"
+			<xs:element form="unqualified" minOccurs="0" maxOccurs="unbounded" name="partner"
 				type="tns:monitorPartner" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="monitorPartner">
 		<xs:sequence>
-			<xs:element form="unqualified" minOccurs="0" maxOccurs="unbounded"
+			<xs:element form="unqualified" minOccurs="0" 
 				name="services" type="tns:monitorServices" />
 		</xs:sequence>
 		<xs:attribute name="name" use="required" type="xs:string" />

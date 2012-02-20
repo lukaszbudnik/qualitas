@@ -6,7 +6,7 @@ import org.apache.commons.logging.LogFactory;
 import com.google.code.qualitas.engines.api.core.Bundle;
 import com.google.code.qualitas.engines.api.deployment.DeploymentException;
 import com.google.code.qualitas.engines.api.deployment.Undeployer;
-import com.google.code.qualitas.engines.ode.core.AbstractOdeComponent;
+import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
 import com.google.code.qualitas.engines.ode.deployment.manager.OdeDeploymentManager;
 
 /**
@@ -31,8 +31,11 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
      * #deploy(com.google.code.qualitas.engines.api.core.ProcessBundle)
      */
     @Override
-    public void undeploy(Bundle processBundle) throws DeploymentException {
-        undeploy(processBundle.getMainProcessName());
+    public void undeploy(Bundle bundle) throws DeploymentException {
+        
+        checkBundle(bundle);
+        
+        undeploy(bundle.getMainProcessName());
     }
 
     @Override

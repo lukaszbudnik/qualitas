@@ -36,13 +36,13 @@ public interface Undeployer extends Component {
     void undeploy(String processName) throws DeploymentException;
 
     /**
-     * Undeploys process bundle from a remote host.
+     * Undeploys bundle from a remote host.
      * 
-     * @param processBundle
-     *            the process bundle
+     * @param bundle
+     *            the bundle
      * @throws DeploymentException
      *             the deployment exception
      */
-    void undeploy(Bundle processBundle) throws DeploymentException;
+    void undeploy(Bundle bundle) throws DeploymentException;
 
 }

@@ -9,7 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import com.google.code.qualitas.engines.api.core.Bundle;
 import com.google.code.qualitas.engines.api.validation.ValidationException;
 import com.google.code.qualitas.engines.api.validation.Validator;
-import com.google.code.qualitas.engines.ode.core.AbstractOdeComponent;
+import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.engines.ode.validation.bpelc.CompilationException;
 import com.google.code.qualitas.engines.ode.validation.bpelc.OdeBpelCompilerRunner;

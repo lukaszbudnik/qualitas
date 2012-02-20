@@ -11,11 +11,11 @@ public interface Bundle {
      * Every uploaded archive which user want to enhance should have qualitas
      * descriptor.
      */
-    String QUALITAS_DESCRIPTOR_NAME = "qualitas.xml";
-    
+    String QUALITAS_CONFIGURATION_NAME = "qualitas.xml";
+
     /**
      * Gets the process type.
-     *
+     * 
      * @return the process type
      */
     ProcessType getProcessType();
@@ -55,13 +55,13 @@ public interface Bundle {
     String getMainProcessName();
 
     /**
-     * Gets the qualitas descriptor.
+     * Gets the qualitas configuration.
      * 
-     * @return the qualitas descriptor
+     * @return the qualitas configuration
      * @throws IOException
      *             the IO exception
      */
-    Entry getQualitasDescriptor() throws IOException;
+    Entry getQualitasConfiguration() throws IOException;
 
     /**
      * Checks if is instrumentable. Returns true if scenario bundle contains

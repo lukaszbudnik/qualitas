@@ -42,8 +42,8 @@ public abstract class AbstractBundle implements Bundle {
      * ()
      */
     @Override
-    public Entry getQualitasDescriptor() throws IOException {
-        return getEntry(QUALITAS_DESCRIPTOR_NAME);
+    public Entry getQualitasConfiguration() throws IOException {
+        return getEntry(QUALITAS_CONFIGURATION_NAME);
     }
 
     /*
@@ -55,7 +55,7 @@ public abstract class AbstractBundle implements Bundle {
      */
     @Override
     public boolean isInstrumentable() throws IOException {
-        return getQualitasDescriptor() != null;
+        return getQualitasConfiguration() != null;
     }
 
 }

@@ -8,7 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import com.google.code.qualitas.engines.api.core.Bundle;
 import com.google.code.qualitas.engines.api.factory.BundleCreationException;
 import com.google.code.qualitas.engines.api.factory.BundleFactory;
-import com.google.code.qualitas.engines.ode.core.AbstractOdeComponent;
+import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
 
 /**
@@ -22,6 +22,7 @@ public class OdeBundleFactory extends AbstractOdeComponent implements BundleFact
     /* (non-Javadoc)
      * @see com.google.code.qualitas.engines.api.factory.BundleFactory#createProcessBundle(byte[])
      */
+    @Override
     public Bundle createProcessBundle(byte[] contents) throws BundleCreationException {
         OdeBundle odeProcessBundle = new OdeBundle();
         try {

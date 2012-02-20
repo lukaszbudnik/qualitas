@@ -22,10 +22,15 @@ import com.google.code.qualitas.integration.api.InstallationOrder;
 @Service
 public class InstallationServiceImpl implements InstallationService {
 
+    /** The Constant QUALITAS_PROCESS_TYPE_HEADER. */
     private static final String QUALITAS_PROCESS_TYPE_HEADER = "qualitasprocesstype";
+
+    /** The Constant QUALITAS_PROCESS_ID_HEADER. */
     private static final String QUALITAS_PROCESS_ID_HEADER = "qualitasprocessid";
+
+    /** The Constant QUALITAS_USERNAME_HEADER. */
     private static final String QUALITAS_USERNAME_HEADER = "qualitasusername";
-    
+
     private static final Log LOG = LogFactory.getLog(InstallationServiceImpl.class);
 
     /** The amqp template. */
@@ -40,9 +45,10 @@ public class InstallationServiceImpl implements InstallationService {
      * byte[], java.lang.String, java.lang.String, long,
      * com.google.code.qualitas.engines.api.core.ProcessType)
      */
-    public void install(InstallationOrder processBundleInstallationOrder) throws InstallationException {
+    public void install(InstallationOrder processBundleInstallationOrder)
+            throws InstallationException {
         MessageProperties messageProperties = new MessageProperties();
-        
+
         // set standard properties
         messageProperties.setContentType(processBundleInstallationOrder.getContentType());
         messageProperties.setContentLength(processBundleInstallationOrder.getBundle().length);
@@ -50,11 +56,15 @@ public class InstallationServiceImpl implements InstallationService {
         messageProperties.setDeliveryMode(MessageDeliveryMode.PERSISTENT);
 
         // set qualitas-specific headers
-        messageProperties.getHeaders().put(QUALITAS_PROCESS_TYPE_HEADER, processBundleInstallationOrder.getProcessType());
-        messageProperties.getHeaders().put(QUALITAS_USERNAME_HEADER, processBundleInstallationOrder.getUsername());
-        messageProperties.getHeaders().put(QUALITAS_PROCESS_ID_HEADER, processBundleInstallationOrder.getProcessId());
+        messageProperties.getHeaders().put(QUALITAS_PROCESS_TYPE_HEADER,
+                processBundleInstallationOrder.getProcessType());
+        messageProperties.getHeaders().put(QUALITAS_USERNAME_HEADER,
+                processBundleInstallationOrder.getUsername());
+        messageProperties.getHeaders().put(QUALITAS_PROCESS_ID_HEADER,
+                processBundleInstallationOrder.getProcessId());
 
-        Message message = new Message(processBundleInstallationOrder.getBundle(), messageProperties);
+        Message message = new Message(processBundleInstallationOrder.getBundle(), 
+                messageProperties);
 
         // send the messages
         try {
