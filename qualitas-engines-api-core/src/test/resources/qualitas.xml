@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<qualitasConfiguration>
+    <analyst analysisEnabled="true">
+        <globalParameters>
+            <cost>12.12</cost>
+            <costWeight>0.0</costWeight>
+            <effort>0.0</effort>
+            <effortWeight>0.0</effortWeight>
+            <reputation>0.0</reputation>
+            <reputationWeight>0.0</reputationWeight>
+            <minInputSize>0.0</minInputSize>
+            <maxInputSize>0.0</maxInputSize>
+            <inputSizeWeight>0.0</inputSizeWeight>
+            <minOutputSize>0.0</minOutputSize>
+            <maxOutputSize>0.0</maxOutputSize>
+            <outputSizeWeight>0.0</outputSizeWeight>
+            <minExecutionTime>0.0</minExecutionTime>
+            <maxExecutionTime>0.0</maxExecutionTime>
+            <executionTimeWeight>0.0</executionTimeWeight>
+            <geolocationDistanceWeight>0.0</geolocationDistanceWeight>
+        </globalParameters>
+        <partners>
+            <partner name="stockQuotesServicePartnerLink" anlysisEnabled="true">
+                <parameters>
+                    <effort>12.12</effort>
+                </parameters>
+                <services>
+                    <service name="getStockQuote" anlysisEnabled="true">
+                        <parameters>
+                            <reputation>12.12</reputation>
+                        </parameters>
+                    </service>
+                </services>
+            </partner>
+        </partners>
+    </analyst>
+    <monitor>
+        <partners>
+            <partner name="stockQuotesServicePartnerLink">
+                <services>
+                    <service name="setStockQuote" mep="in-only"/>
+                    <service name="isStockOpen" mep="out-only"/>
+                </services>
+            </partner>
+        </partners>
+    </monitor>
+</qualitasConfiguration>
