@@ -92,7 +92,6 @@
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<plugins>
-			<!-- plugin so you can run mvn jetty:run -->
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
