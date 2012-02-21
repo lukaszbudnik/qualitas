@@ -51,7 +51,7 @@ public class OdeDeployer extends AbstractOdeComponent implements Deployer {
             manager.deploy(odeBundle);
         } catch (Exception e) {
             String msg = "Caught exception while trying to deploy bundle "
-                    + odeBundle.getMainProcessName();
+                    + odeBundle.getMainProcessQName();
             LOG.error(msg, e);
             throw new DeploymentException(msg, e);
         }

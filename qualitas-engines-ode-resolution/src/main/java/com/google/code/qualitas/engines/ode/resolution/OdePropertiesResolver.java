@@ -80,7 +80,7 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
         properties.setServicesQNames(servicesQNames);
         properties.setQualitasConfiguration(qualitasConfiguration);
 
-        bundle.setMainProcessName(processQName.toString());
+        bundle.setMainProcessQName(processQName);
 
         return properties;
     }

@@ -3,6 +3,8 @@ package com.google.code.qualitas.engines.ode.instrumentation;
 import java.io.File;
 import java.io.IOException;
 
+import javax.xml.namespace.QName;
+
 import junit.framework.Assert;
 
 import org.apache.commons.io.FileUtils;
@@ -32,7 +34,7 @@ public class OdeInstrumentorTest {
         byte[] zippedArchive = FileUtils.readFileToByteArray(new File(
                 "src/test/resources/XhGPWWhile.zip"));
         processBundle.setBundle(zippedArchive);
-        processBundle.setMainProcessName("XhGPWWhile");
+        processBundle.setMainProcessQName(new QName("XhGPWWhile"));
 
         instrumentor = new OdeInstrumentor();
     }

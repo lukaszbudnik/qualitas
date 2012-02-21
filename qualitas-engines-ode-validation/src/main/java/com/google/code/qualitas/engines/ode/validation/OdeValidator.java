@@ -3,6 +3,8 @@ package com.google.code.qualitas.engines.ode.validation;
 import java.io.File;
 import java.io.IOException;
 
+import javax.xml.namespace.QName;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -45,12 +47,35 @@ public class OdeValidator extends AbstractOdeComponent implements Validator {
     /*
      * (non-Javadoc)
      * 
+     * @see
+     * com.google.code.qualitas.engines.api.validation.Validator#getExternalToolHome
+     * ()
+     */
+    @Override
+    public String getExternalToolHome() {
+        return home;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see com.google.qualitas.engines.api.validation.ProcessBundleValidator
      * #setExternalToolPlatform(java.lang.String)
      */
     @Override
     public void setExternalToolPlatform(String platform) {
         this.platform = platform;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.google.code.qualitas.engines.api.validation.Validator#
+     * getExternalToolPlatform()
+     */
+    @Override
+    public String getExternalToolPlatform() {
+        return platform;
     }
 
     /*
@@ -74,11 +99,10 @@ public class OdeValidator extends AbstractOdeComponent implements Validator {
      * java.lang.String)
      */
     @Override
-    public void validate(Bundle processBundle, String processName)
-            throws ValidationException {
-        
+    public void validate(Bundle processBundle, String processName) throws ValidationException {
+
         OdeBundle odeProcessBundle = (OdeBundle) processBundle;
-        
+
         String command = home + "/bin/bpelc";
 
         if ("win".equalsIgnoreCase(platform)) {
@@ -90,7 +114,8 @@ public class OdeValidator extends AbstractOdeComponent implements Validator {
         String pathToBpelFile = null;
 
         if (processName == null) {
-            processName = odeProcessBundle.getMainProcessName();
+            QName mainProcessQName = odeProcessBundle.getMainProcessQName();
+            processName = mainProcessQName.getLocalPart();
         }
 
         pathToBpelFile = odeProcessBundle.getDirTempPath() + File.separator + processName;

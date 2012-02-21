@@ -1,5 +1,7 @@
 package com.google.code.qualitas.engines.ode.deployment;
 
+import javax.xml.namespace.QName;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -35,7 +37,9 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
         
         checkBundle(bundle);
         
-        undeploy(bundle.getMainProcessName());
+        QName mainProcessQName = bundle.getMainProcessQName();
+        
+        undeploy(mainProcessQName.getLocalPart());
     }
 
     @Override

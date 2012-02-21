@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import javax.xml.namespace.QName;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -236,7 +238,8 @@ public class OdeBundle extends AbstractBundle {
      * @throws IOException the IO exception
      */
     public Entry getMainProcessDefinition() throws IOException {
-        return getProcessDefinition(getMainProcessName());
+        QName mainProcessQName = getMainProcessQName();
+        return getProcessDefinition(mainProcessQName.getLocalPart());
     }
 
     /**

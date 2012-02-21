@@ -18,12 +18,26 @@ public interface Validator extends Component {
     void setExternalToolHome(String home);
 
     /**
+     * Gets the external tool home.
+     * 
+     * @return the external tool home
+     */
+    String getExternalToolHome();
+
+    /**
      * Sets the external tool platform.
      * 
      * @param platform
      *            the external tool platform
      */
     void setExternalToolPlatform(String platform);
+
+    /**
+     * Gets the external tool platform.
+     * 
+     * @return the external tool platform
+     */
+    String getExternalToolPlatform();
 
     /**
      * Validate.

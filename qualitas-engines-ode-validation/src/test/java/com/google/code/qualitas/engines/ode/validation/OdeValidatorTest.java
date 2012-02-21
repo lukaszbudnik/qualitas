@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import javax.xml.namespace.QName;
+
 import org.apache.commons.io.FileUtils;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -13,7 +15,7 @@ import org.junit.Test;
 import com.google.code.qualitas.engines.api.validation.ValidationException;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
 
-public class OdeProcessBundleValidatorTest {
+public class OdeValidatorTest {
 
     private static String odePlatform;
     private static String odeHome;
@@ -27,16 +29,16 @@ public class OdeProcessBundleValidatorTest {
         byte[] zippedArchive = FileUtils.readFileToByteArray(new File(
                 "src/test/resources/XhGPWWhile.zip"));
         odeProcessBundle.setBundle(zippedArchive);
-        odeProcessBundle.setMainProcessName("XhGPWWhile");
+        odeProcessBundle.setMainProcessQName(new QName("XhGPWWhile"));
 
         odeProcessBundleError = new OdeBundle();
         byte[] zippedArchiveError = FileUtils.readFileToByteArray(new File(
                 "src/test/resources/XhGPWWhileError.zip"));
         odeProcessBundleError.setBundle(zippedArchiveError);
-        odeProcessBundleError.setMainProcessName("XhGPWWhile");
+        odeProcessBundleError.setMainProcessQName(new QName("XhGPWWhile"));
 
     	Properties properties = new Properties();
-    	InputStream is = OdeProcessBundleValidatorTest.class.getResourceAsStream("/environment.properties");
+    	InputStream is = OdeValidatorTest.class.getResourceAsStream("/environment.properties");
     	properties.load(is);
     	
     	odePlatform = properties.getProperty("ode.platform");

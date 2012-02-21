@@ -90,6 +90,9 @@ public class IoCTest {
         Validator validator = validatorsMap.entrySet().iterator().next().getValue();
 
         Assert.assertTrue((validator instanceof OdeValidator));
+        
+        Assert.assertNotNull(validator.getExternalToolHome());
+        Assert.assertNotNull(validator.getExternalToolPlatform());
     }
 
     @Test

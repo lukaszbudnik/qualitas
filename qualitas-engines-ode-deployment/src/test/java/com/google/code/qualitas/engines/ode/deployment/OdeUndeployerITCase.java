@@ -2,6 +2,8 @@ package com.google.code.qualitas.engines.ode.deployment;
 
 import java.io.IOException;
 
+import javax.xml.namespace.QName;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,7 +18,7 @@ public class OdeUndeployerITCase {
     @BeforeClass
     public static void setUpClass() throws IOException {
         odeProcessBundle = new OdeBundle();
-        odeProcessBundle.setMainProcessName("XhHelloWorld2");
+        odeProcessBundle.setMainProcessQName(new QName("XhHelloWorld2"));
         // undeployer
         odeUndeployer = new OdeUndeployer();
         odeUndeployer

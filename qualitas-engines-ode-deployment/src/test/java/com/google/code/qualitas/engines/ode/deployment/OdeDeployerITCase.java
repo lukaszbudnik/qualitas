@@ -2,6 +2,10 @@ package com.google.code.qualitas.engines.ode.deployment;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+import javax.xml.namespace.QName;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.AfterClass;
@@ -14,6 +18,7 @@ public class OdeDeployerITCase {
 
     private static OdeBundle odeProcessBundle;
     private static OdeDeployer odeDeployer;
+    private static String defaultDeploymentServiceEndpoint;
 
     @BeforeClass
     public static void setUpClass() throws IOException {
@@ -21,10 +26,17 @@ public class OdeDeployerITCase {
         byte[] zippedArchive = FileUtils.readFileToByteArray(new File(
                 "src/test/resources/XhGPWWhile.zip"));
         odeProcessBundle.setBundle(zippedArchive);
-        odeProcessBundle.setMainProcessName("XhGPWWhile");
+        odeProcessBundle.setMainProcessQName(new QName("XhGPWWhile"));
+
+        Properties properties = new Properties();
+        InputStream is = OdeDeployerITCase.class
+                .getResourceAsStream("/qualitas-engines-ode-deployment.properties");
+        properties.load(is);
+        defaultDeploymentServiceEndpoint = properties
+                .getProperty("ode.defaultDeploymentServiceEndpoint");
+
         odeDeployer = new OdeDeployer();
-        odeDeployer
-                .setDeploymentServiceEndpoint("http://localhost:9090/ode/processes/DeploymentService");
+        odeDeployer.setDefaultDeploymentServiceEndpoint(defaultDeploymentServiceEndpoint);
     }
 
     @AfterClass
@@ -34,14 +46,12 @@ public class OdeDeployerITCase {
 
     @Test
     public void testSetDeploymentServiceEndpoint() {
-        odeDeployer
-                .setDeploymentServiceEndpoint("http://localhost:9090/ode/processes/DeploymentService");
+        odeDeployer.setDeploymentServiceEndpoint(defaultDeploymentServiceEndpoint);
     }
 
     @Test
     public void testSetDefaultDeploymentServiceEndpoint() {
-        odeDeployer
-                .setDefaultDeploymentServiceEndpoint("http://localhost:9090/ode/processes/DeploymentService");
+        odeDeployer.setDefaultDeploymentServiceEndpoint(defaultDeploymentServiceEndpoint);
     }
 
     @Test

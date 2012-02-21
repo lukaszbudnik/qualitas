@@ -2,6 +2,8 @@ package com.google.code.qualitas.engines.api.core;
 
 import java.io.IOException;
 
+import javax.xml.namespace.QName;
+
 /**
  * The Interface ProcessBundle.
  */
@@ -45,14 +47,14 @@ public interface Bundle {
      * @param mainProcessName
      *            the new main process name
      */
-    void setMainProcessName(String mainProcessName);
+    void setMainProcessQName(QName mainProcessName);
 
     /**
      * Gets the main process name.
      * 
      * @return the main process name
      */
-    String getMainProcessName();
+    QName getMainProcessQName();
 
     /**
      * Gets the qualitas configuration.

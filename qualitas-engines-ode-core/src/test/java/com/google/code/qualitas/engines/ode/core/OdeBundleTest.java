@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
+import javax.xml.namespace.QName;
+
 import junit.framework.Assert;
 
 import org.apache.commons.io.FileUtils;
@@ -122,17 +124,17 @@ public class OdeBundleTest {
 	}
 
 	@Test
-	public void testSetMainProcessName() {
-		String mainProcessName = "mainProcessName";
-		odeArchive.setMainProcessName(mainProcessName);
-		Assert.assertEquals(mainProcessName, odeArchive.getMainProcessName());
+	public void testSetMainProcessQName() {
+		QName mainProcessName = new QName("mainProcessName");
+		odeArchive.setMainProcessQName(mainProcessName);
+		Assert.assertEquals(mainProcessName, odeArchive.getMainProcessQName());
 	}
 
 	@Test
 	public void testGetMainProcessName() {
-		String mainProcessName = "mainProcessName";
-		odeArchive.setMainProcessName(mainProcessName);
-		Assert.assertEquals(mainProcessName, odeArchive.getMainProcessName());
+		QName mainProcessName = new QName("mainProcessName");
+		odeArchive.setMainProcessQName(mainProcessName);
+		Assert.assertEquals(mainProcessName, odeArchive.getMainProcessQName());
 	}
 
 	@Test
@@ -144,8 +146,8 @@ public class OdeBundleTest {
 
 	@Test
 	public void testGetMainProcessDefinition() throws IOException {
-		String mainProcessName = "XhGPWWhile";
-		odeArchive.setMainProcessName(mainProcessName);
+		QName mainProcessName = new QName("XhGPWWhile");
+		odeArchive.setMainProcessQName(mainProcessName);
 		Entry mainProcessEntry = odeArchive.getMainProcessDefinition();
 		Assert.assertEquals(mainProcessName + ".bpel", mainProcessEntry.getName());
 	}

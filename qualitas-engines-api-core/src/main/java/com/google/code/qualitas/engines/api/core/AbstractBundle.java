@@ -2,36 +2,37 @@ package com.google.code.qualitas.engines.api.core;
 
 import java.io.IOException;
 
+import javax.xml.namespace.QName;
+
 /**
  * The Class AbstractProcessBundle.
  */
 public abstract class AbstractBundle implements Bundle {
 
     /** The main process name. */
-    private String mainProcessName;
+    private QName mainProcessQName;
 
     /*
      * (non-Javadoc)
      * 
      * @see
-     * com.google.code.qualitas.engines.api.core.ProcessBundle#setMainProcessName
-     * (java.lang.String)
+     * com.google.code.qualitas.engines.api.core.Bundle#setMainProcessQName(
+     * javax.xml.namespace.QName)
      */
     @Override
-    public void setMainProcessName(String mainProcessName) {
-        this.mainProcessName = mainProcessName;
+    public void setMainProcessQName(QName mainProcessQName) {
+        this.mainProcessQName = mainProcessQName;
     }
 
     /*
      * (non-Javadoc)
      * 
      * @see
-     * com.google.code.qualitas.engines.api.core.ProcessBundle#getMainProcessName
-     * ()
+     * com.google.code.qualitas.engines.api.core.Bundle#getMainProcessQName()
      */
     @Override
-    public String getMainProcessName() {
-        return mainProcessName;
+    public QName getMainProcessQName() {
+        return mainProcessQName;
     }
 
     /*

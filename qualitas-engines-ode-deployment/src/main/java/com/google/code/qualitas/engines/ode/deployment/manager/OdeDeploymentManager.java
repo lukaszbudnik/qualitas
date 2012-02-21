@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.xml.namespace.QName;
+
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
@@ -157,7 +159,8 @@ public class OdeDeploymentManager {
      *             Signals that an I/O exception has occurred.
      */
     private OMElement createDeployMessage(OdeBundle odeBundle) throws IOException {
-        String processName = odeBundle.getMainProcessName();
+        QName processQName = odeBundle.getMainProcessQName();
+        String processName = processQName.getLocalPart();
 
         OMNamespace pmapins = factory.createOMNamespace(Namespaces.ODE_PMAPI_NS, "pmapi");
 

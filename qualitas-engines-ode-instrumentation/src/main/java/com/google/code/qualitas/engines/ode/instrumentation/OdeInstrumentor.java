@@ -54,7 +54,7 @@ public class OdeInstrumentor  extends AbstractOdeComponent implements Instrument
             enhanceProcessDefinition(odeProcessBundle);
         } catch (Exception e) {
             String msg = "Could not instrument process definition "
-                    + odeProcessBundle.getMainProcessName();
+                    + odeProcessBundle.getMainProcessQName();
             LOG.debug(msg, e);
             throw new InstrumentationException(msg, e);
         }
@@ -63,7 +63,7 @@ public class OdeInstrumentor  extends AbstractOdeComponent implements Instrument
         try {
             enhanceDescriptor(odeProcessBundle);
         } catch (Exception e) {
-            String msg = "Could not instrument descriptor " + odeProcessBundle.getMainProcessName();
+            String msg = "Could not instrument descriptor " + odeProcessBundle.getMainProcessQName();
             LOG.debug(msg, e);
             throw new InstrumentationException(msg, e);
         }
