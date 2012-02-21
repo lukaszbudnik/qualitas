@@ -6,12 +6,21 @@
 	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.9.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+	<context:property-placeholder location="classpath:/qualitas-engines-ode-validation.properties,classpath:/qualitas-engines-ode-deployment.properties" />
+
 	<bean class="com.google.code.qualitas.engines.ode.factory.OdeBundleFactory" />
 	<bean class="com.google.code.qualitas.engines.ode.invocation.OdeInvoker" />
 	<bean
 		class="com.google.code.qualitas.engines.ode.instrumentation.OdeInstrumentor" />
-	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeDeployer" />
-	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeUndeployer" />
-	<bean class="com.google.code.qualitas.engines.ode.validation.OdeValidator" />
+	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeDeployer">
+		<property name="defaultDeploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
+	</bean>
+	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeUndeployer">
+		<property name="defaultDeploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
+	</bean>
+	<bean class="com.google.code.qualitas.engines.ode.validation.OdeValidator">
+		<property name="externalToolHome" value="${ode.home}" />
+		<property name="externalToolPlatform" value="${ode.platform}" />
+	</bean>
 	<bean class="com.google.code.qualitas.engines.ode.resolution.OdePropertiesResolver" />
 </beans>
