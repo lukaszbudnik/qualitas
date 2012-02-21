@@ -15,7 +15,7 @@ import com.google.code.qualitas.engines.api.deployment.Undeployer;
 import com.google.code.qualitas.engines.api.factory.BundleFactory;
 import com.google.code.qualitas.engines.api.instrumentation.Instrumentor;
 import com.google.code.qualitas.engines.api.invocation.Invoker;
-import com.google.code.qualitas.engines.api.resolver.PropertiesResolver;
+import com.google.code.qualitas.engines.api.resolution.PropertiesResolver;
 import com.google.code.qualitas.engines.api.validation.Validator;
 import com.google.code.qualitas.engines.ode.deployment.OdeDeployer;
 import com.google.code.qualitas.engines.ode.deployment.OdeUndeployer;

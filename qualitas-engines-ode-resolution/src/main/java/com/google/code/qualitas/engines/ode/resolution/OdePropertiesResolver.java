@@ -20,9 +20,9 @@ import org.w3c.dom.NodeList;
 
 import com.google.code.p.qualitas.engines.api.configuration.QualitasConfiguration;
 import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.resolver.Properties;
-import com.google.code.qualitas.engines.api.resolver.PropertiesResolver;
-import com.google.code.qualitas.engines.api.resolver.ResolutionException;
+import com.google.code.qualitas.engines.api.resolution.Properties;
+import com.google.code.qualitas.engines.api.resolution.PropertiesResolver;
+import com.google.code.qualitas.engines.api.resolution.ResolutionException;
 import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
 

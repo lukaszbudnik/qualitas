@@ -54,7 +54,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.qualitas.engines.ode</groupId>
-			<artifactId>qualitas-engines-ode-resolver</artifactId>
+			<artifactId>qualitas-engines-ode-resolution</artifactId>
 		</dependency>
 	</dependencies>
 </project>
