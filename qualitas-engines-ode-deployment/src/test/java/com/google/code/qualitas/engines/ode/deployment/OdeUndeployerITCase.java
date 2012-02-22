@@ -1,6 +1,8 @@
 package com.google.code.qualitas.engines.ode.deployment;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import javax.xml.namespace.QName;
 
@@ -14,15 +16,22 @@ public class OdeUndeployerITCase {
 
     private static OdeBundle odeProcessBundle;
     private static OdeUndeployer odeUndeployer;
+    private static String defaultDeploymentServiceEndpoint;
 
     @BeforeClass
     public static void setUpClass() throws IOException {
         odeProcessBundle = new OdeBundle();
         odeProcessBundle.setMainProcessQName(new QName("XhHelloWorld2"));
-        // undeployer
+
+        Properties properties = new Properties();
+        InputStream is = OdeDeployerITCase.class
+                .getResourceAsStream("/qualitas-engines-ode-deployment.properties");
+        properties.load(is);
+        defaultDeploymentServiceEndpoint = properties
+                .getProperty("ode.defaultDeploymentServiceEndpoint");
+
         odeUndeployer = new OdeUndeployer();
-        odeUndeployer
-                .setDeploymentServiceEndpoint("http://localhost:9090/ode/processes/DeploymentService");
+        odeUndeployer.setDeploymentServiceEndpoint(defaultDeploymentServiceEndpoint);
     }
 
     @AfterClass
@@ -32,14 +41,12 @@ public class OdeUndeployerITCase {
 
     @Test
     public void testSetDeploymentServiceEndpoint() {
-        odeUndeployer
-                .setDeploymentServiceEndpoint("http://localhost:9090/ode/processes/DeploymentService");
+        odeUndeployer.setDeploymentServiceEndpoint(defaultDeploymentServiceEndpoint);
     }
 
     @Test
     public void testSetDefaultDeploymentServiceEndpoint() {
-        odeUndeployer
-                .setDefaultDeploymentServiceEndpoint("http://localhost:9090/ode/processes/DeploymentService");
+        odeUndeployer.setDefaultDeploymentServiceEndpoint(defaultDeploymentServiceEndpoint);
     }
 
     @Test
