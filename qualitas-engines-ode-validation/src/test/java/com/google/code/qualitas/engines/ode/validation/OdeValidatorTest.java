@@ -38,7 +38,7 @@ public class OdeValidatorTest {
         odeProcessBundleError.setMainProcessQName(new QName("XhGPWWhile"));
 
     	Properties properties = new Properties();
-    	InputStream is = OdeValidatorTest.class.getResourceAsStream("/environment.properties");
+    	InputStream is = OdeValidatorTest.class.getResourceAsStream("/qualitas-engines-ode-validation.properties");
     	properties.load(is);
     	
     	odePlatform = properties.getProperty("ode.platform");
