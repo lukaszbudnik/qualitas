@@ -11,7 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import com.google.code.p.qualitas.engines.api.configuration.QualitasConfiguration;
 import com.google.code.qualitas.engines.api.core.Entry;
 import com.google.code.qualitas.engines.api.core.ProcessType;
-import com.google.code.qualitas.engines.api.resolver.ResolutionException;
+import com.google.code.qualitas.engines.api.resolution.ResolutionException;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.engines.ode.resolution.OdePropertiesResolver;
 

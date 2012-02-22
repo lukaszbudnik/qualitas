@@ -68,7 +68,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.google.code.qualitas.engines.api</groupId>
-				<artifactId>qualitas-engines-api-resolver</artifactId>
+				<artifactId>qualitas-engines-api-resolution</artifactId>
 				<version>${project.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>
@@ -117,7 +117,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.google.code.qualitas.engines.ode</groupId>
-				<artifactId>qualitas-engines-ode-resolver</artifactId>
+				<artifactId>qualitas-engines-ode-resolution</artifactId>
 				<version>${project.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>

@@ -8,11 +8,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.google.code.qualitas.engines.ode</groupId>
-	<artifactId>qualitas-engines-ode-resolver</artifactId>
+	<artifactId>qualitas-engines-ode-resolution</artifactId>
 	<version>0.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>qualitas-engines-ode-resolver</name>
+	<name>qualitas-engines-ode-resolution</name>
 
 	<dependencies>
 		<dependency>
@@ -29,7 +29,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.qualitas.engines.api</groupId>
-			<artifactId>qualitas-engines-api-resolver</artifactId>
+			<artifactId>qualitas-engines-api-resolution</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.qualitas.engines.api</groupId>
