@@ -22,7 +22,7 @@ import com.google.code.qualitas.utils.xslt.XSLTUtils;
  * The Class OdeProcessBundleInstrumentor.
  */
 @InstrumentationPhase(InstrumentationPhaseType.PreInstrumentation)
-public class OdeInstrumentor  extends AbstractOdeComponent implements Instrumentor {
+public class OdeInstrumentor extends AbstractOdeComponent implements Instrumentor {
 
     /** The Constant LOG. */
     private static final Log LOG = LogFactory.getLog(OdeInstrumentor.class);
@@ -32,7 +32,7 @@ public class OdeInstrumentor  extends AbstractOdeComponent implements Instrument
         "/com/google/code/qualitas/engines/ode/instrumentation/deploy.xsl";
 
     /** The Constant WS_BPEL_TRANSFORM_XSL. */
-    private static final String WS_BPEL_TRANSFORM_XSL = 
+    private static final String WS_BPEL_TRANSFORM_XSL =
         "/com/google/code/qualitas/engines/ode/instrumentation/bpel.xsl";
 
     /*
@@ -46,9 +46,9 @@ public class OdeInstrumentor  extends AbstractOdeComponent implements Instrument
     public void instrument(Bundle bundle) throws InstrumentationException {
 
         checkBundle(bundle);
-        
+
         OdeBundle odeProcessBundle = (OdeBundle) bundle;
-        
+
         // 1. enhance process
         try {
             enhanceProcessDefinition(odeProcessBundle);
@@ -63,7 +63,8 @@ public class OdeInstrumentor  extends AbstractOdeComponent implements Instrument
         try {
             enhanceDescriptor(odeProcessBundle);
         } catch (Exception e) {
-            String msg = "Could not instrument descriptor " + odeProcessBundle.getMainProcessQName();
+            String msg = "Could not instrument descriptor "
+                    + odeProcessBundle.getMainProcessQName();
             LOG.debug(msg, e);
             throw new InstrumentationException(msg, e);
         }
