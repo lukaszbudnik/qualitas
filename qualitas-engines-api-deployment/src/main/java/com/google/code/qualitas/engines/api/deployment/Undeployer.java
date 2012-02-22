@@ -18,12 +18,26 @@ public interface Undeployer extends Component {
     void setDefaultDeploymentServiceEndpoint(String defaultDeploymentServiceEndpoint);
 
     /**
+     * Gets the default deployment service endpoint.
+     *
+     * @return the default deployment service endpoint
+     */
+    String getDefaultDeploymentServiceEndpoint();
+    
+    /**
      * Sets remote deployment service endpoint.
      * 
      * @param deploymentServiceEndpoint
      *            the new deployment service endpoint
      */
     void setDeploymentServiceEndpoint(String deploymentServiceEndpoint);
+    
+    /**
+     * Gets the deployment service endpoint.
+     *
+     * @return the deployment service endpoint
+     */
+    String getDeploymentServiceEndpoint();
 
     /**
      * Undeploys process bundle from a remote host.
@@ -44,5 +58,7 @@ public interface Undeployer extends Component {
      *             the deployment exception
      */
     void undeploy(Bundle bundle) throws DeploymentException;
+
+
 
 }

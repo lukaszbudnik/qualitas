@@ -33,16 +33,16 @@ public class OdeDeployer extends AbstractOdeComponent implements Deployer {
      */
     @Override
     public void deploy(Bundle bundle) throws DeploymentException {
-        
+
         checkBundle(bundle);
 
         OdeBundle odeBundle = (OdeBundle) bundle;
 
         String odeUrl;
-        if (this.deploymentServiceEndpoint == null) {
-            odeUrl = this.deploymentServiceEndpoint;
+        if (deploymentServiceEndpoint != null) {
+            odeUrl = deploymentServiceEndpoint;
         } else {
-            odeUrl = this.defaultDeploymentServiceEndpoint;
+            odeUrl = defaultDeploymentServiceEndpoint;
         }
 
         OdeDeploymentManager manager = new OdeDeploymentManager(odeUrl);
@@ -73,6 +73,17 @@ public class OdeDeployer extends AbstractOdeComponent implements Deployer {
     /*
      * (non-Javadoc)
      * 
+     * @see com.google.code.qualitas.engines.api.deployment.Deployer#
+     * getDefaultDeploymentServiceEndpoint()
+     */
+    @Override
+    public String getDefaultDeploymentServiceEndpoint() {
+        return defaultDeploymentServiceEndpoint;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see
      * com.google.code.qualitas.engines.api.deployment.ProcessBundleDeployer
      * #setDeploymentServiceEndpoint(java.lang.String)
@@ -80,6 +91,11 @@ public class OdeDeployer extends AbstractOdeComponent implements Deployer {
     @Override
     public void setDeploymentServiceEndpoint(String deploymentServiceEndpoint) {
         this.deploymentServiceEndpoint = deploymentServiceEndpoint;
+    }
+
+    @Override
+    public String getDeploymentServiceEndpoint() {
+        return deploymentServiceEndpoint;
     }
 
 }

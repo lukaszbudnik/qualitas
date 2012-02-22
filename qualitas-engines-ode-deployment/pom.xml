@@ -149,12 +149,12 @@
 					<daemon>true</daemon>
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>9090</port>
-							<integralPort>9095</integralPort>
+							<port>9191</port>
+							<integralPort>9195</integralPort>
 						</connector>
 					</connectors>
 					<scanIntervalSeconds>0</scanIntervalSeconds>
-					<stopPort>9095</stopPort>
+					<stopPort>9195</stopPort>
 					<stopKey>STOP</stopKey>
 				</configuration>
 				<executions>

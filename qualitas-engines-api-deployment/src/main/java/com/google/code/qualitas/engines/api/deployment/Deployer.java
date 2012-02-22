@@ -3,7 +3,7 @@ package com.google.code.qualitas.engines.api.deployment;
 import com.google.code.qualitas.engines.api.component.Component;
 import com.google.code.qualitas.engines.api.core.Bundle;
 
-/**
+ /**
  * The Interface ProcessBundleDeployer.
  * 
  */
@@ -18,12 +18,26 @@ public interface Deployer extends Component {
     void setDefaultDeploymentServiceEndpoint(String defaultDeploymentServiceEndpoint);
 
     /**
+     * Gets the default deployment service endpoint.
+     * 
+     * @return the default deployment service endpoint
+     */
+    String getDefaultDeploymentServiceEndpoint();
+
+    /**
      * Sets remote deployment service endpoint.
      * 
      * @param deploymentServiceEndpoint
      *            the new deployment service endpoint
      */
     void setDeploymentServiceEndpoint(String deploymentServiceEndpoint);
+
+    /**
+     * Gets the deployment service endpoint.
+     * 
+     * @return the deployment service endpoint
+     */
+    String getDeploymentServiceEndpoint();
 
     /**
      * Deploys bundle to a remote host.

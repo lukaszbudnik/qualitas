@@ -34,11 +34,11 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
      */
     @Override
     public void undeploy(Bundle bundle) throws DeploymentException {
-        
+
         checkBundle(bundle);
-        
+
         QName mainProcessQName = bundle.getMainProcessQName();
-        
+
         undeploy(mainProcessQName.getLocalPart());
     }
 
@@ -77,6 +77,17 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
     /*
      * (non-Javadoc)
      * 
+     * @see com.google.code.qualitas.engines.api.deployment.Deployer#
+     * getDefaultDeploymentServiceEndpoint()
+     */
+    @Override
+    public String getDefaultDeploymentServiceEndpoint() {
+        return defaultDeploymentServiceEndpoint;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see
      * com.google.code.qualitas.engines.api.deployment.ProcessBundleDeployer
      * #setDeploymentServiceEndpoint(java.lang.String)
@@ -86,4 +97,8 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
         this.deploymentServiceEndpoint = deploymentServiceEndpoint;
     }
 
+    @Override
+    public String getDeploymentServiceEndpoint() {
+        return deploymentServiceEndpoint;
+    }
 }
