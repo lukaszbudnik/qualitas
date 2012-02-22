@@ -54,6 +54,9 @@ public class IoCTest {
         Deployer deployer = deployersMap.entrySet().iterator().next().getValue();
 
         Assert.assertTrue((deployer instanceof OdeDeployer));
+        
+        Assert.assertNotNull(deployer.getDefaultDeploymentServiceEndpoint());
+        Assert.assertNotNull(deployer.getDeploymentServiceEndpoint());
     }
 
     @Test
@@ -66,6 +69,9 @@ public class IoCTest {
         Undeployer undeployer = undeployersMap.entrySet().iterator().next().getValue();
 
         Assert.assertTrue((undeployer instanceof OdeUndeployer));
+        
+        Assert.assertNotNull(undeployer.getDefaultDeploymentServiceEndpoint());
+        Assert.assertNotNull(undeployer.getDeploymentServiceEndpoint());
     }
 
     @Test

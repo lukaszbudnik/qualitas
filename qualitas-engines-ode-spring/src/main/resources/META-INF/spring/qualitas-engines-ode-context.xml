@@ -14,9 +14,11 @@
 		class="com.google.code.qualitas.engines.ode.instrumentation.OdeInstrumentor" />
 	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeDeployer">
 		<property name="defaultDeploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
+		<property name="deploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
 	</bean>
 	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeUndeployer">
 		<property name="defaultDeploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
+		<property name="deploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
 	</bean>
 	<bean class="com.google.code.qualitas.engines.ode.validation.OdeValidator">
 		<property name="externalToolHome" value="${ode.home}" />
