@@ -9,14 +9,38 @@
 
 	<name>qualitas</name>
 	<url>http://code.google.com/p/qualitas/</url>
+	<inceptionYear>2012</inceptionYear>
+
+	<developers>
+		<developer>
+			<name>Łukasz Budnik</name>
+			<email>lukasz.budnik@gmail.com</email>
+			<url>http://jee-bpel-soa.blogspot.com</url>
+			<timezone>1</timezone>
+			<roles>
+				<role>owner</role>
+				<role>developer</role>
+				<role>architect</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
 
 	<scm>
-		<url>https://code.google.com/p/qualitas/</url>
+		<connection>http://code.google.com/p/qualitas/source/checkout</connection>
+		<url>http://code.google.com/p/qualitas/source/browse/</url>
 	</scm>
 
-	<organization>
-		<name>Łukasz Budnik</name>
-	</organization>
+	<issueManagement>
+		<system>Google Project Hosting</system>
+		<url>http://code.google.com/p/qualitas/issues/list</url>
+	</issueManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
