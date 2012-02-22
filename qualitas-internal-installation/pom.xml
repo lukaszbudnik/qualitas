@@ -29,6 +29,10 @@
 			<artifactId>camel-amqp</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-juel</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.google.code.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-spring</artifactId>
 		</dependency>

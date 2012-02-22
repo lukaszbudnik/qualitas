@@ -6,7 +6,7 @@
 	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.9.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<import resource="classpath*:META-INF/spring/ode-context.xml" />
+	<import resource="classpath*:META-INF/spring/qualitas-engines-ode-context.xml" />
 
 	<context:component-scan
 		base-package="com.google.code.qualitas.internal.installation" />
@@ -14,15 +14,37 @@
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<route>
 			<from uri="amqp:queue:queue" />
-			<to uri="log:Message" />
+			<process ref="bundleFactoryProcessor" />
+			<process ref="propertiesResolverProcessor" />
 			<process ref="validatorProcessor" />
+			<setHeader headerName="qualitasinstrumentationphasetype">
+				<simple>PreInstrumentation</simple>
+			</setHeader>
+			<process ref="instrumentorProcessor" />
+			<process ref="validatorProcessor" />
+			<!-- <setHeader headerName="qualitasinstrumentationphasetype"> <simple>Instrumentation</simple> 
+				</setHeader> <process ref="instrumentorProcessor" /> <process ref="validatorProcessor" 
+				/> -->
+			<setHeader headerName="qualitasinstrumentationphasetype">
+				<simple>PostInstrumentation</simple>
+			</setHeader>
+			<doTry>
+				<process ref="instrumentorProcessor" />
+				<process ref="validatorProcessor" />
+				<doCatch>
+					<!-- It is perfectly fine not to have PostInstrument Instrumentor. Skip 
+						post instrumentation phase and continue. -->
+					<exception>com.google.code.qualitas.internal.installation.core.ComponentNotFound</exception>
+				</doCatch>
+			</doTry>
+			<process ref="deployerProcessor" />
 		</route>
 	</camelContext>
-	
+
 	<bean id="amqp" class="org.apache.camel.component.amqp.AMQPComponent">
 		<property name="connectionFactory" ref="amqConnectionFactory" />
 	</bean>
-	
+
 	<bean id="amqConnectionFactory" class="org.apache.qpid.client.AMQConnectionFactory">
 		<property name="host" value="localhost" />
 		<property name="port" value="5672" />
