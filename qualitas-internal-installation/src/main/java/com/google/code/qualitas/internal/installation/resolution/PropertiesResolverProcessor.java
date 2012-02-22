@@ -4,8 +4,8 @@ import org.apache.camel.Exchange;
 import org.springframework.stereotype.Component;
 
 import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.resolver.Properties;
-import com.google.code.qualitas.engines.api.resolver.PropertiesResolver;
+import com.google.code.qualitas.engines.api.resolution.Properties;
+import com.google.code.qualitas.engines.api.resolution.PropertiesResolver;
 import com.google.code.qualitas.internal.installation.core.AbstractProcessor;
 
 /**
