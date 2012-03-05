@@ -44,10 +44,10 @@ public interface Bundle {
     /**
      * Sets the main process name.
      * 
-     * @param mainProcessName
-     *            the new main process name
+     * @param mainProcessQName
+     *            the new main process qname
      */
-    void setMainProcessQName(QName mainProcessName);
+    void setMainProcessQName(QName mainProcessQName);
 
     /**
      * Gets the main process name.
@@ -64,6 +64,15 @@ public interface Bundle {
      *             the IO exception
      */
     Entry getQualitasConfiguration() throws IOException;
+
+    /**
+     * Gets the main process definition.
+     * 
+     * @return the main process definition
+     * @throws IOException
+     *             the IO exception
+     */
+    Entry getMainProcessDefinition() throws IOException;
 
     /**
      * Checks if is instrumentable. Returns true if scenario bundle contains
