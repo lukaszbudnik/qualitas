@@ -5,16 +5,18 @@ import com.google.code.qualitas.engines.api.core.Bundle;
 
 /**
  * The Interface ProcessBundleInstrumentor.
- *
+ * 
  */
 public interface Instrumentor extends Component {
 
     /**
      * Instrument.
-     *
-     * @param processBundle the process bundle
-     * @throws InstrumentationException the instrumentation exception
+     * 
+     * @param bundle
+     *            the bundle
+     * @throws InstrumentationException
+     *             the instrumentation exception
      */
-    void instrument(Bundle processBundle) throws InstrumentationException;
-    
+    void instrument(Bundle bundle) throws InstrumentationException;
+
 }
