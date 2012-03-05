@@ -31,8 +31,8 @@
 		<xsl:copy>
 			<xsl:apply-templates select="node()|@*" />
 		</xsl:copy>
-		<invoke partnerLink="QualitasExecutionMonitorImplService">
-			<service name="monitor:QualitasExecutionMonitorImplService" port="QualitasExecutionMonitorImplPort"/>
+		<invoke partnerLink="QualitasExecutionMonitorService">
+			<service name="monitor:QualitasExecutionMonitorService" port="QualitasExecutionMonitorPort"/>
 		</invoke>
 	</xsl:template>
 

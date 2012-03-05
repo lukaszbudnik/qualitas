@@ -11,9 +11,8 @@ import org.apache.commons.logging.LogFactory;
 import com.google.code.qualitas.engines.api.core.Bundle;
 import com.google.code.qualitas.engines.api.core.Entry;
 import com.google.code.qualitas.engines.api.instrumentation.InstrumentationException;
-import com.google.code.qualitas.engines.api.instrumentation.InstrumentationPhase;
-import com.google.code.qualitas.engines.api.instrumentation.InstrumentationPhaseType;
 import com.google.code.qualitas.engines.api.instrumentation.Instrumentor;
+import com.google.code.qualitas.engines.api.instrumentation.PreInstrumentationPhase;
 import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
 import com.google.code.qualitas.engines.ode.core.OdeBundle;
 import com.google.code.qualitas.utils.xslt.XSLTUtils;
@@ -21,7 +20,7 @@ import com.google.code.qualitas.utils.xslt.XSLTUtils;
 /**
  * The Class OdeProcessBundleInstrumentor.
  */
-@InstrumentationPhase(InstrumentationPhaseType.PreInstrumentation)
+@PreInstrumentationPhase
 public class OdeInstrumentor extends AbstractOdeComponent implements Instrumentor {
 
     /** The Constant LOG. */
