@@ -31,7 +31,7 @@ public final class XSLTUtils {
     private static final Log LOG = LogFactory.getLog(XSLTUtils.class);
 
     /** The xform factory. */
-    private static TransformerFactory xformFactory = TransformerFactory.newInstance();
+    private static TransformerFactory transformerFactory = TransformerFactory.newInstance();
 
     /**
      * The Constructor.
@@ -304,7 +304,7 @@ public final class XSLTUtils {
         Transformer transformer = null;
 
         try {
-            transformer = xformFactory.newTransformer(stylesheet);
+            transformer = transformerFactory.newTransformer(stylesheet);
         } catch (TransformerConfigurationException e) {
             String msg = "Could not create Transformer";
             LOG.error(msg, e);
@@ -343,6 +343,34 @@ public final class XSLTUtils {
             throw e;
         }
 
+    }
+
+    /**
+     * Transform document.
+     * 
+     * @param in
+     *            the in
+     * @param out
+     *            the out
+     * @throws TransformerException
+     *             the transformer exception
+     */
+    public static void transformDocument(Source in, Result out) throws TransformerException {
+        Transformer transformer = null;
+        try {
+            transformer = transformerFactory.newTransformer();
+        } catch (TransformerConfigurationException e) {
+            String msg = "Could not create Transformer";
+            LOG.error(msg, e);
+            throw e;
+        }
+        try {
+            transformer.transform(in, out);
+        } catch (TransformerException e) {
+            String msg = "Could not transform source to result";
+            LOG.error(msg, e);
+            throw e;
+        }
     }
 
 }
