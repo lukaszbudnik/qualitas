@@ -66,8 +66,8 @@ public class QualitasConfigurationTest {
         monitorConfiguration.setPartners(monitorPartners);
         
         QualitasConfiguration qualitasConfiguration = new QualitasConfiguration();
-        qualitasConfiguration.setAnalyst(analystConfiguration);
-        qualitasConfiguration.setMonitor(monitorConfiguration);
+        qualitasConfiguration.setAnalystConfiguration(analystConfiguration);
+        qualitasConfiguration.setMonitorConfiguration(monitorConfiguration);
         
         OutputStream xml = new ByteArrayOutputStream();
         JAXB.marshal(qualitasConfiguration, xml);

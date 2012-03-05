@@ -3,12 +3,12 @@
 	targetNamespace="http://code.google.com/p/qualitas/engines/api/configuration"
 	version="1.0" xmlns:tns="http://code.google.com/p/qualitas/engines/api/configuration"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="configuration" type="tns:qualitasConfiguration" />
-	<xs:complexType name="qualitasConfiguration">
+	<xs:element name="qualitasConfiguration" type="tns:qualitasConfiguration" />
+	<xs:complexType name="qualitasConfiguration" >
 		<xs:sequence>
-			<xs:element form="unqualified" name="analyst"
+			<xs:element form="unqualified" name="analystConfiguration"
 				type="tns:analystConfiguration" />
-			<xs:element form="unqualified" minOccurs="0" name="monitor"
+			<xs:element form="unqualified" minOccurs="0" name="monitorConfiguration"
 				type="tns:monitorConfiguration" />
 		</xs:sequence>
 	</xs:complexType>
