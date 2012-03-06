@@ -1,0 +1,39 @@
+test commands:
+
+first console:
+
+%ODE_HOME%\bin\sendsoap http://localhost:8181/ode/processes/StockQuotesService StockQuoteServiceGetStockQuoteRequest.soap
+%ODE_HOME%\bin\sendsoap http://localhost:8181/ode/processes/StockQuotesService StockQuoteServiceSetStockQuoteRequest1.soap
+%ODE_HOME%\bin\sendsoap http://localhost:8181/ode/processes/StockQuotesService StockQuoteServiceGetStockQuoteRequest.soap
+
+second console:
+
+%ODE_HOME%\bin\sendsoap http://localhost:8181/ode/processes/xhGPWWhile testRequest.soap
+
+again first console:
+
+%ODE_HOME%\bin\sendsoap http://localhost:8181/ode/processes/StockQuotesService StockQuoteServiceSetStockQuoteRequest2.soap
+%ODE_HOME%\bin\sendsoap http://localhost:8181/ode/processes/StockQuotesService StockQuoteServiceGetStockQuoteRequest.soap
+
+sample input:
+
+<?xml version="1.0" encoding="utf-8" ?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Header>
+	<logger:idProcessInstance xmlns:logger="http://executionlogger.broker.enterprise.nuntius.xh.org/">222</logger:idProcessInstance>
+  </soapenv:Header>
+  <soapenv:Body>
+	<buy xmlns="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl"><companyName>Oracle</companyName><price>211</price></buy>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+will loop until shares price is satisfied, the response would be:
+
+<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Body>
+		<buyResponse xmlns="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl">
+			<out>true</out>
+		</buyResponse>
+	</soapenv:Body>
+</soapenv:Envelope>

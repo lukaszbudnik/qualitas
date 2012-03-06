@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header>
+	<logger:idProcessInstance xmlns:logger="http://executionlogger.broker.enterprise.nuntius.xh.org/">222</logger:idProcessInstance>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+	<buy xmlns="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl"><companyName>Oracle</companyName><price>211</price></buy>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

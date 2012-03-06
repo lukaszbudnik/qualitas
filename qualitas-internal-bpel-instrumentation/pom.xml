@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>qualitas-parent</artifactId>
+		<groupId>com.google.code.qualitas</groupId>
+		<version>0.0.4-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.google.code.qualitas.internal.bpel</groupId>
+	<artifactId>qualitas-internal-bpel-instrumentation</artifactId>
+	<version>0.0.4-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>qualitas-internal-bpel-instrumentation</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.api</groupId>
+			<artifactId>qualitas-engines-api-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.api</groupId>
+			<artifactId>qualitas-engines-api-instrumentation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.utils</groupId>
+			<artifactId>qualitas-utils-xslt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.utils</groupId>
+			<artifactId>qualitas-utils-dom</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-validation</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.execution.monitor</groupId>
+			<artifactId>qualitas-execution-monitor-webservice</artifactId>
+			<version>0.0.4-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<artifactId>qualitas-engines-ode-instrumentation</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<configuration>
+							<failsOnError>false</failsOnError>
+						</configuration>
+						<goals>
+							<goal>checkstyle</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

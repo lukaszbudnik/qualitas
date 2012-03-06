@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+	xmlns:tns="http://examples.bpel.nuntius.xh.org/xhGPWWhileArtifacts"
+	xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+	xmlns:wsdl="http://examples.ws.nuntius.xh.org"
+	name="XhStockQuotesArtifacts"
+	targetNamespace="http://examples.bpel.nuntius.xh.org/xhGPWWhileArtifacts"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<plnk:partnerLinkType name="stockQuotesServicePartnerLinkType">
+		<plnk:role name="stockQuotesServiceProvider"
+			portType="wsdl:StockQuotesServicePortType" />
+	</plnk:partnerLinkType>
+	<import location="StockQuotesService.wsdl"
+		namespace="http://examples.ws.nuntius.xh.org" />
+</definitions>

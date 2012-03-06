@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<getStockQuote xmlns="http://examples.ws.nuntius.xh.org">
+			<company>Oracle</company>
+		</getStockQuote>
+	</soap:Body>
+</soap:Envelope>
