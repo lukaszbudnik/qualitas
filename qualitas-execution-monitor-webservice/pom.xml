@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>qualitas-parent</artifactId>
+		<groupId>com.google.code.qualitas</groupId>
+		<version>0.0.4-SNAPSHOT</version>
+		<relativePath>../qualitas-parent</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.google.code.qualitas.execution.monitor</groupId>
+	<artifactId>qualitas-execution-monitor-webservice</artifactId>
+	<version>0.0.4-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>qualitas-execution-monitor-webservice</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+
+</project>

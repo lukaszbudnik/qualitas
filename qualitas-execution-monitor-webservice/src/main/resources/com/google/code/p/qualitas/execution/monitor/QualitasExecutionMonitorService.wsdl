@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://code.google.com/p/qualitas/execution/monitor"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="QualitasExecutionMonitorService"
+	targetNamespace="http://code.google.com/p/qualitas/execution/monitor">
+	<types>
+		<xsd:schema xmlns:tns="http://code.google.com/p/qualitas/execution/monitor"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://code.google.com/p/qualitas/execution/monitor"
+			version="1.0">
+			<xsd:element name="log" type="tns:log" />
+			<!-- <xsd:element name="logResponse" type="tns:logResponse" /> -->
+			<xsd:complexType name="log">
+				<xs:sequence>
+					<xs:element form="qualified"
+						name="qualitasProcessInstanceId" type="xs:long" />
+					<xs:element form="qualified" name="EPR" type="xs:string" />
+					<xs:element form="qualified" name="partner" type="xs:string" />
+					<xs:element form="qualified" name="service" type="xs:string" />
+					<xs:element form="qualified" name="mep" type="xs:string" />
+					<xs:element form="qualified" name="invocationStep" type="xs:string" />
+					<xs:element form="qualified" name="sequenceNumber" type="xs:int" />
+					<xs:element form="qualified" name="inTimestamp" type="xsd:dateTime" />
+					<xs:element form="qualified" name="outTimestamp" type="xsd:dateTime" />
+					<xs:element form="qualified" name="input" type="xsd:anyType" />
+					<xs:element form="qualified" name="output" type="xsd:anyType" />
+				</xs:sequence>
+			</xsd:complexType>
+			<!-- 
+			<xsd:complexType name="webServiceLogEntry">
+				<xsd:sequence>
+					<xsd:element form="qualified" minOccurs="0" name="message"
+						type="" />
+				</xsd:sequence>
+			</xsd:complexType> -->
+			<!-- <xsd:complexType name="logResponse">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="return" type="xsd:boolean" />
+				</xsd:sequence>
+			</xsd:complexType> -->
+		</xsd:schema>
+	</types>
+	<message name="log">
+		<part element="tns:log" name="parameters"></part>
+	</message>
+	<!-- <message name="logResponse">
+		<part element="tns:logResponse" name="parameters"></part>
+	</message> -->
+	<portType name="QualitasExecutionMonitorWebService">
+		<operation name="log">
+			<input message="tns:log"></input>
+			<!-- <output message="tns:logResponse"></output> -->
+		</operation>
+	</portType>
+	<binding name="QualitasExecutionMonitorPortBinding" type="tns:QualitasExecutionMonitorWebService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="log">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<!-- <output>
+				<soap:body use="literal" />
+			</output> -->
+		</operation>
+	</binding>
+	<service name="QualitasExecutionMonitorService">
+		<port binding="tns:QualitasExecutionMonitorPortBinding" name="QualitasExecutionMonitorPort">
+			<soap:address
+				location="http://localhost:9292/QualitasExecutionMonitorService/QualitasExecutionMonitorWebService" />
+		</port>
+	</service>
+</definitions>
