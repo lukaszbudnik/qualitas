@@ -29,10 +29,6 @@
 			<artifactId>camel-amqp</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-juel</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.google.code.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-spring</artifactId>
 		</dependency>
@@ -48,6 +44,10 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.qualitas.internal.bpel</groupId>
+			<artifactId>qualitas-internal-bpel-spring</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -1,7 +1,6 @@
 package com.google.code.qualitas.internal.installation.core;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -98,19 +97,16 @@ public abstract class AbstractProcessor implements Processor {
      *            the generic type
      * @param type
      *            the type
-     * @param annotationType
-     *            the annotation type
-     * @param annotationValue
-     *            the annotation value
      * @param processType
      *            the process type
-     * @return the t
+     * @param annotationType
+     *            the annotation type
+     * @return the T
      * @throws ComponentNotFound
      *             the component not found
      */
     protected <T extends Component, A extends Annotation> T findQualitasComponent(Class<T> type,
-            Class<A> annotationType, Object annotationValue, ProcessType processType)
-            throws ComponentNotFound {
+            ProcessType processType, Class<A> annotationType) throws ComponentNotFound {
         List<T> components = findQualitasComponents(type, processType);
 
         T component = null;
@@ -124,40 +120,13 @@ public abstract class AbstractProcessor implements Processor {
             }
         }
 
-        boolean annotationValueMatched = false;
-        if (annotation != null && annotationValue != null) {
-            annotationValueMatched = doValuesMatch(annotationValue, annotation);
-        }
-
-        if (component == null
-                || (annotation != null && annotationValue != null && !annotationValueMatched)) {
+        if (component == null) {
             throw new ComponentNotFound("Could not find a component of type " + type
-                    + " for process bundle of type " + processType);
+                    + " for process bundle of type " + processType + " and annotation of type "
+                    + annotationType);
         }
 
         return component;
-    }
-
-    /**
-     * Do values match.
-     * 
-     * @param <A>
-     *            the generic type
-     * @param annotationValue
-     *            the annotation value
-     * @param annotation
-     *            the annotation
-     * @return true, if successful
-     */
-    private <A> boolean doValuesMatch(Object annotationValue, A annotation) {
-        try {
-            Method m = annotation.getClass().getMethod("value", (Class<?>[]) null);
-            Object value = m.invoke(annotation, (Object[]) null);
-            return annotationValue.equals(value);
-        } catch (Exception e) {
-            LOG.info("Could not get value for annotation " + annotation, e);
-        }
-        return false;
     }
 
 }
