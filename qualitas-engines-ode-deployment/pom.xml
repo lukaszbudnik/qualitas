@@ -13,6 +13,23 @@
 	<version>0.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
+	<profiles>
+		<profile>
+			<id>standalone</id>
+			<properties>
+				<jetty.port>9191</jetty.port>
+				<jetty.stopPort>9195</jetty.stopPort>
+				<jetty.daemon>false</jetty.daemon>
+			</properties>
+		</profile>
+	</profiles>
+
+	<properties>
+		<jetty.port>9393</jetty.port>
+		<jetty.stopPort>9395</jetty.stopPort>
+		<jetty.daemon>true</jetty.daemon>
+	</properties>
+
 	<name>qualitas-engines-ode-deployment</name>
 	<dependencies>
 		<dependency>
@@ -146,15 +163,15 @@
 						<contextPath>/ode</contextPath>
 					</webApp>
 					<war>${basedir}/src/test/resources/ode.war</war>
-					<daemon>true</daemon>
+					<daemon>${jetty.daemon}</daemon>
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>9191</port>
-							<integralPort>9195</integralPort>
+							<port>${jetty.port}</port>
+							<integralPort>${jetty.stopPort}</integralPort>
 						</connector>
 					</connectors>
 					<scanIntervalSeconds>0</scanIntervalSeconds>
-					<stopPort>9195</stopPort>
+					<stopPort>${jetty.stopPort}</stopPort>
 					<stopKey>STOP</stopKey>
 				</configuration>
 				<executions>
