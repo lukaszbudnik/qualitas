@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<context:component-scan
+		base-package="com.google.code.qualitas.internal.execution.monitor" />
+
+	<bean id="loggingInInterceptor" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
+
+	<cxf:cxfEndpoint id="qualitasExecutionMonitorServiceEndpoint"
+		address="http://localhost:9292/QualitasExecutionMonitorService/QualitasExecutionMonitorWebService"
+		serviceClass="com.google.code.p.qualitas.execution.monitor.QualitasExecutionMonitorWebService">
+		<cxf:inInterceptors>
+			<ref bean="loggingInInterceptor" />
+		</cxf:inInterceptors>
+		<cxf:properties>
+			<entry key="dataFormat" value="POJO" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
+
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<route>
+			<from uri="cxf:bean:qualitasExecutionMonitorServiceEndpoint" />
+			<process ref="qualitasExecutionMonitorProcessor" />
+		</route>
+	</camelContext>
+
+</beans>
