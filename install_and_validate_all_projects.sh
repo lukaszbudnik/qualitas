@@ -9,7 +9,7 @@ do
   echo "------------------------------------------------------------------------------";
   echo "";
   cd ${projects[i]};
-  mvn ${@} clean compiler:compile install
+  mvn ${@} clean generate-sources compiler:compile install
   if [ $? -ne 0 ]
   then
     echo "";
