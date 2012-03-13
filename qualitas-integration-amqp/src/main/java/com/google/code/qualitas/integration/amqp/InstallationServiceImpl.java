@@ -31,6 +31,7 @@ public class InstallationServiceImpl implements InstallationService {
     /** The Constant QUALITAS_USERNAME_HEADER. */
     private static final String QUALITAS_USERNAME_HEADER = "qualitasusername";
 
+    /** The Constant LOG. */
     private static final Log LOG = LogFactory.getLog(InstallationServiceImpl.class);
 
     /** The amqp template. */
