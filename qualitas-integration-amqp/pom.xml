@@ -2,15 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
-		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.4-SNAPSHOT</version>
+		<groupId>com.googlecode.qualitas</groupId>
+		<version>0.0.5-SNAPSHOT</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.google.code.qualitas.integration.amqp</groupId>
+	<groupId>com.googlecode.qualitas.integration.amqp</groupId>
 	<artifactId>qualitas-integration-amqp</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>qualitas-integration-amqp</name>
@@ -21,7 +20,7 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.integration.api</groupId>
+			<groupId>com.googlecode.qualitas.integration.api</groupId>
 			<artifactId>qualitas-integration-api</artifactId>
 		</dependency>
 		<dependency>

@@ -2,14 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
-		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.4-SNAPSHOT</version>
+		<groupId>com.googlecode.qualitas</groupId>
+		<version>0.0.5-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.google.code.qualitas.internal.bpel</groupId>
+	<groupId>com.googlecode.qualitas.internal.bpel</groupId>
 	<artifactId>qualitas-internal-bpel-instrumentation</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>qualitas-internal-bpel-instrumentation</name>
@@ -20,19 +19,19 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.engines.api</groupId>
+			<groupId>com.googlecode.qualitas.engines.api</groupId>
 			<artifactId>qualitas-engines-api-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.engines.api</groupId>
+			<groupId>com.googlecode.qualitas.engines.api</groupId>
 			<artifactId>qualitas-engines-api-instrumentation</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.utils</groupId>
+			<groupId>com.googlecode.qualitas.utils</groupId>
 			<artifactId>qualitas-utils-xslt</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.utils</groupId>
+			<groupId>com.googlecode.qualitas.utils</groupId>
 			<artifactId>qualitas-utils-dom</artifactId>
 		</dependency>
 		<dependency>
@@ -44,24 +43,24 @@
 			<artifactId>commons-logging</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<groupId>com.googlecode.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-core</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<groupId>com.googlecode.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-validation</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.execution.monitor</groupId>
+			<groupId>com.googlecode.qualitas.execution.monitor</groupId>
 			<artifactId>qualitas-execution-monitor-webservice</artifactId>
 			<version>0.0.4-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<groupId>com.googlecode.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-instrumentation</artifactId>
 			<scope>test</scope>
 		</dependency>

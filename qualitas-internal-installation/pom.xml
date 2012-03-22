@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
-		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.4-SNAPSHOT</version>
+		<groupId>com.googlecode.qualitas</groupId>
+		<version>0.0.5-SNAPSHOT</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.google.code.qualitas.internal.installation</groupId>
+	<groupId>com.googlecode.qualitas.internal.installation</groupId>
 	<artifactId>qualitas-internal-installation</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.4-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
@@ -29,7 +27,7 @@
 			<artifactId>camel-amqp</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.engines.ode</groupId>
+			<groupId>com.googlecode.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-spring</artifactId>
 		</dependency>
 		<!-- logging -->
@@ -46,7 +44,7 @@
 			<artifactId>log4j</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.internal.bpel</groupId>
+			<groupId>com.googlecode.qualitas.internal.bpel</groupId>
 			<artifactId>qualitas-internal-bpel-spring</artifactId>
 		</dependency>
 	</dependencies>

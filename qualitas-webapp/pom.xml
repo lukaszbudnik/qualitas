@@ -4,15 +4,14 @@
 
 	<parent>
 		<artifactId>qualitas-parent</artifactId>
-		<groupId>com.google.code.qualitas</groupId>
-		<version>0.0.4-SNAPSHOT</version>
+		<groupId>com.googlecode.qualitas</groupId>
+		<version>0.0.5-SNAPSHOT</version>
 		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.google.code.qualitas.webapp</groupId>
+	<groupId>com.googlecode.qualitas.webapp</groupId>
 	<artifactId>qualitas-webapp</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
 
 	<name>qualitas-webapp</name>
 
@@ -64,15 +63,15 @@
 			<artifactId>commons-io</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.engines.api</groupId>
+			<groupId>com.googlecode.qualitas.engines.api</groupId>
 			<artifactId>qualitas-engines-api-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.integration.amqp</groupId>
+			<groupId>com.googlecode.qualitas.integration.amqp</groupId>
 			<artifactId>qualitas-integration-amqp</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.qualitas.services.security</groupId>
+			<groupId>com.googlecode.qualitas.services.security</groupId>
 			<artifactId>qualitas-services-security-spring</artifactId>
 		</dependency>
 		<dependency>
