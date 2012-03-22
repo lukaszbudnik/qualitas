@@ -157,4 +157,22 @@
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:simpleType name="ProcessStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UPLOADED"></xs:enumeration>
+			<xs:enumeration value="PROCESSING"></xs:enumeration>
+			<xs:enumeration value="INSTALLED"></xs:enumeration>
+			<xs:enumeration value="CREATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="VALIDATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="INSTRUMENTATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="INSTALLATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="UNINSTALLATION_ERROR"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="ProcessType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="WS_BPEL_2_0_APACHE_ODE"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
