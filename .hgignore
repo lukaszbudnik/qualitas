@@ -4,8 +4,8 @@ syntax: glob
 .project
 .metadata
 derby.log
+.settings
+target
+Servers
+*.jpr
 pom.xml.versionsBackup
-syntax: regexp
-.settings/*
-target/*
-Servers/*
