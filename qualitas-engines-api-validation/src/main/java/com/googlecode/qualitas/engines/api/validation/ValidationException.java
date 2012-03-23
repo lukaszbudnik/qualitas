@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.validation;
+package com.googlecode.qualitas.engines.api.validation;
 
 /**
  * The Class ValidationException.
