@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.core;
+package com.googlecode.qualitas.engines.ode.core;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +13,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.code.qualitas.engines.api.core.Entry;
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.api.core.Entry;
 
 public class OdeBundleTest {
 

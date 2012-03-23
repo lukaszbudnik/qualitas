@@ -1,8 +1,8 @@
-package com.google.code.qualitas.engines.ode.component;
+package com.googlecode.qualitas.engines.ode.component;
 
-import com.google.code.qualitas.engines.api.component.AbstractComponent;
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.core.ProcessType;
+import com.googlecode.qualitas.engines.api.component.AbstractComponent;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
+import com.googlecode.qualitas.engines.api.core.Bundle;
 
 /**
  * The Class AbstractOdeComponent.

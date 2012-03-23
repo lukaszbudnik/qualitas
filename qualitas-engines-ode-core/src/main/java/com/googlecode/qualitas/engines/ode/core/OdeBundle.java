@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.core;
+package com.googlecode.qualitas.engines.ode.core;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,10 +10,10 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.AbstractBundle;
-import com.google.code.qualitas.engines.api.core.Entry;
-import com.google.code.qualitas.engines.api.core.ProcessType;
 import com.google.code.qualitas.utils.zip.ZipUtils;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
+import com.googlecode.qualitas.engines.api.core.AbstractBundle;
+import com.googlecode.qualitas.engines.api.core.Entry;
 
 /**
  * The Class OdeProcessBundle.
