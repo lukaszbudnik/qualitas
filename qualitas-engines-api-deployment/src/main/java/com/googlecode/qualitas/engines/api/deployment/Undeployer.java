@@ -1,7 +1,7 @@
-package com.google.code.qualitas.engines.api.deployment;
+package com.googlecode.qualitas.engines.api.deployment;
 
-import com.google.code.qualitas.engines.api.component.Component;
-import com.google.code.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.component.Component;
+import com.googlecode.qualitas.engines.api.core.Bundle;
 
 /**
  * The Interface ProcessBundleUndeployer.

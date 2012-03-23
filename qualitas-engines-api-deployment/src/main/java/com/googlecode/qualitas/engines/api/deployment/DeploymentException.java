@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.deployment;
+package com.googlecode.qualitas.engines.api.deployment;
 
 /**
  * The Class DeploymentException.
