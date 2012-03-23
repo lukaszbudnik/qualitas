@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.instrumentation;
+package com.googlecode.qualitas.engines.api.instrumentation;
 
 /**
  * The Class InstrumentationException.

@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.instrumentation;
+package com.googlecode.qualitas.engines.api.instrumentation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
