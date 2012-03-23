@@ -1,10 +1,10 @@
-package com.google.code.p.qualitas.engines.api.configuration;
+package com.googlecode.qualitas.engines.api.configuration;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import com.google.code.p.qualitas.engines.api.configuration.QualitasConfigurationHelper.ParameterType;
+import com.googlecode.qualitas.engines.api.configuration.QualitasConfigurationHelper.ParameterType;
 
 public class QualitasConfigurationHelperTest {
 

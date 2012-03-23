@@ -1,4 +1,4 @@
-package com.google.code.p.qualitas.engines.api.configuration;
+package com.googlecode.qualitas.engines.api.configuration;
 
 import static ch.lambdaj.Lambda.having;
 import static ch.lambdaj.Lambda.on;

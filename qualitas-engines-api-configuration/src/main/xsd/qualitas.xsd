@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified"
-	targetNamespace="http://code.google.com/p/qualitas/engines/api/configuration"
-	version="1.0" xmlns:tns="http://code.google.com/p/qualitas/engines/api/configuration"
+	targetNamespace="http://qualitas.googlecode.com/engines/api/configuration"
+	version="1.0" xmlns:tns="http://qualitas.googlecode.com/engines/api/configuration"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:element name="qualitasConfiguration" type="tns:qualitasConfiguration" />
 	<xs:complexType name="qualitasConfiguration" >

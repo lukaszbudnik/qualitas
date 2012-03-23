@@ -1,4 +1,4 @@
-package com.google.code.p.qualitas.engines.api.configuration;
+package com.googlecode.qualitas.engines.api.configuration;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -8,15 +8,6 @@ import javax.xml.bind.JAXB;
 import junit.framework.Assert;
 
 import org.junit.Test;
-
-import com.google.code.p.qualitas.engines.api.configuration.AnalystConfiguration;
-import com.google.code.p.qualitas.engines.api.configuration.AnalystGlobalParameters;
-import com.google.code.p.qualitas.engines.api.configuration.AnalystPartner;
-import com.google.code.p.qualitas.engines.api.configuration.AnalystPartners;
-import com.google.code.p.qualitas.engines.api.configuration.MonitorConfiguration;
-import com.google.code.p.qualitas.engines.api.configuration.MonitorPartner;
-import com.google.code.p.qualitas.engines.api.configuration.MonitorPartners;
-import com.google.code.p.qualitas.engines.api.configuration.QualitasConfiguration;
 
 public class QualitasConfigurationTest {
 
