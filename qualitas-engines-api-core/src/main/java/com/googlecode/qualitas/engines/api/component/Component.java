@@ -1,6 +1,6 @@
-package com.google.code.qualitas.engines.api.component;
+package com.googlecode.qualitas.engines.api.component;
 
-import com.google.code.qualitas.engines.api.core.ProcessType;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 
 /**
  * The Interface Component.

@@ -1,8 +1,10 @@
-package com.google.code.qualitas.engines.api.core;
+package com.googlecode.qualitas.engines.api.core;
 
 import java.io.IOException;
 
 import javax.xml.namespace.QName;
+
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 
 /**
  * The Interface ProcessBundle.

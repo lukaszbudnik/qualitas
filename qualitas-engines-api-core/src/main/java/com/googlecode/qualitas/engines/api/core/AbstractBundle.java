@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.core;
+package com.googlecode.qualitas.engines.api.core;
 
 import java.io.IOException;
 

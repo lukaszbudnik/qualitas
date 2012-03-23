@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.component;
+package com.googlecode.qualitas.engines.api.component;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -6,8 +6,8 @@ import java.io.InputStream;
 
 import javax.xml.bind.JAXB;
 
-import com.google.code.p.qualitas.engines.api.configuration.QualitasConfiguration;
-import com.google.code.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.configuration.QualitasConfiguration;
+import com.googlecode.qualitas.engines.api.core.Bundle;
 
 /**
  * The Class AbstractComponent.
