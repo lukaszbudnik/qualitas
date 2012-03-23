@@ -1,6 +1,6 @@
-package com.google.code.qualitas.engines.api.invocation;
+package com.googlecode.qualitas.engines.api.invocation;
 
-import com.google.code.qualitas.engines.api.component.Component;
+import com.googlecode.qualitas.engines.api.component.Component;
 
 /**
  * The Interface Executor.

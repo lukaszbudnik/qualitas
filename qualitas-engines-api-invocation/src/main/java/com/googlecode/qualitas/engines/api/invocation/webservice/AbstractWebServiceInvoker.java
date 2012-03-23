@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.invocation.webservice;
+package com.googlecode.qualitas.engines.api.invocation.webservice;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
@@ -10,8 +10,8 @@ import org.apache.axis2.addressing.EndpointReference;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.invocation.AbstractInvoker;
-import com.google.code.qualitas.engines.api.invocation.InvocationException;
+import com.googlecode.qualitas.engines.api.invocation.AbstractInvoker;
+import com.googlecode.qualitas.engines.api.invocation.InvocationException;
 
 /**
  * The Class AbstractWebServiceExecutor.

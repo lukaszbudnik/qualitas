@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.invocation.webservice;
+package com.googlecode.qualitas.engines.api.invocation.webservice;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axis2.AxisFault;
