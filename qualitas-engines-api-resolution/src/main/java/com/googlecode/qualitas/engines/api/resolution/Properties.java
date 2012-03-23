@@ -1,10 +1,10 @@
-package com.google.code.qualitas.engines.api.resolution;
+package com.googlecode.qualitas.engines.api.resolution;
 
 import java.util.List;
 
 import javax.xml.namespace.QName;
 
-import com.google.code.p.qualitas.engines.api.configuration.QualitasConfiguration;
+import com.googlecode.qualitas.engines.api.configuration.QualitasConfiguration;
 
 /**
  * The Class Properties.

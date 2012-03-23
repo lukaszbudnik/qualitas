@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.resolution;
+package com.googlecode.qualitas.engines.api.resolution;
 
 /**
  * The Class ResolutionException.
