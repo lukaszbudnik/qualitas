@@ -1,7 +1,7 @@
-package com.google.code.qualitas.engines.api.factory;
+package com.googlecode.qualitas.engines.api.factory;
 
-import com.google.code.qualitas.engines.api.component.Component;
-import com.google.code.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.component.Component;
+import com.googlecode.qualitas.engines.api.core.Bundle;
 
 /**
  * A factory for creating ProcessBundle objects.

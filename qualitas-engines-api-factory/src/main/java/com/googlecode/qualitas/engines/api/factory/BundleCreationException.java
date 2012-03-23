@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.factory;
+package com.googlecode.qualitas.engines.api.factory;
 
 /**
  * The Class BundleCreationException.
