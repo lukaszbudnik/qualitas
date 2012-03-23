@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.deployment.manager;
+package com.googlecode.qualitas.engines.ode.deployment.manager;
 
 /**
  * The Class RemoteDeploymentException.

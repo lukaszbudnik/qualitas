@@ -1,14 +1,14 @@
-package com.google.code.qualitas.engines.ode.deployment;
+package com.googlecode.qualitas.engines.ode.deployment;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.deployment.Deployer;
-import com.google.code.qualitas.engines.api.deployment.DeploymentException;
-import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
-import com.google.code.qualitas.engines.ode.deployment.manager.OdeDeploymentManager;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.deployment.Deployer;
+import com.googlecode.qualitas.engines.api.deployment.DeploymentException;
+import com.googlecode.qualitas.engines.ode.component.AbstractOdeComponent;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.ode.deployment.manager.OdeDeploymentManager;
 
 /**
  * The Class OdeProcessBundleDeployer.

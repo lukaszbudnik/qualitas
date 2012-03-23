@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.deployment;
+package com.googlecode.qualitas.engines.ode.deployment;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +10,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
 
 public class OdeUndeployerITCase {
 

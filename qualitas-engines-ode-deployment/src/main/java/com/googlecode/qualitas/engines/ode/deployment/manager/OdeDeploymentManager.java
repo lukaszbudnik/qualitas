@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.deployment.manager;
+package com.googlecode.qualitas.engines.ode.deployment.manager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.ode.axis2.service.ServiceClientUtil;
 import org.apache.ode.utils.Namespaces;
 
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
 
 /**
  * The Class OdeDeploymentManager.
