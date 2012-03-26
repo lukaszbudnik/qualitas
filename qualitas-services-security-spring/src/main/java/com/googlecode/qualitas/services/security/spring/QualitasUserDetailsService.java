@@ -1,4 +1,4 @@
-package com.google.code.qualitas.services.security.spring;
+package com.googlecode.qualitas.services.security.spring;
 
 import java.util.ArrayList;
 import java.util.List;
