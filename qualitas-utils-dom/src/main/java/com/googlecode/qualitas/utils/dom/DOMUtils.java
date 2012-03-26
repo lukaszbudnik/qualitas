@@ -1,4 +1,4 @@
-package com.google.code.qualitas.utils.dom;
+package com.googlecode.qualitas.utils.dom;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +18,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-import com.google.code.qualitas.utils.xslt.XSLTUtils;
+import com.googlecode.qualitas.utils.xslt.XSLTUtils;
 
 /**
  * The Class DOMUtils.
