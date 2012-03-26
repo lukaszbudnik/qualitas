@@ -1,15 +1,15 @@
-package com.google.code.qualitas.engines.ode.factory;
+package com.googlecode.qualitas.engines.ode.factory;
 
 import java.io.IOException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.factory.BundleCreationException;
-import com.google.code.qualitas.engines.api.factory.BundleFactory;
-import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.factory.BundleCreationException;
+import com.googlecode.qualitas.engines.api.factory.BundleFactory;
+import com.googlecode.qualitas.engines.ode.component.AbstractOdeComponent;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
 
 /**
  * The Class OdeBundleFactory.
