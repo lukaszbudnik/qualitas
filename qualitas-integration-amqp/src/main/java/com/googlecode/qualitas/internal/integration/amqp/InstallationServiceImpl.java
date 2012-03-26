@@ -1,4 +1,4 @@
-package com.google.code.qualitas.integration.amqp;
+package com.googlecode.qualitas.internal.integration.amqp;
 
 import java.util.Date;
 
@@ -12,9 +12,9 @@ import org.springframework.amqp.core.MessageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.code.qualitas.integration.api.InstallationException;
-import com.google.code.qualitas.integration.api.InstallationService;
-import com.google.code.qualitas.integration.api.InstallationOrder;
+import com.googlecode.qualitas.internal.integration.api.InstallationException;
+import com.googlecode.qualitas.internal.integration.api.InstallationOrder;
+import com.googlecode.qualitas.internal.integration.api.InstallationService;
 
 /**
  * The Class InstallationServiceImpl.
