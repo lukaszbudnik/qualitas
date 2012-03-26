@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.validation.bpelc;
+package com.googlecode.qualitas.engines.ode.validation.bpelc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

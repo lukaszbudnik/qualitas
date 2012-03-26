@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.validation;
+package com.googlecode.qualitas.engines.ode.validation;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,13 +8,13 @@ import javax.xml.namespace.QName;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.validation.ValidationException;
-import com.google.code.qualitas.engines.api.validation.Validator;
-import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
-import com.google.code.qualitas.engines.ode.validation.bpelc.CompilationException;
-import com.google.code.qualitas.engines.ode.validation.bpelc.OdeBpelCompilerRunner;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.validation.ValidationException;
+import com.googlecode.qualitas.engines.api.validation.Validator;
+import com.googlecode.qualitas.engines.ode.component.AbstractOdeComponent;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.ode.validation.bpelc.CompilationException;
+import com.googlecode.qualitas.engines.ode.validation.bpelc.OdeBpelCompilerRunner;
 
 /**
  * The Class OdeProcessBundleValidator.
