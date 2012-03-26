@@ -10,10 +10,10 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.utils.zip.ZipUtils;
 import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 import com.googlecode.qualitas.engines.api.core.AbstractBundle;
 import com.googlecode.qualitas.engines.api.core.Entry;
+import com.googlecode.qualitas.utils.zip.ZipUtils;
 
 /**
  * The Class OdeProcessBundle.
