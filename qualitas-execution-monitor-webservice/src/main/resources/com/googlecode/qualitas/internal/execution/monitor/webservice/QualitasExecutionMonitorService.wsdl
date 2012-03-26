@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://code.google.com/p/qualitas/execution/monitor"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://qualitas.googlecode.com/internal/execution/monitor/webservice"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="QualitasExecutionMonitorService"
-	targetNamespace="http://code.google.com/p/qualitas/execution/monitor">
+	targetNamespace="http://qualitas.googlecode.com/internal/execution/monitor/webservice">
 	<types>
-		<xsd:schema xmlns:tns="http://code.google.com/p/qualitas/execution/monitor"
-			xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://code.google.com/p/qualitas/execution/monitor"
+		<xsd:schema xmlns:tns="http://qualitas.googlecode.com/internal/execution/monitor/webservice"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://qualitas.googlecode.com/internal/execution/monitor/webservice"
 			version="1.0">
 			<xsd:element name="log" type="tns:log" />
 			<!-- <xsd:element name="logResponse" type="tns:logResponse" /> -->

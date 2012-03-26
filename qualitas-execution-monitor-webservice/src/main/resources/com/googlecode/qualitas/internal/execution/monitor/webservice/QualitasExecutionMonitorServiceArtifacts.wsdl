@@ -2,12 +2,12 @@
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
 	xmlns:tns="http://code.google.com/p/qualitas/execution/monitor/artifacts"
-	xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://code.google.com/p/qualitas/execution/monitor"
-	name="QualitasExecutionMonitorServiceArtifacts" targetNamespace="http://code.google.com/p/qualitas/execution/monitor/artifacts">
+	xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://qualitas.googlecode.com/internal/execution/monitor/webservice"
+	name="QualitasExecutionMonitorServiceArtifacts" targetNamespace="http://qualitas.googlecode.com/internal/execution/monitor/webservice/artifacts">
 	<plnk:partnerLinkType name="QualitasExecutionMonitorServicePartnerLinkType">
 		<plnk:role name="QualitasExecutionMonitorServiceProvider"
 			portType="wsdl:QualitasExecutionMonitorWebService" />
 	</plnk:partnerLinkType>
 	<import location="QualitasExecutionMonitorService.wsdl"
-		namespace="http://code.google.com/p/qualitas/execution/monitor" />
+		namespace="http://qualitas.googlecode.com/internal/execution/monitor/webservice" />
 </definitions>
