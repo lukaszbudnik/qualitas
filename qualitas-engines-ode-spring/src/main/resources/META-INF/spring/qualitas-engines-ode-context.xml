@@ -8,21 +8,21 @@
 
 	<context:property-placeholder location="classpath:/qualitas-engines-ode-validation.properties,classpath:/qualitas-engines-ode-deployment.properties" />
 
-	<bean class="com.google.code.qualitas.engines.ode.factory.OdeBundleFactory" />
-	<bean class="com.google.code.qualitas.engines.ode.invocation.OdeInvoker" />
+	<bean class="com.googlecode.qualitas.engines.ode.factory.OdeBundleFactory" />
+	<bean class="com.googlecode.qualitas.engines.ode.invocation.OdeInvoker" />
 	<bean
-		class="com.google.code.qualitas.engines.ode.instrumentation.OdeInstrumentor" />
-	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeDeployer">
+		class="com.googlecode.qualitas.engines.ode.instrumentation.OdeInstrumentor" />
+	<bean class="com.googlecode.qualitas.engines.ode.deployment.OdeDeployer">
 		<property name="defaultDeploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
 		<property name="deploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
 	</bean>
-	<bean class="com.google.code.qualitas.engines.ode.deployment.OdeUndeployer">
+	<bean class="com.googlecode.qualitas.engines.ode.deployment.OdeUndeployer">
 		<property name="defaultDeploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
 		<property name="deploymentServiceEndpoint" value="${ode.defaultDeploymentServiceEndpoint}" />
 	</bean>
-	<bean class="com.google.code.qualitas.engines.ode.validation.OdeValidator">
+	<bean class="com.googlecode.qualitas.engines.ode.validation.OdeValidator">
 		<property name="externalToolHome" value="${ode.home}" />
 		<property name="externalToolPlatform" value="${ode.platform}" />
 	</bean>
-	<bean class="com.google.code.qualitas.engines.ode.resolution.OdePropertiesResolver" />
+	<bean class="com.googlecode.qualitas.engines.ode.resolution.OdePropertiesResolver" />
 </beans>

@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.spring;
+package com.googlecode.qualitas.engines.ode.spring;
 
 import java.util.Map;
 
@@ -10,20 +10,20 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.google.code.qualitas.engines.api.deployment.Deployer;
-import com.google.code.qualitas.engines.api.deployment.Undeployer;
-import com.google.code.qualitas.engines.api.factory.BundleFactory;
-import com.google.code.qualitas.engines.api.instrumentation.Instrumentor;
-import com.google.code.qualitas.engines.api.invocation.Invoker;
-import com.google.code.qualitas.engines.api.resolution.PropertiesResolver;
-import com.google.code.qualitas.engines.api.validation.Validator;
-import com.google.code.qualitas.engines.ode.deployment.OdeDeployer;
-import com.google.code.qualitas.engines.ode.deployment.OdeUndeployer;
-import com.google.code.qualitas.engines.ode.factory.OdeBundleFactory;
-import com.google.code.qualitas.engines.ode.instrumentation.OdeInstrumentor;
-import com.google.code.qualitas.engines.ode.invocation.OdeInvoker;
-import com.google.code.qualitas.engines.ode.resolution.OdePropertiesResolver;
-import com.google.code.qualitas.engines.ode.validation.OdeValidator;
+import com.googlecode.qualitas.engines.api.deployment.Deployer;
+import com.googlecode.qualitas.engines.api.deployment.Undeployer;
+import com.googlecode.qualitas.engines.api.factory.BundleFactory;
+import com.googlecode.qualitas.engines.api.instrumentation.Instrumentor;
+import com.googlecode.qualitas.engines.api.invocation.Invoker;
+import com.googlecode.qualitas.engines.api.resolution.PropertiesResolver;
+import com.googlecode.qualitas.engines.api.validation.Validator;
+import com.googlecode.qualitas.engines.ode.deployment.OdeDeployer;
+import com.googlecode.qualitas.engines.ode.deployment.OdeUndeployer;
+import com.googlecode.qualitas.engines.ode.factory.OdeBundleFactory;
+import com.googlecode.qualitas.engines.ode.instrumentation.OdeInstrumentor;
+import com.googlecode.qualitas.engines.ode.invocation.OdeInvoker;
+import com.googlecode.qualitas.engines.ode.resolution.OdePropertiesResolver;
+import com.googlecode.qualitas.engines.ode.validation.OdeValidator;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/META-INF/spring/qualitas-engines-ode-context.xml")
