@@ -10,13 +10,13 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 	<context:component-scan
-		base-package="com.google.code.qualitas.internal.execution.monitor" />
+		base-package="com.googlecode.qualitas.internal.execution.monitor" />
 
 	<bean id="loggingInInterceptor" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
 
 	<cxf:cxfEndpoint id="qualitasExecutionMonitorServiceEndpoint"
 		address="http://localhost:9292/QualitasExecutionMonitorService/QualitasExecutionMonitorWebService"
-		serviceClass="com.google.code.p.qualitas.execution.monitor.QualitasExecutionMonitorWebService">
+		serviceClass="com.googlecode.qualitas.internal.execution.monitor.webservice.QualitasExecutionMonitorWebService">
 		<cxf:inInterceptors>
 			<ref bean="loggingInInterceptor" />
 		</cxf:inInterceptors>

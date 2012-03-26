@@ -1,4 +1,4 @@
-package com.google.code.qualitas.internal.execution.monitor;
+package com.googlecode.qualitas.internal.execution.monitor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
