@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.instrumentation;
+package com.googlecode.qualitas.engines.ode.instrumentation;
 
 import java.io.IOException;
 
@@ -8,14 +8,14 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.core.Entry;
-import com.google.code.qualitas.engines.api.instrumentation.InstrumentationException;
-import com.google.code.qualitas.engines.api.instrumentation.Instrumentor;
-import com.google.code.qualitas.engines.api.instrumentation.PreInstrumentationPhase;
-import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
-import com.google.code.qualitas.utils.xslt.XSLTUtils;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.core.Entry;
+import com.googlecode.qualitas.engines.api.instrumentation.InstrumentationException;
+import com.googlecode.qualitas.engines.api.instrumentation.Instrumentor;
+import com.googlecode.qualitas.engines.api.instrumentation.PreInstrumentationPhase;
+import com.googlecode.qualitas.engines.ode.component.AbstractOdeComponent;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.utils.xslt.XSLTUtils;
 
 /**
  * The Class OdeProcessBundleInstrumentor.

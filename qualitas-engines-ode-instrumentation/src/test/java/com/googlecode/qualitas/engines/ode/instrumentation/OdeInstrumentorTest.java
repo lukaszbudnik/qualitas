@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.instrumentation;
+package com.googlecode.qualitas.engines.ode.instrumentation;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,9 +12,10 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.google.code.qualitas.engines.api.core.Entry;
-import com.google.code.qualitas.engines.api.instrumentation.InstrumentationException;
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.api.core.Entry;
+import com.googlecode.qualitas.engines.api.instrumentation.InstrumentationException;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.ode.instrumentation.OdeInstrumentor;
 
 public class OdeInstrumentorTest {
 
