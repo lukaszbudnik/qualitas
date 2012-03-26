@@ -1,4 +1,4 @@
-package com.google.code.qualitas.internal.bpel.instrumentation;
+package com.googlecode.qualitas.internal.bpel.instrumentation;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,14 +12,14 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.core.Entry;
-import com.google.code.qualitas.engines.api.instrumentation.InstrumentationException;
-import com.google.code.qualitas.engines.api.validation.ValidationException;
-import com.google.code.qualitas.engines.api.validation.Validator;
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
-import com.google.code.qualitas.engines.ode.instrumentation.OdeInstrumentor;
-import com.google.code.qualitas.engines.ode.validation.OdeValidator;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.core.Entry;
+import com.googlecode.qualitas.engines.api.instrumentation.InstrumentationException;
+import com.googlecode.qualitas.engines.api.validation.ValidationException;
+import com.googlecode.qualitas.engines.api.validation.Validator;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.ode.instrumentation.OdeInstrumentor;
+import com.googlecode.qualitas.engines.ode.validation.OdeValidator;
 
 public class GenericBpelInstrumentorTest {
 

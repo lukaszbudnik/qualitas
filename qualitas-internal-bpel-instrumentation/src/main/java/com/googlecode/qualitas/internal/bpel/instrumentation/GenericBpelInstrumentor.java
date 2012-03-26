@@ -1,4 +1,4 @@
-package com.google.code.qualitas.internal.bpel.instrumentation;
+package com.googlecode.qualitas.internal.bpel.instrumentation;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,14 +17,14 @@ import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.core.Entry;
-import com.google.code.qualitas.engines.api.core.ProcessType;
-import com.google.code.qualitas.engines.api.instrumentation.InstrumentationException;
-import com.google.code.qualitas.engines.api.instrumentation.InstrumentationPhase;
-import com.google.code.qualitas.engines.api.instrumentation.Instrumentor;
-import com.google.code.qualitas.utils.dom.DOMUtils;
-import com.google.code.qualitas.utils.xslt.XSLTUtils;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.core.Entry;
+import com.googlecode.qualitas.engines.api.instrumentation.InstrumentationException;
+import com.googlecode.qualitas.engines.api.instrumentation.InstrumentationPhase;
+import com.googlecode.qualitas.engines.api.instrumentation.Instrumentor;
+import com.googlecode.qualitas.utils.dom.DOMUtils;
+import com.googlecode.qualitas.utils.xslt.XSLTUtils;
 
 /**
  * The Class GenericBpelInstrumentor.
