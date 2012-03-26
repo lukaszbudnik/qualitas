@@ -1,4 +1,4 @@
-package com.google.code.qualitas.utils.xslt;
+package com.googlecode.qualitas.utils.xslt;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
