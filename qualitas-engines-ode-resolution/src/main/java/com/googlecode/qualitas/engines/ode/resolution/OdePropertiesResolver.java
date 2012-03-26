@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.resolution;
+package com.googlecode.qualitas.engines.ode.resolution;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -18,13 +18,13 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.google.code.p.qualitas.engines.api.configuration.QualitasConfiguration;
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.resolution.Properties;
-import com.google.code.qualitas.engines.api.resolution.PropertiesResolver;
-import com.google.code.qualitas.engines.api.resolution.ResolutionException;
-import com.google.code.qualitas.engines.ode.component.AbstractOdeComponent;
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
+import com.googlecode.qualitas.engines.api.configuration.QualitasConfiguration;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.resolution.Properties;
+import com.googlecode.qualitas.engines.api.resolution.PropertiesResolver;
+import com.googlecode.qualitas.engines.api.resolution.ResolutionException;
+import com.googlecode.qualitas.engines.ode.component.AbstractOdeComponent;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
 
 /**
  * The Class OdePropertiesResolver.

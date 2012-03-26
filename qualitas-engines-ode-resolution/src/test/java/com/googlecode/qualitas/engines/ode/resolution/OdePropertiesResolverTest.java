@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.ode.resolution;
+package com.googlecode.qualitas.engines.ode.resolution;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
@@ -8,12 +8,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.google.code.p.qualitas.engines.api.configuration.QualitasConfiguration;
-import com.google.code.qualitas.engines.api.core.Entry;
-import com.google.code.qualitas.engines.api.core.ProcessType;
-import com.google.code.qualitas.engines.api.resolution.ResolutionException;
-import com.google.code.qualitas.engines.ode.core.OdeBundle;
-import com.google.code.qualitas.engines.ode.resolution.OdePropertiesResolver;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
+import com.googlecode.qualitas.engines.api.configuration.QualitasConfiguration;
+import com.googlecode.qualitas.engines.api.core.Entry;
+import com.googlecode.qualitas.engines.api.resolution.ResolutionException;
+import com.googlecode.qualitas.engines.ode.core.OdeBundle;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OdePropertiesResolverTest {
