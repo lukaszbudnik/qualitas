@@ -21,8 +21,12 @@ import javax.persistence.TemporalType;
 
 import org.eclipse.persistence.annotations.Convert;
 import org.eclipse.persistence.annotations.Converter;
+import org.eclipse.persistence.annotations.Converters;
 
-import com.google.code.p.qualitas.engines.api.configuration.ProcessStatus;
+import com.googlecode.qualitas.engines.api.configuration.ProcessStatus;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
+import com.googlecode.qualitas.internal.model.converters.ProcessStatusConverter;
+import com.googlecode.qualitas.internal.model.converters.ProcessTypeConverter;
 
 /**
  * The persistent class for the PROCESSES database table.
@@ -39,7 +43,10 @@ import com.google.code.p.qualitas.engines.api.configuration.ProcessStatus;
 //    @ConversionValue(objectValue="INSTRUMENTATION_ERROR", dataValue="5"),
 //    @ConversionValue(objectValue="INSTALLATION_ERROR", dataValue="6"),
 //    @ConversionValue(objectValue="UNINSTALLATION_ERROR", dataValue="7")})
-@Converter(name="processStatus", converterClass=ProcessStatusConverter.class)
+@Converters({
+    @Converter(name="processStatus", converterClass=ProcessStatusConverter.class),
+    @Converter(name="processType", converterClass=ProcessTypeConverter.class)
+})
 public class Process implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -62,10 +69,10 @@ public class Process implements Serializable {
 	@Column(name = "PROCESS_NAME", length = 1000)
 	private String processName;
 
-	@Column(name = "PROCESS_TYPE", length = 100)
-	private String processType;
+	@Column(name = "PROCESS_TYPE", nullable = false, length = 1)
+	private ProcessType processType;
 
-	@Column(name = "PROCESS_STATUS", nullable = false, precision = 2, scale = 0)
+	@Column(name = "PROCESS_STATUS", nullable = false, length = 1)
 	@Convert("processStatus")
 	private ProcessStatus processStatus;
 
@@ -131,11 +138,11 @@ public class Process implements Serializable {
 		this.processName = processName;
 	}
 
-	public String getProcessType() {
+	public ProcessType getProcessType() {
 		return this.processType;
 	}
 
-	public void setProcessType(String processType) {
+	public void setProcessType(ProcessType processType) {
 		this.processType = processType;
 	}
 

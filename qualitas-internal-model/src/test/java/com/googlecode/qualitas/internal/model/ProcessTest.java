@@ -12,16 +12,14 @@ import javax.persistence.criteria.Root;
 import junit.framework.Assert;
 
 import org.hsqldb.util.DatabaseManagerSwing;
-import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import com.google.code.p.qualitas.engines.api.configuration.ProcessStatus;
-import com.google.code.qualitas.internal.model.User_;
-import com.googlecode.qualitas.internal.model.Process;
-import com.googlecode.qualitas.internal.model.ProcessBundle;
-import com.googlecode.qualitas.internal.model.User;
+import com.googlecode.qualitas.engines.api.configuration.ProcessStatus;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 
+@Ignore
 public class ProcessTest {
 
     private static EntityManager em;
@@ -56,7 +54,7 @@ public class ProcessTest {
 
         Process process = new Process();
         process.setUser(user);
-        process.setProcessType("processType");
+        process.setProcessType(ProcessType.WS_BPEL_2_0_APACHE_ODE);
         process.setProcessStatus(ProcessStatus.UPLOADED);
         process.setInstallationDate(new Date());
         

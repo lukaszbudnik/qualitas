@@ -1,23 +1,23 @@
-package com.googlecode.qualitas.internal.model;
+package com.googlecode.qualitas.internal.model.converters;
 
 import org.eclipse.persistence.mappings.DatabaseMapping;
 import org.eclipse.persistence.mappings.converters.Converter;
 import org.eclipse.persistence.sessions.Session;
 
-import com.google.code.p.qualitas.engines.api.configuration.ProcessStatus;
+import com.googlecode.qualitas.engines.api.configuration.ProcessStatus;
 
 public class ProcessStatusConverter implements Converter {
 
     private static final long serialVersionUID = -831135597711719103L;
 
     @Override
-    public ProcessStatus convertDataValueToObjectValue(Object dataValue, Session session) {
+    public Object convertDataValueToObjectValue(Object dataValue, Session session) {
         Integer index = (Integer) dataValue;
         return ProcessStatus.values()[index];
     }
 
     @Override
-    public Integer convertObjectValueToDataValue(Object objectValue, Session session) {
+    public Object convertObjectValueToDataValue(Object objectValue, Session session) {
         ProcessStatus processStatus = (ProcessStatus) objectValue;
         Integer index = processStatus.ordinal();
         return index;
