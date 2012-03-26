@@ -60,7 +60,7 @@
 						<configuration>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${basedir}/../qualitas-execution-monitor-webservice/src/main/resources/com/google/code/p/qualitas/execution/monitor/QualitasExecutionMonitorService.wsdl</wsdl>
+									<wsdl>${basedir}/../qualitas-execution-monitor-webservice/src/main/resources/com/googlecode/qualitas/internal/execution/monitor/webservice/QualitasExecutionMonitorService.wsdl</wsdl>
 									<extraargs>
 										<extraarg>-impl</extraarg>
 										<extraarg>-verbose</extraarg>
