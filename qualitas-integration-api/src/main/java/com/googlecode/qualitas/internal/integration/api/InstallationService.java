@@ -1,4 +1,4 @@
-package com.google.code.qualitas.integration.api;
+package com.googlecode.qualitas.internal.integration.api;
 
 /**
  * The Interface BundleInstallationService.

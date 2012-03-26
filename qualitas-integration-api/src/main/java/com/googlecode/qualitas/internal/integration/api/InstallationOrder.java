@@ -1,6 +1,6 @@
-package com.google.code.qualitas.integration.api;
+package com.googlecode.qualitas.internal.integration.api;
 
-import com.google.code.qualitas.engines.api.core.ProcessType;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 
 /**
  * The Class ProcessBundleInstallationOrder.
