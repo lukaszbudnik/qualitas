@@ -1,4 +1,4 @@
-package com.google.code.qualitas.engines.api.component;
+package com.googlecode.qualitas.engines.api.component;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.google.code.p.qualitas.engines.api.configuration.QualitasConfiguration;
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.core.Entry;
+import com.googlecode.qualitas.engines.api.configuration.QualitasConfiguration;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.core.Entry;
 
 public class AbstractComponentTest {
 
