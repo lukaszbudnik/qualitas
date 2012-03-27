@@ -1,4 +1,4 @@
-package com.google.code.qualitas.webapp.home;
+package com.googlecode.qualitas.webapp.home;
 
 import java.io.IOException;
 
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.code.qualitas.engines.api.core.ProcessType;
-import com.google.code.qualitas.integration.api.InstallationException;
-import com.google.code.qualitas.integration.api.InstallationService;
-import com.google.code.qualitas.integration.api.InstallationOrder;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
+import com.googlecode.qualitas.internal.integration.api.InstallationException;
+import com.googlecode.qualitas.internal.integration.api.InstallationOrder;
+import com.googlecode.qualitas.internal.integration.api.InstallationService;
 
 /**
  * The Class HomeController.
