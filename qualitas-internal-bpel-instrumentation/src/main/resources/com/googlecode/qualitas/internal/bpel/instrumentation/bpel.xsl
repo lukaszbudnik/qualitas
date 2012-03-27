@@ -1,10 +1,10 @@
 ﻿<xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
-	xmlns:monitor="http://code.google.com/p/qualitas/execution/monitor"
-	xmlns:monitorArtifacts="http://code.google.com/p/qualitas/execution/monitor/artifacts"
+	xmlns:monitor="http://qualitas.googlecode.com/internal/execution/monitor/webservice"
+	xmlns:monitorArtifacts="http://qualitas.googlecode.com/internal/execution/monitor/webservice/artifacts"
 	xmlns:xalan="http://xml.apache.org/xalan"
-	xmlns:configuration="http://code.google.com/p/qualitas/engines/api/configuration"
+	xmlns:configuration="http://qualitas.googlecode.com/engines/api/configuration"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	exclude-result-prefixes="xalan">
 	<xsl:output method="xml" indent="yes" xalan:indent-amount="2" />
@@ -50,8 +50,8 @@
 		<xsl:copy>
 			<xsl:apply-templates select="node()|@*" />
 		</xsl:copy>
-		<bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="QualitasExecutionMonitorService.wsdl" namespace="http://code.google.com/p/qualitas/execution/monitor"/>
-		<bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="QualitasExecutionMonitorServiceArtifacts.wsdl" namespace="http://code.google.com/p/qualitas/execution/monitor/artifacts"/>
+		<bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="QualitasExecutionMonitorService.wsdl" namespace="http://qualitas.googlecode.com/internal/execution/monitor/webservice"/>
+		<bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="QualitasExecutionMonitorServiceArtifacts.wsdl" namespace="http://qualitas.googlecode.com/internal/execution/monitor/webservice/artifacts"/>
 	</xsl:template>
 
 	<!-- 

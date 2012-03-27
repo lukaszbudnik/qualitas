@@ -41,7 +41,7 @@ public class GenericBpelInstrumentor implements Instrumentor {
 
     /** The Constant QUALITAS_EXECUTION_MONITOR_PACKAGE. */
     private static final String QUALITAS_EXECUTION_MONITOR_PACKAGE = 
-        "/com/googlecode/qualitas/internal/execution/monitor/webservice";
+        "/com/googlecode/qualitas/internal/execution/monitor/webservice/";
 
     /** The Constant QUALITAS_EXECUTION_MONITOR_WSDL_NAME. */
     private static final String QUALITAS_EXECUTION_MONITOR_WSDL_NAME = 

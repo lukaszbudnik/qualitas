@@ -68,17 +68,17 @@ public class GenericBpelInstrumentorTest {
     public void testInstrument() throws InstrumentationException, IOException {
         instrumentor.instrument(bundle);
         
-        try {
-            validator.validate(bundle);
-        } catch (ValidationException e) {
-            Assert.fail("Validation failed " + e.getMessage());
-        }
-        
         Entry wsdl = bundle.getEntry("QualitasExecutionMonitorService.wsdl");
         Entry artifacts = bundle.getEntry("QualitasExecutionMonitorServiceArtifacts.wsdl");
         
         Assert.assertNotNull(wsdl);
         Assert.assertNotNull(artifacts);
+        
+        try {
+            validator.validate(bundle);
+        } catch (ValidationException e) {
+            Assert.fail("Validation failed " + e.getMessage());
+        }
 
     }
 
