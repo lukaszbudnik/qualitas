@@ -1,11 +1,11 @@
-package com.google.code.qualitas.internal.installation.validation;
+package com.googlecode.qualitas.internal.installation.validation;
 
 import org.apache.camel.Exchange;
 import org.springframework.stereotype.Component;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.validation.Validator;
-import com.google.code.qualitas.internal.installation.core.AbstractProcessor;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.validation.Validator;
+import com.googlecode.qualitas.internal.installation.core.AbstractProcessor;
 
 /**
  * The Class ValidatorProcessor.

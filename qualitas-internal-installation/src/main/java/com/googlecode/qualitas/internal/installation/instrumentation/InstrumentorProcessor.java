@@ -1,4 +1,4 @@
-package com.google.code.qualitas.internal.installation.instrumentation;
+package com.googlecode.qualitas.internal.installation.instrumentation;
 
 import java.lang.annotation.Annotation;
 import java.util.Map;
@@ -6,9 +6,9 @@ import java.util.Map;
 import org.apache.camel.Exchange;
 import org.springframework.stereotype.Component;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.instrumentation.Instrumentor;
-import com.google.code.qualitas.internal.installation.core.AbstractProcessor;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.instrumentation.Instrumentor;
+import com.googlecode.qualitas.internal.installation.core.AbstractProcessor;
 
 /**
  * The Class InstrumentorProcessor.

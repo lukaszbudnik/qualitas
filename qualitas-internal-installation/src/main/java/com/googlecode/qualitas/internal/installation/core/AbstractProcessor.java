@@ -1,4 +1,4 @@
-package com.google.code.qualitas.internal.installation.core;
+package com.googlecode.qualitas.internal.installation.core;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -11,8 +11,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-import com.google.code.qualitas.engines.api.component.Component;
-import com.google.code.qualitas.engines.api.core.ProcessType;
+import com.googlecode.qualitas.engines.api.component.Component;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 
 /**
  * The Class AbstractProcessor.
@@ -40,7 +40,7 @@ public abstract class AbstractProcessor implements Processor {
      *             the component not found
      */
     protected <T extends Component> T findQualitasComponent(Class<T> type, ProcessType processType)
-            throws ComponentNotFound {
+            throws ComponentNotFoundException {
         Map<String, T> components = context.getBeansOfType(type);
 
         for (String key : components.keySet()) {
@@ -50,7 +50,7 @@ public abstract class AbstractProcessor implements Processor {
             }
         }
 
-        throw new ComponentNotFound("Could not find a component of type " + type
+        throw new ComponentNotFoundException("Could not find a component of type " + type
                 + " for process bundle of type " + processType);
     }
 
@@ -68,7 +68,7 @@ public abstract class AbstractProcessor implements Processor {
      *             the component not found
      */
     protected <T extends Component> List<T> findQualitasComponents(Class<T> type,
-            ProcessType processType) throws ComponentNotFound {
+            ProcessType processType) throws ComponentNotFoundException {
         Map<String, T> allComponents = context.getBeansOfType(type);
 
         List<T> components = new ArrayList<T>();
@@ -81,7 +81,7 @@ public abstract class AbstractProcessor implements Processor {
         }
 
         if (components.size() == 0) {
-            throw new ComponentNotFound("Could not find a component of type " + type
+            throw new ComponentNotFoundException("Could not find a component of type " + type
                     + " for process bundle of type " + processType);
         }
 
@@ -106,7 +106,7 @@ public abstract class AbstractProcessor implements Processor {
      *             the component not found
      */
     protected <T extends Component, A extends Annotation> T findQualitasComponent(Class<T> type,
-            ProcessType processType, Class<A> annotationType) throws ComponentNotFound {
+            ProcessType processType, Class<A> annotationType) throws ComponentNotFoundException {
         List<T> components = findQualitasComponents(type, processType);
 
         T component = null;
@@ -121,7 +121,7 @@ public abstract class AbstractProcessor implements Processor {
         }
 
         if (component == null) {
-            throw new ComponentNotFound("Could not find a component of type " + type
+            throw new ComponentNotFoundException("Could not find a component of type " + type
                     + " for process bundle of type " + processType + " and annotation of type "
                     + annotationType);
         }

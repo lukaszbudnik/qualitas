@@ -1,11 +1,11 @@
-package com.google.code.qualitas.internal.installation.deployment;
+package com.googlecode.qualitas.internal.installation.deployment;
 
 import org.apache.camel.Exchange;
 import org.springframework.stereotype.Component;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.deployment.Deployer;
-import com.google.code.qualitas.internal.installation.core.AbstractProcessor;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.deployment.Deployer;
+import com.googlecode.qualitas.internal.installation.core.AbstractProcessor;
 
 /**
  * The Class DeployerProcessor.

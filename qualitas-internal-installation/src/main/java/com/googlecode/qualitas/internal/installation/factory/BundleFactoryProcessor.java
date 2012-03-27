@@ -1,14 +1,14 @@
-package com.google.code.qualitas.internal.installation.factory;
+package com.googlecode.qualitas.internal.installation.factory;
 
 import java.util.Map;
 
 import org.apache.camel.Exchange;
 import org.springframework.stereotype.Component;
 
-import com.google.code.qualitas.engines.api.core.Bundle;
-import com.google.code.qualitas.engines.api.core.ProcessType;
-import com.google.code.qualitas.engines.api.factory.BundleFactory;
-import com.google.code.qualitas.internal.installation.core.AbstractProcessor;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
+import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.factory.BundleFactory;
+import com.googlecode.qualitas.internal.installation.core.AbstractProcessor;
 
 /**
  * The Class DeployerProcessor.

@@ -7,10 +7,10 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<import resource="classpath*:META-INF/spring/qualitas-engines-ode-context.xml" />
-	<import resource="classpath*:META-INF/spring/qualitas-internal-bpel-spring.xml" />
+	<import resource="classpath*:META-INF/spring/qualitas-internal-bpel-context.xml" />
 
 	<context:component-scan
-		base-package="com.google.code.qualitas.internal.installation" />
+		base-package="com.googlecode.qualitas.internal.installation" />
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<route>
@@ -37,7 +37,7 @@
 				<doCatch>
 					<!-- It is perfectly fine not to have PostInstrument Instrumentor. Skip 
 						post instrumentation phase and continue. -->
-					<exception>com.google.code.qualitas.internal.installation.core.ComponentNotFound</exception>
+					<exception>com.googlcode.qualitas.internal.installation.core.ComponentNotFoundException</exception>
 				</doCatch>
 			</doTry>
 			<process ref="deployerProcessor" />

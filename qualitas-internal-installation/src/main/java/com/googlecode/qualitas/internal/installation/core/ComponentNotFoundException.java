@@ -1,9 +1,9 @@
-package com.google.code.qualitas.internal.installation.core;
+package com.googlecode.qualitas.internal.installation.core;
 
 /**
  * The Class ComponentNotFound.
  */
-public class ComponentNotFound extends Exception {
+public class ComponentNotFoundException extends Exception {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3963304386395695107L;
@@ -11,7 +11,7 @@ public class ComponentNotFound extends Exception {
     /**
      * The Constructor.
      */
-    public ComponentNotFound() {
+    public ComponentNotFoundException() {
     }
 
     /**
@@ -20,7 +20,7 @@ public class ComponentNotFound extends Exception {
      * @param message
      *            the message
      */
-    public ComponentNotFound(String message) {
+    public ComponentNotFoundException(String message) {
         super(message);
     }
 
@@ -30,7 +30,7 @@ public class ComponentNotFound extends Exception {
      * @param cause
      *            the cause
      */
-    public ComponentNotFound(Throwable cause) {
+    public ComponentNotFoundException(Throwable cause) {
         super(cause);
     }
 
@@ -42,7 +42,7 @@ public class ComponentNotFound extends Exception {
      * @param cause
      *            the cause
      */
-    public ComponentNotFound(String message, Throwable cause) {
+    public ComponentNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 
