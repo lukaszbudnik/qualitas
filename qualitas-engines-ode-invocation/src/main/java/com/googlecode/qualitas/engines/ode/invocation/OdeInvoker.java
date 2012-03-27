@@ -1,7 +1,7 @@
-package com.google.code.qualitas.engines.ode.invocation;
+package com.googlecode.qualitas.engines.ode.invocation;
 
-import com.google.code.qualitas.engines.api.core.ProcessType;
-import com.google.code.qualitas.engines.api.invocation.webservice.AbstractWebServiceInvoker;
+import com.googlecode.qualitas.engines.api.configuration.ProcessType;
+import com.googlecode.qualitas.engines.api.invocation.webservice.AbstractWebServiceInvoker;
 
 /**
  * The Class OdeExecutor.
