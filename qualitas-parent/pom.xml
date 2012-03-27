@@ -299,6 +299,13 @@
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
+				<groupId>com.googlecode.qualitas.execution.monitor</groupId>
+				<artifactId>qualitas-execution-monitor-webservice</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
