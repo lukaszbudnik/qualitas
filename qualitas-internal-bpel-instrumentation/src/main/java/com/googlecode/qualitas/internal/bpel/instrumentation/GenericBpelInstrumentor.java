@@ -37,11 +37,11 @@ public class GenericBpelInstrumentor implements Instrumentor {
 
     /** The Constant WS_BPEL_TRANSFORM_XSL. */
     private static final String WS_BPEL_TRANSFORM_XSL = 
-        "/com/google/code/qualitas/internal/bpel/instrumentation/bpel.xsl";
+        "/com/googlecode/qualitas/internal/bpel/instrumentation/bpel.xsl";
 
     /** The Constant QUALITAS_EXECUTION_MONITOR_PACKAGE. */
     private static final String QUALITAS_EXECUTION_MONITOR_PACKAGE = 
-        "/com/google/code/p/qualitas/execution/monitor/";
+        "/com/googlecode/qualitas/internal/execution/monitor/webservice";
 
     /** The Constant QUALITAS_EXECUTION_MONITOR_WSDL_NAME. */
     private static final String QUALITAS_EXECUTION_MONITOR_WSDL_NAME = 
