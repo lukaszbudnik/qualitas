@@ -12,6 +12,8 @@ import javax.persistence.criteria.Root;
 import junit.framework.Assert;
 
 import org.hsqldb.util.DatabaseManagerSwing;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -33,10 +35,18 @@ public class ProcessTest {
         DatabaseManagerSwing.main(new String[] { "--url","jdbc:hsqldb:mem:test", "--noexit" });
     }
     
+    @Before
+    public void   setUp() {
+        em.getTransaction().begin();
+    }
+    
+    @After
+    public void tearDown() {
+        em.getTransaction().commit();
+    }
+    
     @Test
     public void testCreateNewProcess() {
-        em.getTransaction().begin();
-
         User user = new User();
         user.setOpenIDUsername("openidusername");
 
@@ -66,14 +76,10 @@ public class ProcessTest {
         
         Assert.assertTrue(process.getProcessId() > 0);
         Assert.assertTrue(processBundle.getProcessBundleId() > 0);
-        
-        em.getTransaction().commit();
     }
     
     @Test
     public void testUpdateProcess() {
-        em.getTransaction().begin();
-        
         Process process = em.find(Process.class, new Long(1));
         process.setProcessName("processName");
         ProcessBundle instrumentedProcessBundle = new ProcessBundle();
@@ -81,8 +87,6 @@ public class ProcessTest {
         process.setInstrumentedProcessBundle(instrumentedProcessBundle);
         
         em.merge(process);
-        
-        em.getTransaction().commit();
     }
 
 }

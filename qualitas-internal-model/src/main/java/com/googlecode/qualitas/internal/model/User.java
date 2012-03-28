@@ -53,5 +53,40 @@ public class User implements Serializable {
 	public void setProcesses(List<Process> processes) {
 		this.processes = processes;
 	}
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((openIDUsername == null) ? 0 : openIDUsername.hashCode());
+        result = prime * result + (int) (userId ^ (userId >>> 32));
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof User)) {
+            return false;
+        }
+        User other = (User) obj;
+        if (openIDUsername == null) {
+            if (other.openIDUsername != null) {
+                return false;
+            }
+        } else if (!openIDUsername.equals(other.openIDUsername)) {
+            return false;
+        }
+        if (userId != other.userId) {
+            return false;
+        }
+        return true;
+    }
 	
 }

@@ -18,6 +18,7 @@
 			<property name="eclipselink.target-database" value="HSQL"/>
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode" value="both" />
+			<property name="eclipselink.logging.level.sql" value="ALL" />
 		</properties>
 	</persistence-unit>
 </persistence>
