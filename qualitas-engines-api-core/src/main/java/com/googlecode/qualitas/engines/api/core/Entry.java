@@ -1,5 +1,7 @@
 package com.googlecode.qualitas.engines.api.core;
 
+import java.util.Arrays;
+
 /**
  * The Class Entry.
  */
@@ -27,7 +29,7 @@ public class Entry {
      */
     public Entry(String name, byte[] content) {
         this.name = name;
-        this.content = content;
+        this.content = Arrays.copyOf(content, content.length);
     }
 
     /**
@@ -55,7 +57,7 @@ public class Entry {
      * @return the content
      */
     public byte[] getContent() {
-        return content;
+        return Arrays.copyOf(content, content.length);
     }
 
     /**
@@ -65,7 +67,7 @@ public class Entry {
      *            the new content
      */
     public void setContent(byte[] content) {
-        this.content = content;
+        this.content = Arrays.copyOf(content, content.length);
     }
 
 }
