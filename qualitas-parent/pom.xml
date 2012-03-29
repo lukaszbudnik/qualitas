@@ -306,6 +306,24 @@
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
+				<groupId>com.googlecode.qualitas.internal.model</groupId>
+				<artifactId>qualitas-internal-model</artifactId>
+				<version>${project.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.qualitas.internal.model</groupId>
+				<artifactId>qualitas-internal-model-spring</artifactId>
+				<version>${project.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.qualitas.internal.services</groupId>
+				<artifactId>qualitas-internal-services</artifactId>
+				<version>${project.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
