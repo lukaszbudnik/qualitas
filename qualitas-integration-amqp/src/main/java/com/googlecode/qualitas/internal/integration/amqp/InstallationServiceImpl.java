@@ -19,7 +19,7 @@ import com.googlecode.qualitas.internal.integration.api.InstallationService;
 /**
  * The Class InstallationServiceImpl.
  */
-@Service
+@Service("amqpInstallationService")
 public class InstallationServiceImpl implements InstallationService {
 
     /** The Constant QUALITAS_PROCESS_TYPE_HEADER. */

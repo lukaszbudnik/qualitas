@@ -8,7 +8,7 @@
 	http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd
 	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-	<context:component-scan base-package="com.googlecode.qualitas.integration.amqp" />
+	<context:component-scan base-package="com.googlecode.qualitas.internal.integration.amqp" />
 
 	<context:annotation-config />
 
