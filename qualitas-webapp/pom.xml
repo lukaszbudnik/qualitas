@@ -67,8 +67,8 @@
 			<artifactId>qualitas-engines-api-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.googlecode.qualitas.services.security</groupId>
-			<artifactId>qualitas-services-security-spring</artifactId>
+			<groupId>com.googlecode.qualitas.security.services</groupId>
+			<artifactId>qualitas-security-services-spring</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
