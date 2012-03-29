@@ -1,6 +1,7 @@
 package com.googlecode.qualitas.webapp.home;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,6 +23,8 @@ import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 import com.googlecode.qualitas.internal.integration.api.InstallationException;
 import com.googlecode.qualitas.internal.integration.api.InstallationOrder;
 import com.googlecode.qualitas.internal.integration.api.InstallationService;
+import com.googlecode.qualitas.internal.model.Process;
+import com.googlecode.qualitas.internal.services.ProcessManager;
 
 /**
  * The Class HomeController.
@@ -31,10 +34,9 @@ import com.googlecode.qualitas.internal.integration.api.InstallationService;
 @RequestMapping("/home")
 @SessionAttributes("username")
 public class HomeController {
-
-    /** The installation service. */
+    
     @Autowired
-    private InstallationService installationService;
+    private ProcessManager processManager;
 
     /** The Constant LOG. */
     private static final Log LOG = LogFactory.getLog(HomeController.class);
@@ -52,8 +54,11 @@ public class HomeController {
     public String index(HttpServletRequest request, Model model) {
 
         String username = request.getUserPrincipal().getName();
+        
+        List<Process> processes = processManager.getProcessesByUsername(username);
 
         model.addAttribute("username", username);
+        model.addAttribute("processes", processes);
 
         return "home/index";
     }
@@ -76,22 +81,14 @@ public class HomeController {
     @RequestMapping(value = "/index", method = RequestMethod.POST)
     public String indexUpload(Model model, @ModelAttribute("username") String username,
             @RequestParam("file") MultipartFile file) throws IOException, InstallationException {
-
+        
         LOG.debug("Uploaded file " + file.getOriginalFilename());
-
+        
         byte[] bundle = IOUtils.toByteArray(file.getInputStream());
+        
+        Process process = processManager.installNewProcess(username, ProcessType.WS_BPEL_2_0_APACHE_ODE, file.getContentType(), bundle);
 
-        InstallationOrder installationOrder = new InstallationOrder();
-
-        installationOrder.setBundle(bundle);
-        installationOrder.setUsername(username);
-        installationOrder.setContentType(file.getContentType());
-        installationOrder.setProcessId(System.currentTimeMillis());
-        installationOrder.setProcessType(ProcessType.WS_BPEL_2_0_APACHE_ODE);
-
-        installationService.install(installationOrder);
-
-        LOG.debug("File sent");
+        model.addAttribute("process", process);
 
         return "home/index";
     }
