@@ -16,15 +16,23 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class XSLTUtilsTest {
 
-	private static final String TEST_XML = "src/test/resources/test_transform.xml";
-	private static final String TEST_XML_2 = "src/test/resources/test_transform_2.xml";
+    private static final String SOURCE_TEST_XML = "src/test/resources/test_transform.xml";
+	private static final String TEST_XML = "target/test_transform.xml";
+	private static final String TEST_XML_2 = "target/test_transform_2.xml";
 	private static final String TEST_XSL_RESOURCE = "/test.xsl";
 	private static final String TEST_XSL_FILE = "src/test/resources/test.xsl";
 
+	@BeforeClass
+	public static void setUpClass() throws IOException {
+	    FileUtils.copyFile(new File(SOURCE_TEST_XML), new File(TEST_XML));
+	    FileUtils.copyFile(new File(SOURCE_TEST_XML), new File(TEST_XML_2));
+	}
+	
 	/*
 	 * 3 URL methods
 	 */
