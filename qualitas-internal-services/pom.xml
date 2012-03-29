@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>com.googlecode.qualitas</groupId>
+		<artifactId>qualitas-parent</artifactId>
+		<version>0.0.5-SNAPSHOT</version>
+		<relativePath>../qualitas-parent</relativePath>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.googlecode.qualitas.internal.services</groupId>
+	<artifactId>qualitas-internal-services</artifactId>
+	<packaging>jar</packaging>
+
+	<name>qualitas-internal-services</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.qualitas.internal.model</groupId>
+			<artifactId>qualitas-internal-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.qualitas.engines.api</groupId>
+			<artifactId>qualitas-engines-api-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.qualitas.internal.model</groupId>
+			<artifactId>qualitas-internal-model</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>com.googlecode.qualitas.integration.api</groupId>
+            <artifactId>qualitas-integration-api</artifactId>
+        </dependency>
+	</dependencies>
+</project>
