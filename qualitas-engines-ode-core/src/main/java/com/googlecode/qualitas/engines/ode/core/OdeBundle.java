@@ -189,7 +189,7 @@ public class OdeBundle extends AbstractBundle {
             try {
                 FileUtils.forceDelete(tmpDir);
             } catch (IOException e) {
-                if (tmpDir != null && tmpDir.exists()) {
+                if (tmpDir.exists()) {
                     tmpDir.deleteOnExit();
                 } else {
                     throw e;
@@ -201,7 +201,7 @@ public class OdeBundle extends AbstractBundle {
             try {
                 FileUtils.forceDelete(tmpProcessBundle);
             } catch (IOException e) {
-                if (tmpProcessBundle != null && tmpProcessBundle.exists()) {
+                if (tmpProcessBundle.exists()) {
                     tmpProcessBundle.deleteOnExit();
                 } else {
                     throw e;
@@ -264,10 +264,14 @@ public class OdeBundle extends AbstractBundle {
 
     /**
      * Creates the temp dir.
+     * @throws IOException 
      */
-    private void createTempDir() {
+    private void createTempDir() throws IOException {
         tmpDir = new File(ROOT_TMP_DIR, tmpProcessBundleName);
-        tmpDir.mkdir();
+        boolean directoryCreated = tmpDir.mkdir();
+        if (!directoryCreated) {
+            throw new IOException("Could not create temporary directory " + tmpDir.getCanonicalPath());
+        }
         tmpDir.deleteOnExit();
     }
 
