@@ -9,3 +9,5 @@ target
 Servers
 *.jpr
 pom.xml.versionsBackup
+createDDL.jdbc
+dropDDL.jdbc
