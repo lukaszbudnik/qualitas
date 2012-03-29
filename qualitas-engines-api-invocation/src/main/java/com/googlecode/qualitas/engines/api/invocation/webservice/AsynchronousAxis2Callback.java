@@ -83,7 +83,7 @@ public class AsynchronousAxis2Callback implements AxisCallback {
      */
     private void doNotify() {
         synchronized (this) {
-            this.notify();
+            this.notifyAll();
         }
     }
 
