@@ -37,7 +37,7 @@ public class RepositoryTest {
         em = emf.createEntityManager();
 
         repository = new Repository();
-        repository.setEntityManager(em);
+        repository.em = em;
     }
 
     @Before
