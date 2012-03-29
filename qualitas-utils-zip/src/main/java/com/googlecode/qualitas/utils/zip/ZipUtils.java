@@ -11,6 +11,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -100,6 +101,8 @@ public final class ZipUtils {
             out.close();
             in.close();
         }
+        
+        zip.close();
     }
 
     /**
@@ -121,14 +124,31 @@ public final class ZipUtils {
      * @throws IOException the IO exception
      */
     public static void createArchive(File file, File directory) throws IOException {
+        LOG.debug("Trying to create zip archive " + file.getAbsolutePath() + " from "
+                + directory.getAbsolutePath() + " directory");
+        
+        if (!directory.isDirectory()) {
+            LOG.error("Directory '" + directory.getName() + "' does not point to a directory");
+            throw new IllegalArgumentException("Directory name '" + directory.getName()
+                    + "' does not point to a directory");
+        }
+        
+        ZipOutputStream out = new ZipOutputStream(new FileOutputStream(file));
+        out.setLevel(Deflater.BEST_COMPRESSION);
+        
         try {
-            doCreateArchive(file, directory);
+            doCreateArchive(directory, out);
         } catch (IOException e) {
             String msg = "Could not create archive " + file.getAbsolutePath() + " from "
                     + directory.getAbsolutePath() + " directory";
             LOG.error(msg, e);
             throw e;
+        } finally {
+            out.close();
         }
+        
+        LOG.debug("Successfully created archive " + file.getAbsolutePath() + " from "
+                + directory.getAbsolutePath() + " directory");
     }
 
     /**
@@ -138,45 +158,35 @@ public final class ZipUtils {
      * @param directory the directory
      * @throws IOException the IO exception
      */
-    private static void doCreateArchive(File file, File directory) throws IOException {
-        LOG.debug("Trying to create archive " + file.getAbsolutePath() + " from "
-                + directory.getAbsolutePath() + " directory");
-
-        if (!directory.isDirectory()) {
-            LOG.error("Directory '" + directory.getName() + "' does not point to a directory");
-            throw new IllegalArgumentException("Directory name '" + directory.getName()
-                    + "' does not point to a directory");
-        }
-
-        ZipOutputStream out = new ZipOutputStream(new FileOutputStream(file));
-
-        out.setLevel(Deflater.BEST_COMPRESSION);
+    private static void doCreateArchive(File directory, ZipOutputStream out) throws IOException {
 
         for (File f : directory.listFiles()) {
-
+            
             if (!f.isFile()) {
                 continue;
             }
 
-            FileInputStream in = new FileInputStream(f);
-
             out.putNextEntry(new ZipEntry(f.getName()));
 
-            byte[] buffer = new byte[BUFFER_SIZE];
-            int length;
+            byte[] buffer;
+            FileInputStream in = null;
 
-            while ((length = in.read(buffer)) > 0) {
-                out.write(buffer, 0, length);
+            try {
+                in = new FileInputStream(f);
+                buffer = IOUtils.toByteArray(in);
+            } catch (IOException e) {
+                throw e;
+            } finally {
+                if (in != null) {
+                    in.close();
+                }
             }
+            
+            IOUtils.write(buffer, out);
 
             out.closeEntry();
-            in.close();
+            
         }
-
-        out.close();
-
-        LOG.debug("Successfully created archive " + file.getAbsolutePath() + " from "
-                + directory.getAbsolutePath() + " directory");
     }
 
 }
