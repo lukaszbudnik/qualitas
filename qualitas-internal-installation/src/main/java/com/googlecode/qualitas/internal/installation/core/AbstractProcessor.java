@@ -43,8 +43,8 @@ public abstract class AbstractProcessor implements Processor {
             throws ComponentNotFoundException {
         Map<String, T> components = context.getBeansOfType(type);
 
-        for (String key : components.keySet()) {
-            T component = components.get(key);
+        for (Map.Entry<String, T> entry: components.entrySet()) {
+            T component = entry.getValue();
             if (component.isSupported(processType)) {
                 return component;
             }
@@ -73,8 +73,8 @@ public abstract class AbstractProcessor implements Processor {
 
         List<T> components = new ArrayList<T>();
 
-        for (String key : allComponents.keySet()) {
-            T component = allComponents.get(key);
+        for (Map.Entry<String, T> entry: allComponents.entrySet()) {
+            T component = entry.getValue();
             if (component.isSupported(processType)) {
                 components.add(component);
             }
