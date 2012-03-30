@@ -17,6 +17,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
 		</dependency>
@@ -60,7 +64,7 @@
 						<configuration>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${basedir}/../qualitas-execution-monitor-webservice/src/main/resources/com/googlecode/qualitas/internal/execution/monitor/webservice/QualitasExecutionMonitorService.wsdl</wsdl>
+									<wsdl>${basedir}/../qualitas-internal-monitor-webservice/src/main/resources/com/googlecode/qualitas/internal/monitor/webservice/QualitasMonitorService.wsdl</wsdl>
 									<extraargs>
 										<extraarg>-impl</extraarg>
 										<extraarg>-verbose</extraarg>

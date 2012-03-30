@@ -8,12 +8,11 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.googlecode.qualitas.execution.monitor</groupId>
-	<artifactId>qualitas-execution-monitor-webservice</artifactId>
+	<groupId>com.googlecode.qualitas.internal.monitor</groupId>
+	<artifactId>qualitas-internal-monitor-webservice</artifactId>
 	<packaging>jar</packaging>
 
 	<name>qualitas-execution-monitor-webservice</name>
-	<url>http://maven.apache.org</url>
 
 	<properties>
 		<maven.test.skip>true</maven.test.skip>

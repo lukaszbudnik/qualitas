@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+	xmlns:tns="http://qualitas.googlecode.com/internal/monitor/webservice/artifacts"
+	xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+	xmlns:wsdl="http://qualitas.googlecode.com/internal/monitor/webservice"
+	name="QualitasMonitorServiceArtifacts"
+	targetNamespace="http://qualitas.googlecode.com/internal/monitor/webservice/artifacts">
+	<plnk:partnerLinkType name="QualitasMonitorServicePartnerLinkType">
+		<plnk:role name="QualitasMonitorServiceProvider" portType="wsdl:QualitasMonitorWebService" />
+	</plnk:partnerLinkType>
+	<import location="QualitasMonitorService.wsdl"
+		namespace="http://qualitas.googlecode.com/internal/monitor/webservice" />
+</definitions>

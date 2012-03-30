@@ -68,8 +68,8 @@ public class GenericBpelInstrumentorTest {
     public void testInstrument() throws InstrumentationException, IOException {
         instrumentor.instrument(bundle);
         
-        Entry wsdl = bundle.getEntry("QualitasExecutionMonitorService.wsdl");
-        Entry artifacts = bundle.getEntry("QualitasExecutionMonitorServiceArtifacts.wsdl");
+        Entry wsdl = bundle.getEntry("QualitasMonitorService.wsdl");
+        Entry artifacts = bundle.getEntry("QualitasMonitorServiceArtifacts.wsdl");
         
         Assert.assertNotNull(wsdl);
         Assert.assertNotNull(artifacts);

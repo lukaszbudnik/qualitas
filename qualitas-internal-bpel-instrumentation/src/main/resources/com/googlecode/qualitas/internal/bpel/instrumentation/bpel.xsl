@@ -1,8 +1,8 @@
 ﻿<xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
-	xmlns:monitor="http://qualitas.googlecode.com/internal/execution/monitor/webservice"
-	xmlns:monitorArtifacts="http://qualitas.googlecode.com/internal/execution/monitor/webservice/artifacts"
+	xmlns:monitor="http://qualitas.googlecode.com/internal/monitor/webservice"
+	xmlns:monitorArtifacts="http://qualitas.googlecode.com/internal/monitor/webservice/artifacts"
 	xmlns:xalan="http://xml.apache.org/xalan"
 	xmlns:configuration="http://qualitas.googlecode.com/engines/api/configuration"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -50,8 +50,8 @@
 		<xsl:copy>
 			<xsl:apply-templates select="node()|@*" />
 		</xsl:copy>
-		<bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="QualitasExecutionMonitorService.wsdl" namespace="http://qualitas.googlecode.com/internal/execution/monitor/webservice"/>
-		<bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="QualitasExecutionMonitorServiceArtifacts.wsdl" namespace="http://qualitas.googlecode.com/internal/execution/monitor/webservice/artifacts"/>
+		<bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="QualitasMonitorService.wsdl" namespace="http://qualitas.googlecode.com/internal/monitor/webservice"/>
+		<bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="QualitasMonitorServiceArtifacts.wsdl" namespace="http://qualitas.googlecode.com/internal/monitor/webservice/artifacts"/>
 	</xsl:template>
 
 	<!-- 
@@ -64,7 +64,7 @@
 		<xsl:copy>
 			<xsl:apply-templates select="node()|@*" />
 		</xsl:copy>
-	    <bpws:partnerLink name="QualitasExecutionMonitorService" partnerLinkType="monitorArtifacts:QualitasExecutionMonitorServicePartnerLinkType" partnerRole="QualitasExecutionMonitorServiceProvider"/>
+	    <bpws:partnerLink name="QualitasMonitorService" partnerLinkType="monitorArtifacts:QualitasMonitorServicePartnerLinkType" partnerRole="QualitasMonitorServiceProvider"/>
 	</xsl:template>
 
 	<!-- 
@@ -77,8 +77,8 @@
 		<xsl:copy>
 			<xsl:apply-templates select="node()|@*" />
 		</xsl:copy>
-		<bpws:variable name="QualitasExecutionMonitorServiceRequest" messageType="monitor:log" />
-		<bpws:variable name="QualitasExecutionMonitorSequenceNumber" type="xsd:int" />
+		<bpws:variable name="QualitasMonitorServiceRequest" messageType="monitor:log" />
+		<bpws:variable name="QualitasMonitorSequenceNumber" type="xsd:int" />
 	</xsl:template>
 
 	<!-- 
@@ -98,7 +98,7 @@
 		<bpws:assign>
 			<bpws:copy>
                 <bpws:from>0</bpws:from>
-                <bpws:to><![CDATA[$QualitasExecutionMonitorSequenceNumber]]></bpws:to>
+                <bpws:to><![CDATA[$QualitasMonitorSequenceNumber]]></bpws:to>
             </bpws:copy>
 		</bpws:assign>
 		
@@ -226,12 +226,12 @@
 			            </log>
 					</bpws:literal>
 				</bpws:from>
-				<bpws:to><![CDATA[$QualitasExecutionMonitorServiceRequest.parameters]]></bpws:to>
+				<bpws:to><![CDATA[$QualitasMonitorServiceRequest.parameters]]></bpws:to>
 			</bpws:copy>
 		  	<bpws:copy>
                 <bpws:from><![CDATA[$QualitasProcessInstanceId]]></bpws:from>
                 <bpws:to part="parameters"
-					variable="QualitasExecutionMonitorServiceRequest">
+					variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:qualitasProcessInstanceId]]></bpws:query>
 				</bpws:to>
             </bpws:copy>
@@ -243,18 +243,18 @@
 		<xsl:param name="mep" />
 		<bpws:assign>
             <bpws:copy>
-				<bpws:from><![CDATA[$QualitasExecutionMonitorSequenceNumber]]></bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:from><![CDATA[$QualitasMonitorSequenceNumber]]></bpws:from>
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:sequenceNumber]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
             <bpws:copy>
-            	<bpws:from><![CDATA[$QualitasExecutionMonitorSequenceNumber + 1]]></bpws:from>
-            	<bpws:to><![CDATA[$QualitasExecutionMonitorSequenceNumber]]></bpws:to>
+            	<bpws:from><![CDATA[$QualitasMonitorSequenceNumber + 1]]></bpws:from>
+            	<bpws:to><![CDATA[$QualitasMonitorSequenceNumber]]></bpws:to>
             </bpws:copy>
             <bpws:copy>
 				<bpws:from><bpws:literal><xsl:value-of select="concat('invocation-',  generate-id())"></xsl:value-of></bpws:literal></bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:invocationStep]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
@@ -264,7 +264,7 @@
 						<xsl:value-of select="$activity/@partnerLink"></xsl:value-of>
 					</xsl:attribute>
 				</bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:EPR]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
@@ -274,7 +274,7 @@
 						<xsl:value-of select="$activity/@partnerLink" />
 					</bpws:literal>
 				</bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:partner]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
@@ -284,7 +284,7 @@
 						<xsl:value-of select="$activity/@operation" />
 					</bpws:literal>
 				</bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:service]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
@@ -294,7 +294,7 @@
 						<xsl:value-of select="$mep" />
 					</bpws:literal>
 				</bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:mep]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
@@ -305,7 +305,7 @@
 		<bpws:assign>
 			<bpws:copy>
 				<bpws:from><![CDATA[current-dateTime()]]></bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:inTimestamp]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
@@ -317,7 +317,7 @@
 		<bpws:assign>
 			<bpws:copy>
 				<bpws:from>$<xsl:value-of select="$activity/@inputVariable" /></bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:input]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
@@ -328,7 +328,7 @@
 		<bpws:assign>
 			<bpws:copy>
 				<bpws:from><![CDATA[current-dateTime()]]></bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:outTimestamp]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
@@ -340,7 +340,7 @@
 		<bpws:assign>
 			<bpws:copy>
 				<bpws:from>$<xsl:value-of select="$activity/@outputVariable" /></bpws:from>
-				<bpws:to part="parameters" variable="QualitasExecutionMonitorServiceRequest">
+				<bpws:to part="parameters" variable="QualitasMonitorServiceRequest">
 					<bpws:query><![CDATA[monitor:output]]></bpws:query>
 				</bpws:to>
 			</bpws:copy>
@@ -349,9 +349,9 @@
 
 	<!-- invoke monitor -->
 	<xsl:template name="invoke-monitor">
-		<bpws:invoke inputVariable="QualitasExecutionMonitorServiceRequest"  
-			operation="log" partnerLink="QualitasExecutionMonitorService"
-			portType="monitor:QualitasExecutionMonitorServicePortType"/>
+		<bpws:invoke inputVariable="QualitasMonitorServiceRequest"  
+			operation="log" partnerLink="QualitasMonitorService"
+			portType="monitor:QualitasMonitorServicePortType"/>
 	</xsl:template>
 
 </xsl:stylesheet>

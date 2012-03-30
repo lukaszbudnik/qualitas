@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://qualitas.googlecode.com/internal/monitor/webservice"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="QualitasMonitorService"
+	targetNamespace="http://qualitas.googlecode.com/internal/monitor/webservice">
+	<types>
+		<xsd:schema xmlns:tns="http://qualitas.googlecode.com/internal/monitor/webservice"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://qualitas.googlecode.com/internal/monitor/webservice"
+			version="1.0">
+			<xsd:element name="log" type="tns:log" />
+			<xsd:complexType name="log">
+				<xs:sequence>
+					<xs:element form="qualified"
+						name="qualitasProcessInstanceId" type="xs:long" />
+					<xs:element form="qualified" name="EPR" type="xs:string" />
+					<xs:element form="qualified" name="partner" type="xs:string" />
+					<xs:element form="qualified" name="service" type="xs:string" />
+					<xs:element form="qualified" name="mep" type="xs:string" />
+					<xs:element form="qualified" name="invocationStep" type="xs:string" />
+					<xs:element form="qualified" name="sequenceNumber" type="xs:int" />
+					<xs:element form="qualified" name="inTimestamp" type="xsd:dateTime" />
+					<xs:element form="qualified" name="outTimestamp" type="xsd:dateTime" />
+					<xs:element form="qualified" name="input" type="xsd:anyType" />
+					<xs:element form="qualified" name="output" type="xsd:anyType" />
+				</xs:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</types>
+	<message name="log">
+		<part element="tns:log" name="parameters"></part>
+	</message>
+	<portType name="QualitasMonitorWebService">
+		<operation name="log">
+			<input message="tns:log"></input>
+		</operation>
+	</portType>
+	<binding name="QualitasMonitorPortBinding" type="tns:QualitasMonitorWebService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="log">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+		</operation>
+	</binding>
+	<service name="QualitasMonitorService">
+		<port binding="tns:QualitasMonitorPortBinding" name="QualitasMonitorPort">
+			<soap:address
+				location="http://localhost:9292/QualitasMonitorService/QualitasMonitorWebService" />
+		</port>
+	</service>
+</definitions>

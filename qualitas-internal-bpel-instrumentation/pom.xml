@@ -53,8 +53,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.googlecode.qualitas.execution.monitor</groupId>
-            <artifactId>qualitas-execution-monitor-webservice</artifactId>
+            <groupId>com.googlecode.qualitas.internal.monitor</groupId>
+            <artifactId>qualitas-internal-monitor-webservice</artifactId>
         </dependency>
         <dependency>
             <groupId>com.googlecode.qualitas.engines.ode</groupId>
