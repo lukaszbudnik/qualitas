@@ -10,7 +10,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.googlecode.qualitas.internal.installation</groupId>
-	<artifactId>qualitas-internal-installation</artifactId>
+	<artifactId>qualitas-internal-installation-camel</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>

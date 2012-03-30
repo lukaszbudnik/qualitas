@@ -305,13 +305,14 @@
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
+			<!-- 
 			<dependency>
                 <groupId>com.googlecode.qualitas.internal.monitor</groupId>
                 <artifactId>qualitas-internal-monitor-camel</artifactId>
                 <version>${project.version}</version>
                 <type>jar</type>
                 <scope>compile</scope>
-            </dependency>
+            </dependency> -->
 			<dependency>
 				<groupId>com.googlecode.qualitas.internal.model</groupId>
 				<artifactId>qualitas-internal-model</artifactId>
