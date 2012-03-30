@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -331,8 +332,8 @@ public final class XSLTUtils {
     public static void transformDocument(Transformer transformer, Source in, Result out,
             Map<String, Object> params) throws TransformerException {
         if (params != null) {
-            for (String key : params.keySet()) {
-                transformer.setParameter(key, params.get(key));
+            for (Entry<String, Object> entry : params.entrySet()) {
+                transformer.setParameter(entry.getKey(), entry.getValue());
             }
         }
         try {
@@ -342,7 +343,6 @@ public final class XSLTUtils {
             LOG.error(msg, e);
             throw e;
         }
-
     }
 
     /**
