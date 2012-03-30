@@ -186,19 +186,27 @@ public class GenericBpelInstrumentor implements Instrumentor {
      *             the IO exception
      */
     private void addQualitasFiles(Bundle bundle) throws IOException {
-        InputStream is = this.getClass().getResourceAsStream(
+        InputStream monitorIs = GenericBpelInstrumentor.class.getResourceAsStream(
                 QUALITAS_EXECUTION_MONITOR_PACKAGE + QUALITAS_EXECUTION_MONITOR_WSDL_NAME);
-        byte[] qualitasExecutionMonitorWSDL = IOUtils.toByteArray(is);
-        is.close();
+        byte[] qualitasExecutionMonitorWSDL;
+        try {
+            qualitasExecutionMonitorWSDL = IOUtils.toByteArray(monitorIs);
+        } finally {
+            monitorIs.close();
+        }
 
         Entry qualitasExecutionMonitorWSDLEntry = new Entry(QUALITAS_EXECUTION_MONITOR_WSDL_NAME,
                 qualitasExecutionMonitorWSDL);
         bundle.addEntry(qualitasExecutionMonitorWSDLEntry);
 
-        is = this.getClass().getResourceAsStream(
+        InputStream artifactsIs = GenericBpelInstrumentor.class.getResourceAsStream(
                 QUALITAS_EXECUTION_MONITOR_PACKAGE + QUALITAS_EXECUTION_MONITOR_ARTIFACTS_NAME);
-        byte[] qualitasExecutionMonitorArtifacts = IOUtils.toByteArray(is);
-        is.close();
+        byte[] qualitasExecutionMonitorArtifacts;
+        try {
+            qualitasExecutionMonitorArtifacts = IOUtils.toByteArray(artifactsIs);
+        } finally {
+            artifactsIs.close();
+        }
 
         Entry qualitasExecutionMonitorArtifactsEntry = new Entry(
                 QUALITAS_EXECUTION_MONITOR_ARTIFACTS_NAME, qualitasExecutionMonitorArtifacts);
@@ -218,7 +226,7 @@ public class GenericBpelInstrumentor implements Instrumentor {
      */
     private byte[] enhanceProcessDefinition(Document processDefinition) throws IOException,
             TransformerException {
-        Source stylesheet = new StreamSource(this.getClass().getResourceAsStream(
+        Source stylesheet = new StreamSource(GenericBpelInstrumentor.class.getResourceAsStream(
                 WS_BPEL_TRANSFORM_XSL));
         Source source = new DOMSource(processDefinition);
         StreamResult result = new StreamResult();
