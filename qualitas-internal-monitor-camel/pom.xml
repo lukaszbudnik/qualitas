@@ -9,8 +9,8 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.googlecode.qualitas.internal.execution</groupId>
-	<artifactId>qualitas-internal-execution-monitor</artifactId>
+	<groupId>com.googlecode.qualitas.internal.monitor</groupId>
+	<artifactId>qualitas-internal-monitor-camel</artifactId>
 	<packaging>jar</packaging>
 
 	<name>qualitas-internal-execution-monitor</name>
