@@ -6,6 +6,7 @@ syntax: glob
 derby.log
 .settings
 target
+build
 Servers
 *.jpr
 pom.xml.versionsBackup
