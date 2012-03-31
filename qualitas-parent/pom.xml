@@ -229,15 +229,15 @@
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
-				<groupId>com.googlecode.qualitas.integration.api</groupId>
-				<artifactId>qualitas-integration-api</artifactId>
+				<groupId>com.googlecode.qualitas.internal.integration</groupId>
+				<artifactId>qualitas-internal-integration-api</artifactId>
 				<version>${project.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
-				<groupId>com.googlecode.qualitas.integration.amqp</groupId>
-				<artifactId>qualitas-integration-amqp</artifactId>
+				<groupId>com.googlecode.qualitas.internal.integration</groupId>
+				<artifactId>qualitas-internal-integration-amqp</artifactId>
 				<version>${project.version}</version>
 				<type>jar</type>
 				<scope>compile</scope>
@@ -305,14 +305,6 @@
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
-			<!-- 
-			<dependency>
-                <groupId>com.googlecode.qualitas.internal.monitor</groupId>
-                <artifactId>qualitas-internal-monitor-camel</artifactId>
-                <version>${project.version}</version>
-                <type>jar</type>
-                <scope>compile</scope>
-            </dependency> -->
 			<dependency>
 				<groupId>com.googlecode.qualitas.internal.model</groupId>
 				<artifactId>qualitas-internal-model</artifactId>

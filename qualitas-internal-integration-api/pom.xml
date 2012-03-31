@@ -8,8 +8,8 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.googlecode.qualitas.integration.api</groupId>
-	<artifactId>qualitas-integration-api</artifactId>
+	<groupId>com.googlecode.qualitas.internal.integration</groupId>
+	<artifactId>qualitas-internal-integration-api</artifactId>
 	<packaging>jar</packaging>
 
 	<name>qualitas-integration-api</name>

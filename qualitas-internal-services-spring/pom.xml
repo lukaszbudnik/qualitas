@@ -24,8 +24,8 @@
 			<artifactId>qualitas-internal-services</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.googlecode.qualitas.integration.amqp</groupId>
-			<artifactId>qualitas-integration-amqp</artifactId>
+			<groupId>com.googlecode.qualitas.internal.integration</groupId>
+			<artifactId>qualitas-internal-integration-amqp</artifactId>
 		</dependency>
 		<dependency>
             <groupId>com.googlecode.qualitas.internal.model</groupId>

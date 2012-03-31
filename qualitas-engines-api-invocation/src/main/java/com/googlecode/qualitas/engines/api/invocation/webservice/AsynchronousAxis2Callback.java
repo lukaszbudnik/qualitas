@@ -25,6 +25,8 @@ public class AsynchronousAxis2Callback implements AxisCallback {
 
     /** The error message. */
     private String errorMessage;
+    
+    private Object semaphore = new Object();
 
     /*
      * (non-Javadoc)
@@ -82,8 +84,8 @@ public class AsynchronousAxis2Callback implements AxisCallback {
      * Do notify.
      */
     private void doNotify() {
-        synchronized (this) {
-            this.notifyAll();
+        synchronized (semaphore) {
+            semaphore.notifyAll();
         }
     }
 
