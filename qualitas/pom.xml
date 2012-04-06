@@ -46,4 +46,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<modules>
+		<module>../qualitas-buildtools</module>
+		<module>../qualitas-parent</module>
+	</modules>
 </project>

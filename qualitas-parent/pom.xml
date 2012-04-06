@@ -81,7 +81,7 @@
 		<project.build.targetVersion>1.6</project.build.targetVersion>
 		<maven-compiler-plugin.version>2.0.2</maven-compiler-plugin.version>
 		<cobertura-maven-plugin.version>2.5.1</cobertura-maven-plugin.version>
-		<maven-processor-plugin.version>2.0.2</maven-processor-plugin.version>
+		<maven-processor-plugin.version>2.0.4</maven-processor-plugin.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<jaxb.version>2.1.13</jaxb.version>
 		<jaxb2-maven-plugin.version>1.3</jaxb2-maven-plugin.version>
@@ -776,7 +776,7 @@
 				<plugin>
 					<groupId>org.bsc.maven</groupId>
 					<artifactId>maven-processor-plugin</artifactId>
-					<version>2.0.2</version>
+					<version>${maven-processor-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
@@ -825,4 +825,38 @@
 		</plugins>
 	</reporting>
 
+	<modules>
+		<module>../qualitas-engines-api-configuration</module>
+		<module>../qualitas-engines-api-core</module>
+		<module>../qualitas-engines-api-deployment</module>
+		<module>../qualitas-engines-api-factory</module>
+		<module>../qualitas-engines-api-instrumentation</module>
+		<module>../qualitas-engines-api-invocation</module>
+		<module>../qualitas-engines-api-resolution</module>
+		<module>../qualitas-engines-api-validation</module>
+		<module>../qualitas-engines-ode-core</module>
+		<module>../qualitas-engines-ode-deployment</module>
+		<module>../qualitas-engines-ode-factory</module>
+		<module>../qualitas-engines-ode-instrumentation</module>
+		<module>../qualitas-engines-ode-invocation</module>
+		<module>../qualitas-engines-ode-resolution</module>
+		<module>../qualitas-engines-ode-spring</module>
+		<module>../qualitas-engines-ode-validation</module>
+		<module>../qualitas-internal-bpel-instrumentation</module>
+		<module>../qualitas-internal-bpel-spring</module>
+		<module>../qualitas-internal-installation-camel</module>
+		<module>../qualitas-internal-integration-amqp</module>
+		<module>../qualitas-internal-integration-api</module>
+		<module>../qualitas-internal-model</module>
+		<module>../qualitas-internal-model-spring</module>
+		<module>../qualitas-internal-monitor-camel</module>
+		<module>../qualitas-internal-monitor-webservice</module>
+		<module>../qualitas-internal-services</module>
+		<module>../qualitas-internal-services-spring</module>
+		<module>../qualitas-security-services-spring</module>
+		<module>../qualitas-utils-dom</module>
+		<module>../qualitas-utils-xslt</module>
+		<module>../qualitas-utils-zip</module>
+		<module>../qualitas-webapp</module>
+	</modules>
 </project>
