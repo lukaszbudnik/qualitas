@@ -60,10 +60,13 @@
 						</goals>
 						<phase>generate-sources</phase>
 						<configuration>
-							<compilerArguments>-Aeclipselink.persistencexml=src/main/resources/META-INF/persistence.xml -Aeclipselink.persistenceunits=qualitas-pu</compilerArguments>
 							<processors>
 								<processor>org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor</processor>
 							</processors>
+							<options>
+								<eclipselink.persistencexml>${basedir}/src/main/resources/META-INF/persistence.xml</eclipselink.persistencexml>
+								<eclipselink.persistenceunits>qualitas-pu</eclipselink.persistenceunits>
+							</options>
 						</configuration>
 					</execution>
 				</executions>
