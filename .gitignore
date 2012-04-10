@@ -1,0 +1,14 @@
+syntax: glob
+.classpath
+.checkstyle
+.project
+.metadata
+derby.log
+.settings
+target
+build
+Servers
+*.jpr
+pom.xml.versionsBackup
+createDDL.jdbc
+dropDDL.jdbc
