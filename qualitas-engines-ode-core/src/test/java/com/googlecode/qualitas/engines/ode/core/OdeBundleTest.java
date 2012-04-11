@@ -88,7 +88,7 @@ public class OdeBundleTest {
 		// test if removed
 		files = tempDir.list();
 		found = ArrayUtils.contains(files, name);
-		Assert.assertTrue(found);
+		Assert.assertFalse(found);
 	}
 
 	@Test
@@ -106,7 +106,7 @@ public class OdeBundleTest {
 		// test if name removed
 		files = tempDir.list();
 		found = ArrayUtils.contains(files, name);
-		Assert.assertTrue(found);
+		Assert.assertFalse(found);
 		// test if newName exists
 		found = ArrayUtils.contains(files, newName);
 		Assert.assertTrue(found);
