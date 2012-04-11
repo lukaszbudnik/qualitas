@@ -1,5 +1,7 @@
 package com.googlecode.qualitas.internal.integration.api;
 
+import java.util.Arrays;
+
 import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 
 /**
@@ -38,7 +40,7 @@ public class InstallationOrder {
      *            the new bundle
      */
     public void setBundle(byte[] bundle) {
-        this.bundle = bundle;
+        this.bundle = Arrays.copyOf(bundle, bundle.length);
     }
 
     /**

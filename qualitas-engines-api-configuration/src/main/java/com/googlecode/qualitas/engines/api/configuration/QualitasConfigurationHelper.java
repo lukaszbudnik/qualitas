@@ -65,8 +65,8 @@ public final class QualitasConfigurationHelper {
             weight = (Double) PropertyUtils.getProperty(
                     analystGlobalParameters, parameterName);
         } catch (Exception e) {
-            throw new IllegalArgumentException("'" + parameterName
-                    + "' not found in qualitas configuration.");
+            throw new IllegalArgumentException("Parameter " + parameterName
+                    + " not found in qualitas configuration", e);
         }
 
         // get partner

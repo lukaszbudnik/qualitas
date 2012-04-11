@@ -21,8 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 import com.googlecode.qualitas.internal.integration.api.InstallationException;
-import com.googlecode.qualitas.internal.integration.api.InstallationOrder;
-import com.googlecode.qualitas.internal.integration.api.InstallationService;
 import com.googlecode.qualitas.internal.model.Process;
 import com.googlecode.qualitas.internal.services.ProcessManager;
 

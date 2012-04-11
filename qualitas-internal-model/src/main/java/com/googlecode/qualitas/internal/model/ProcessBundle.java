@@ -1,6 +1,7 @@
 package com.googlecode.qualitas.internal.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,7 +48,7 @@ public class ProcessBundle implements Serializable {
 	}
 
 	public void setContents(byte[] contents) {
-		this.contents = contents;
+		this.contents = Arrays.copyOf(contents, contents.length);
 	}
 
 }

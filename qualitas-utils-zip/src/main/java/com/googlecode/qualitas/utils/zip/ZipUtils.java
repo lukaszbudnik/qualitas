@@ -21,9 +21,6 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class ZipUtils {
 
-    /** The Constant BUFFER_SIZE. */
-    private static final int BUFFER_SIZE = 4096;
-
     /** The Constant LOG. */
     private static final Log LOG = LogFactory.getLog(ZipUtils.class);
 
@@ -223,8 +220,6 @@ public final class ZipUtils {
             try {
                 in = new FileInputStream(f);
                 buffer = IOUtils.toByteArray(in);
-            } catch (IOException e) {
-                throw e;
             } finally {
                 if (in != null) {
                     in.close();
