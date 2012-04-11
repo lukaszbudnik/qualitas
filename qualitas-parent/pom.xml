@@ -707,8 +707,8 @@
 						<target>${project.build.targetVersion}</target>
 						<encoding>${project.build.sourceEncoding}</encoding>
 						<fork>true</fork>
-						<meminitial>128m</meminitial>
-						<maxmem>768m</maxmem>
+						<meminitial>246m</meminitial>
+						<maxmem>1024m</maxmem>
 					</configuration>
 				</plugin>
 				<plugin>
