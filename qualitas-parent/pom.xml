@@ -698,6 +698,9 @@
 						<source>${project.build.sourceVersion}</source>
 						<target>${project.build.targetVersion}</target>
 						<encoding>${project.build.sourceEncoding}</encoding>
+						<fork>true</fork>
+						<meminitial>128m</meminitial>
+						<maxmem>512m</maxmem>
 					</configuration>
 				</plugin>
 				<plugin>
