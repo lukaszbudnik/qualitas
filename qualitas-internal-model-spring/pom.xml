@@ -4,6 +4,7 @@
 		<groupId>com.googlecode.qualitas</groupId>
 		<artifactId>qualitas-parent</artifactId>
 		<version>0.0.5-SNAPSHOT</version>
+		<relativePath>../qualitas-parent</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
