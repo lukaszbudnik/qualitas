@@ -700,7 +700,7 @@
 						<encoding>${project.build.sourceEncoding}</encoding>
 						<fork>true</fork>
 						<meminitial>128m</meminitial>
-						<maxmem>512m</maxmem>
+						<maxmem>768m</maxmem>
 					</configuration>
 				</plugin>
 				<plugin>
