@@ -2,13 +2,13 @@ package com.googlecode.qualitas.engines.ode.core;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.xml.namespace.QName;
 
 import junit.framework.Assert;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,8 +63,8 @@ public class OdeBundleTest {
 		String tempDirName = odeArchive.getDirTempPath();
 		File tempDir = new File(tempDirName);
 		String files[] = tempDir.list();
-		int found = Arrays.binarySearch(files, name);
-		Assert.assertTrue(found >= 0);
+		boolean found = ArrayUtils.contains(files, name);
+		Assert.assertTrue(found);
 	}
 
 	@Test
@@ -81,14 +81,14 @@ public class OdeBundleTest {
 		String tempDirName = odeArchive.getDirTempPath();
 		File tempDir = new File(tempDirName);
 		String files[] = tempDir.list();
-		int found = Arrays.binarySearch(files, name);
-		Assert.assertTrue(found >= 0);
+		boolean found = ArrayUtils.contains(files, name);
+		Assert.assertTrue(found);
 		// now remove entry
 		odeArchive.removeEntry(name);
 		// test if removed
 		files = tempDir.list();
-		found = Arrays.binarySearch(files, name);
-		Assert.assertTrue(found < 0);
+		found = ArrayUtils.contains(files, name);
+		Assert.assertTrue(found);
 	}
 
 	@Test
@@ -99,18 +99,17 @@ public class OdeBundleTest {
 		String tempDirName = odeArchive.getDirTempPath();
 		File tempDir = new File(tempDirName);
 		String files[] = tempDir.list();
-		int found = Arrays.binarySearch(files, name);
-		Assert.assertTrue(found >= 0);
+		boolean found = ArrayUtils.contains(files, name);
+		Assert.assertTrue(found);
 		// now rename entry
 		odeArchive.renameEntry(name, newName);
 		// test if name removed
 		files = tempDir.list();
-		Arrays.sort(files);
-		found = Arrays.binarySearch(files, name);
-		Assert.assertTrue(found < 0);
+		found = ArrayUtils.contains(files, name);
+		Assert.assertTrue(found);
 		// test if newName exists
-		found = Arrays.binarySearch(files, newName);
-		Assert.assertTrue(found >= 0);
+		found = ArrayUtils.contains(files, newName);
+		Assert.assertTrue(found);
 	}
 
 	@Test
