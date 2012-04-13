@@ -747,7 +747,17 @@
 					<configuration>
 						<formats>
 							<format>html</format>
+							<format>xml</format>
 						</formats>
+						<instrumentation>
+							<ignores>
+								<ignore>com.googlecode.qualitas.internal.model.*</ignore>
+							</ignores>
+							<excludes>
+								<exclude>com/googleode/qualitas/**/*Test.class</exclude>
+								<exclude>com/googleode/qualitas/**/*ITCase.class</exclude>
+							</excludes>
+						</instrumentation>
 					</configuration>
 					<executions>
 						<execution>
@@ -755,6 +765,13 @@
 							<phase>validate</phase>
 							<goals>
 								<goal>cobertura</goal>
+							</goals>
+						</execution>
+
+						<execution>
+							<id>clean</id>
+							<goals>
+								<goal>clean</goal>
 							</goals>
 						</execution>
 					</executions>
