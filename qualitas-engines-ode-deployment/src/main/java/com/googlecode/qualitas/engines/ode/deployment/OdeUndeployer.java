@@ -1,15 +1,20 @@
 package com.googlecode.qualitas.engines.ode.deployment;
 
+import java.net.URL;
+import java.util.List;
+
 import javax.xml.namespace.QName;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.ode.deployapi.DeploymentService;
+import org.apache.ode.deployapi.DeploymentServicePortType;
+import org.apache.ode.deployapi.PackageNames;
 
 import com.googlecode.qualitas.engines.api.core.Bundle;
 import com.googlecode.qualitas.engines.api.deployment.DeploymentException;
 import com.googlecode.qualitas.engines.api.deployment.Undeployer;
 import com.googlecode.qualitas.engines.ode.component.AbstractOdeComponent;
-import com.googlecode.qualitas.engines.ode.deployment.manager.OdeDeploymentManager;
 
 /**
  * The Class OdeProcessBundleUndeployer.
@@ -34,7 +39,6 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
      */
     @Override
     public void undeploy(Bundle bundle) throws DeploymentException {
-
         checkBundle(bundle);
 
         QName mainProcessQName = bundle.getMainProcessQName();
@@ -44,6 +48,7 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
 
     @Override
     public void undeploy(String processName) throws DeploymentException {
+
         String odeUrl;
         if (this.deploymentServiceEndpoint == null) {
             odeUrl = this.deploymentServiceEndpoint;
@@ -51,14 +56,36 @@ public class OdeUndeployer extends AbstractOdeComponent implements Undeployer {
             odeUrl = this.defaultDeploymentServiceEndpoint;
         }
 
-        OdeDeploymentManager manager = new OdeDeploymentManager(odeUrl);
+        if (!odeUrl.endsWith("?wsdl")) {
+            odeUrl += "?wsdl";
+        }
 
         try {
-            manager.undeploy(processName);
-        } catch (Exception e) {
+            DeploymentService deploymentService = new DeploymentService(new URL(odeUrl));
+            DeploymentServicePortType deploymentServicePortType = deploymentService
+                    .getDeploymentServiceSOAP12PortHttp();
+
+            PackageNames packageNames = deploymentServicePortType.listDeployedPackages();
+
+            List<String> installedProcesses = packageNames.getName();
+
+            LOG.debug("Installed processes ==>" + installedProcesses);
+
+            for (String installedProcess : installedProcesses) {
+                if (installedProcess.split("-")[0].equals(processName)) {
+                    QName packageName = new QName(installedProcess);
+                    boolean result = deploymentServicePortType.undeploy(packageName);
+                    if (!result) {
+                        throw new DeploymentException("Could not undeploy " + processName);
+                    }
+                    break;
+                }
+            }
+
+        } catch (Throwable t) {
             String msg = "Caught exception while trying to undeploy bundle " + processName;
-            LOG.error(msg, e);
-            throw new DeploymentException(msg, e);
+            LOG.error(msg, t);
+            throw new DeploymentException(msg, t);
         }
     }
 

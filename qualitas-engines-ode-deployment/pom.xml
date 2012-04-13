@@ -44,84 +44,6 @@
 			<artifactId>commons-logging</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.ode</groupId>
-			<artifactId>ode-axis2</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.ode</groupId>
-					<artifactId>ode-bpel-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.ode</groupId>
-					<artifactId>ode-bpel-connector</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.ode</groupId>
-					<artifactId>ode-bpel-dao</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.ode</groupId>
-					<artifactId>ode-bpel-epr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.ode</groupId>
-					<artifactId>ode-bpel-runtime</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.ode</groupId>
-					<artifactId>ode-scheduler-simple</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.ode</groupId>
-					<artifactId>ode-bpel-schemas</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.axis2</groupId>
-					<artifactId>axis2-adb</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.axis2</groupId>
-					<artifactId>axis2-java2wsdl</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.axis2</groupId>
-					<artifactId>axis2-jibx</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.axis2</groupId>
-					<artifactId>axis2-codegen</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.rampart</groupId>
-					<artifactId>rampart-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.rampart</groupId>
-					<artifactId>rampart-policy</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.rampart</groupId>
-					<artifactId>rampart-trust</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.ws.security</groupId>
-					<artifactId>wss4j</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.santuario</groupId>
-					<artifactId>xmlsec</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.opensaml</groupId>
-					<artifactId>opensaml</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>bouncycastle</groupId>
-					<artifactId>bcprov-jdk15</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
 			<groupId>com.googlecode.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-core</artifactId>
 		</dependency>
@@ -129,14 +51,34 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.ws.commons.axiom</groupId>
-			<artifactId>axiom-impl</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/resources/DeploymentService.wsdl</wsdl>
+									<extraargs>
+										<extraarg>-impl</extraarg>
+										<extraarg>-verbose</extraarg>
+									</extraargs>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
