@@ -8,14 +8,16 @@ import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPFactory;
 import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
-import javax.xml.ws.handler.Handler;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 
-import com.googlecode.qualitas.utils.dom.DOMUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class QualitasProcessInstanceIdSOAPHandler implements SOAPHandler<SOAPMessageContext> {
+    
+    private static final Log LOG = LogFactory.getLog(QualitasProcessInstanceIdSOAPHandler.class);
 
     private long qualitasProcessInstanceId;
 
@@ -59,12 +61,9 @@ public class QualitasProcessInstanceIdSOAPHandler implements SOAPHandler<SOAPMes
                 }
                 
                 header.addChildElement(qualitasMonitorHeaderElement);
-
-                String string = DOMUtils.toString(envelope);
-                System.out.println(string);
-                
             } catch (Exception e) {
-                
+                LOG.debug("Could not append Qualitas monitor header element to SOAP message", e);
+                return false;
             }
         }
         
