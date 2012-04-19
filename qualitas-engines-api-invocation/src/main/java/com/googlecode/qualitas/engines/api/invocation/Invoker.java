@@ -1,11 +1,19 @@
 package com.googlecode.qualitas.engines.api.invocation;
 
+import java.util.Map;
+
 import com.googlecode.qualitas.engines.api.component.Component;
 
 /**
  * The Interface Executor.
  */
 public interface Invoker extends Component {
+
+    /** The service name qname key used in parameters map. */
+    String SERVICE_NAME_QNAME = "SERVICE_NAME_QNAME";
+
+    /** The port name qname key used in parameters map. */
+    String PORT_NAME_QNAME = "PORT_NAME_QNAME";
 
     /**
      * Sets remote default service endpoint.
@@ -32,10 +40,13 @@ public interface Invoker extends Component {
      *            the payload
      * @param qualitasProcessInstanceId
      *            the qualitas process instance id
+     * @param parameters
+     *            the parameters
+     * @return the string
      * @throws InvocationException
      *             the invocation exception
      */
-    void invoke(String endpointAddress, String payload, String qualitasProcessInstanceId)
-            throws InvocationException;
+    String invoke(String endpointAddress, String payload, long qualitasProcessInstanceId,
+            Map<String, Object> parameters) throws InvocationException;
 
 }

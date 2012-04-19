@@ -1,17 +1,30 @@
 package com.googlecode.qualitas.engines.api.invocation.webservice;
 
-import javax.xml.namespace.QName;
-import javax.xml.stream.XMLStreamException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import org.apache.axiom.om.OMAbstractFactory;
-import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.util.AXIOMUtil;
-import org.apache.axis2.addressing.EndpointReference;
+import javax.xml.namespace.QName;
+import javax.xml.transform.Source;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.dom.DOMResult;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.ws.Dispatch;
+import javax.xml.ws.Service;
+import javax.xml.ws.handler.Handler;
+import javax.xml.ws.handler.HandlerResolver;
+import javax.xml.ws.handler.PortInfo;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.w3c.dom.Document;
 
 import com.googlecode.qualitas.engines.api.invocation.AbstractInvoker;
 import com.googlecode.qualitas.engines.api.invocation.InvocationException;
+import com.googlecode.qualitas.utils.dom.DOMUtils;
+import com.googlecode.qualitas.utils.xslt.XSLTUtils;
 
 /**
  * The Class AbstractWebServiceExecutor.
@@ -25,37 +38,82 @@ public abstract class AbstractWebServiceInvoker extends AbstractInvoker {
      * (non-Javadoc)
      * 
      * @see
-     * com.google.code.qualitas.engines.api.invocation.Invoker#invoke(java.lang
-     * .String, java.lang.String)
+     * com.googlecode.qualitas.engines.api.invocation.Invoker#invoke(java.lang
+     * .String, java.lang.String, long, java.util.Map)
      */
     @Override
-    public void invoke(String endpointAddress, String payload, String qualitasProcessInstanceId)
+    public String invoke(String endpointAddress, String payload,
+            final long qualitasProcessInstanceId, Map<String, Object> parameters)
             throws InvocationException {
-        AsynchronousAxis2ServiceClient client = new AsynchronousAxis2ServiceClient();
+        QName serviceName = (QName) parameters.get(SERVICE_NAME_QNAME);
 
-        ServiceClientInvocationOrder order = new ServiceClientInvocationOrder();
+        if (serviceName == null) {
+            throw new IllegalArgumentException(SERVICE_NAME_QNAME + " parameter cannot be null");
+        }
 
-        OMElement payloadElement = null;
+        QName portName = (QName) parameters.get(PORT_NAME_QNAME);
+
+        if (portName == null) {
+            throw new IllegalArgumentException(PORT_NAME_QNAME + " parameter cannot be null");
+        }
+
+        URL url = null;
+
         try {
-            payloadElement = AXIOMUtil.stringToOM(payload);
-        } catch (XMLStreamException e) {
-            String msg = "Could not parse payload for endpoint " + endpointAddress;
-            LOG.error(msg, e);
+            url = new URL(endpointAddress);
+        } catch (MalformedURLException e) {
+            String msg = "Passed endpoint address " + endpointAddress + " is not a valid URL";
+            LOG.debug(msg, e);
             throw new InvocationException(msg, e);
         }
 
-        QName qname = new QName("http://code.google.com/p/qualitas/execution/monitor",
-                "QualitasProcessInstanceId");
-        OMElement headerElement = OMAbstractFactory.getOMFactory().createOMElement(qname);
-        headerElement.setText(qualitasProcessInstanceId);
+        Service service = Service.create(url, serviceName);
+        service.setHandlerResolver(new HandlerResolver() {
+            public List<Handler> getHandlerChain(PortInfo portInfo) {
+                List<Handler> handlerList = new ArrayList<Handler>();
+                handlerList
+                        .add(new QualitasProcessInstanceIdSOAPHandler(qualitasProcessInstanceId));
+                return handlerList;
+            }
+        });
 
-        EndpointReference endpointReference = new EndpointReference(endpointAddress);
+        Dispatch<Source> dispatch = service.createDispatch(portName, Source.class,
+                Service.Mode.PAYLOAD);
 
-        order.setPayload(payloadElement);
-        order.setHeader(headerElement);
-        order.setEndpointReference(endpointReference);
+        Document document = null;
+        try {
+            document = DOMUtils.parse(payload, "UTF-8");
+        } catch (Exception e) {
+            String msg = "Could not parse payload";
+            LOG.debug(msg, e);
+            throw new InvocationException(msg, e);
+        }
 
-        client.call(order);
+        DOMSource source = new DOMSource(document);
+
+        Source result = dispatch.invoke(source);
+
+        DOMResult domResult = new DOMResult();
+        try {
+            XSLTUtils.transformDocument(result, domResult);
+        } catch (TransformerException e) {
+            String msg = "Could not transform result to DOM";
+            LOG.debug(msg, e);
+            throw new InvocationException(msg, e);
+        }
+
+        String response = null;
+
+        try {
+            response = DOMUtils.toString(domResult.getNode());
+        } catch (TransformerException e) {
+            String msg = "Could not transform result to String";
+            LOG.debug(msg, e);
+            throw new InvocationException(msg, e);
+        }
+
+        return response;
+
     }
 
 }
