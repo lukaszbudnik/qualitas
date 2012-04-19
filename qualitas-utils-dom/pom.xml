@@ -28,5 +28,9 @@
 			<groupId>com.googlecode.qualitas.utils</groupId>
 			<artifactId>qualitas-utils-xslt</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
 	</dependencies>
 </project>

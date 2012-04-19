@@ -12,6 +12,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
@@ -71,6 +72,26 @@ public final class DOMUtils {
             throw e;
         }
         return document;
+    }
+
+    /**
+     * Parses the.
+     * 
+     * @param document
+     *            the document
+     * @param encoding
+     *            the encoding
+     * @return the document
+     * @throws ParserConfigurationException
+     *             the parser configuration exception
+     * @throws SAXException
+     *             the sAX exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     */
+    public static Document parse(String document, String encoding)
+            throws ParserConfigurationException, SAXException, IOException {
+        return parse(IOUtils.toInputStream(document, encoding));
     }
 
     /**
