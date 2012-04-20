@@ -14,9 +14,9 @@
 
 	<bean id="loggingInInterceptor" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
 
-	<cxf:cxfEndpoint id="qualitasExecutionMonitorServiceEndpoint"
-		address="http://localhost:9292/QualitasExecutionMonitorService/QualitasExecutionMonitorWebService"
-		serviceClass="com.googlecode.qualitas.internal.execution.monitor.webservice.QualitasExecutionMonitorWebService">
+	<cxf:cxfEndpoint id="qualitasMonitorServiceEndpoint"
+		address="http://localhost:8080/QualitasMonitorService/QualitasMonitorWebService"
+		serviceClass="com.googlecode.qualitas.internal.monitor.webservice.QualitasMonitorWebService">
 		<cxf:inInterceptors>
 			<ref bean="loggingInInterceptor" />
 		</cxf:inInterceptors>
@@ -27,7 +27,7 @@
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<route>
-			<from uri="cxf:bean:qualitasExecutionMonitorServiceEndpoint" />
+			<from uri="cxf:bean:qualitasMonitorServiceEndpoint" />
 			<process ref="qualitasExecutionMonitorProcessor" />
 		</route>
 	</camelContext>
