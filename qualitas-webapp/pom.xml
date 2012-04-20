@@ -85,8 +85,6 @@
 		<dependency>
 			<groupId>com.googlecode.qualitas.internal.services</groupId>
 			<artifactId>qualitas-internal-services-spring</artifactId>
-			<version>0.0.5-SNAPSHOT</version>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

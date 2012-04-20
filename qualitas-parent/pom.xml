@@ -115,6 +115,7 @@
 		<hsqldb.version>2.2.8</hsqldb.version>
 		<ojdbc12.version>10.2.0.4.0</ojdbc12.version>
 		<geronimo-ejb_3.0_spec.version>1.0.1</geronimo-ejb_3.0_spec.version>
+		<geronimo-jms_1.1_spec.version>1.1.1</geronimo-jms_1.1_spec.version>
 	</properties>
 
 	<dependencyManagement>
@@ -323,6 +324,12 @@
 			<dependency>
 				<groupId>com.googlecode.qualitas.internal.services</groupId>
 				<artifactId>qualitas-internal-services</artifactId>
+				<version>${project.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.qualitas.internal.services</groupId>
+				<artifactId>qualitas-internal-services-spring</artifactId>
 				<version>${project.version}</version>
 				<scope>compile</scope>
 			</dependency>
@@ -624,6 +631,12 @@
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
 				<groupId>commons-fileupload</groupId>
 				<artifactId>commons-fileupload</artifactId>
 				<version>${commons-fileupload.version}</version>
@@ -689,6 +702,12 @@
 				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-ejb_3.0_spec</artifactId>
 				<version>${geronimo-ejb_3.0_spec.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.geronimo.specs</groupId>
+				<artifactId>geronimo-jms_1.1_spec</artifactId>
+				<version>${geronimo-jms_1.1_spec.version}</version>
 				<scope>compile</scope>
 			</dependency>
 		</dependencies>
