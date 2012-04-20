@@ -32,7 +32,7 @@ import com.googlecode.qualitas.internal.services.ProcessManager;
 @RequestMapping("/home")
 @SessionAttributes("username")
 public class HomeController {
-    
+
     @Autowired
     private ProcessManager processManager;
 
@@ -52,7 +52,7 @@ public class HomeController {
     public String index(HttpServletRequest request, Model model) {
 
         String username = request.getUserPrincipal().getName();
-        
+
         List<Process> processes = processManager.getProcessesByUsername(username);
 
         model.addAttribute("username", username);
@@ -79,12 +79,13 @@ public class HomeController {
     @RequestMapping(value = "/index", method = RequestMethod.POST)
     public String indexUpload(Model model, @ModelAttribute("username") String username,
             @RequestParam("file") MultipartFile file) throws IOException, InstallationException {
-        
+
         LOG.debug("Uploaded file " + file.getOriginalFilename());
-        
+
         byte[] bundle = IOUtils.toByteArray(file.getInputStream());
-        
-        Process process = processManager.installNewProcess(username, ProcessType.WS_BPEL_2_0_APACHE_ODE, file.getContentType(), bundle);
+
+        Process process = processManager.installNewProcess(username,
+                ProcessType.WS_BPEL_2_0_APACHE_ODE, file.getContentType(), bundle);
 
         model.addAttribute("process", process);
 
