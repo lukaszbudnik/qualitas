@@ -23,5 +23,9 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.googlecode.qualitas.internal.model</groupId>
+			<artifactId>qualitas-internal-model-spring</artifactId>
+		</dependency>
 	</dependencies>
 </project>
