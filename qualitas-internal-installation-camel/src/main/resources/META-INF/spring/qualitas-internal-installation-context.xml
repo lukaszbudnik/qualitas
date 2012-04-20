@@ -37,7 +37,7 @@
 				<doCatch>
 					<!-- It is perfectly fine not to have PostInstrument Instrumentor. Skip 
 						post instrumentation phase and continue. -->
-					<exception>com.googlcode.qualitas.internal.installation.core.ComponentNotFoundException</exception>
+					<exception>com.googlecode.qualitas.internal.installation.core.ComponentNotFoundException</exception>
 				</doCatch>
 			</doTry>
 			<process ref="deployerProcessor" />
