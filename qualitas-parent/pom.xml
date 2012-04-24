@@ -111,7 +111,7 @@
 		<javax.persistence.version>2.0.2</javax.persistence.version>
 		<eclipselink.version>2.3.2</eclipselink.version>
 		<hsqldb.version>2.2.8</hsqldb.version>
-		<ojdbc12.version>10.2.0.4.0</ojdbc12.version>
+		<derby.version>10.5.3.0_1</derby.version>
 		<geronimo-ejb_3.0_spec.version>1.0.1</geronimo-ejb_3.0_spec.version>
 		<geronimo-jms_1.1_spec.version>1.1.1</geronimo-jms_1.1_spec.version>
 	</properties>
@@ -628,9 +628,9 @@
 				<version>${hsqldb.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.oracle</groupId>
-				<artifactId>ojdbc14</artifactId>
-				<version>${ojdbc12.version}</version>
+				<groupId>org.apache.derby</groupId>
+				<artifactId>derby</artifactId>
+				<version>${derby.version}</version>
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
