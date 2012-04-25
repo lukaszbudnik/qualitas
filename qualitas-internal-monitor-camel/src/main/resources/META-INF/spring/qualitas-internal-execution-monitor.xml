@@ -15,7 +15,7 @@
 	<bean id="loggingInInterceptor" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
 
 	<cxf:cxfEndpoint id="qualitasMonitorServiceEndpoint"
-		address="http://localhost:8080/QualitasMonitorService/QualitasMonitorWebService"
+		address="http://localhost:9292/QualitasMonitorService/QualitasMonitorWebService"
 		serviceClass="com.googlecode.qualitas.internal.monitor.webservice.QualitasMonitorWebService">
 		<cxf:inInterceptors>
 			<ref bean="loggingInInterceptor" />

@@ -1,7 +1,7 @@
 ﻿<xsl:stylesheet version="1.0"
 	xmlns="http://www.apache.org/ode/schemas/dd/2007/03"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:monitor="http://code.google.com/p/qualitas/execution/monitor"
+	xmlns:monitor="http://qualitas.googlecode.com/internal/monitor/webservice"
 	xmlns:xalan="http://xml.apache.org/xalan"
 	exclude-result-prefixes="xalan">
 	<xsl:output method="xml" indent="yes" xalan:indent-amount="2" />
@@ -31,8 +31,8 @@
 		<xsl:copy>
 			<xsl:apply-templates select="node()|@*" />
 		</xsl:copy>
-		<invoke partnerLink="QualitasExecutionMonitorService">
-			<service name="monitor:QualitasExecutionMonitorService" port="QualitasExecutionMonitorPort"/>
+		<invoke partnerLink="QualitasMonitorService">
+			<service name="monitor:QualitasMonitorService" port="QualitasMonitorPort"/>
 		</invoke>
 	</xsl:template>
 

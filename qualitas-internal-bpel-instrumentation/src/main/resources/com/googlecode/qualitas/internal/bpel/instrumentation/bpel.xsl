@@ -211,7 +211,7 @@
 				<bpws:from>
 					<bpws:literal>
 			            <log
-			            	xmlns="http://code.google.com/p/qualitas/execution/monitor">
+			            	xmlns="http://qualitas.googlecode.com/internal/monitor/webservice">
 			            	<qualitasProcessInstanceId />
 			            	<EPR />
 			            	<partner />

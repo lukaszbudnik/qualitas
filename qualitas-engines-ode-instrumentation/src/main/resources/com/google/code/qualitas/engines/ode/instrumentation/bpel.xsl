@@ -61,7 +61,7 @@
 	<xsl:template name="set-monitor-variable">
 		<bpws:assign name="QualitasProcessInstanceIdAssign">
 		  	<bpws:copy>
-				<bpws:from header="QualitasProcessInstanceId">
+				<bpws:from header="qualitasProcessInstanceId">
 					<xsl:attribute name="variable"><xsl:value-of select="//bpws:receive/@variable" /></xsl:attribute>
 				</bpws:from>
 				<bpws:to variable="QualitasProcessInstanceId" />
