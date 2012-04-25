@@ -23,7 +23,7 @@
     <bpws:receive createInstance="yes" name="receiveInput" operation="buy" partnerLink="xhGPWWhilePartnerLink" portType="wsdl:XhGPWWhilePortType" variable="input"/>
     <bpws:assign name="QualitasProcessInstanceIdAssign">
       <bpws:copy>
-        <bpws:from header="QualitasProcessInstanceId" variable="input"/>
+        <bpws:from header="qualitasProcessInstanceId" variable="input"/>
         <bpws:to variable="QualitasProcessInstanceId"/>
       </bpws:copy>
     </bpws:assign>
