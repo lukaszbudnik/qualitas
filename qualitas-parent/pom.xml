@@ -314,8 +314,14 @@
 				<scope>compile</scope>
 			</dependency>
 			<dependency>
-				<groupId>com.googlecode.qualitas.internal.model</groupId>
-				<artifactId>qualitas-internal-model-spring</artifactId>
+				<groupId>com.googlecode.qualitas.internal.dao</groupId>
+				<artifactId>qualitas-internal-dao</artifactId>
+				<version>${project.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.qualitas.internal.dao</groupId>
+				<artifactId>qualitas-internal-dao-spring</artifactId>
 				<version>${project.version}</version>
 				<scope>compile</scope>
 			</dependency>
@@ -861,7 +867,8 @@
 		<module>../qualitas-internal-integration-amqp</module>
 		<module>../qualitas-internal-integration-api</module>
 		<module>../qualitas-internal-model</module>
-		<module>../qualitas-internal-model-spring</module>
+		<module>../qualitas-internal-dao</module>
+		<module>../qualitas-internal-dao-spring</module>
 		<module>../qualitas-internal-monitor-camel</module>
 		<module>../qualitas-internal-monitor-webservice</module>
 		<module>../qualitas-internal-services</module>
