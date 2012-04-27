@@ -19,18 +19,22 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.googlecode.qualitas.internal.model</groupId>
-			<artifactId>qualitas-internal-model</artifactId>
+			<groupId>com.googlecode.qualitas.internal.dao</groupId>
+			<artifactId>qualitas-internal-dao</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.qualitas.engines.api</groupId>
 			<artifactId>qualitas-engines-api-core</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.qualitas.internal.model</groupId>
 			<artifactId>qualitas-internal-model</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
             <groupId>com.googlecode.qualitas.internal.integration</groupId>

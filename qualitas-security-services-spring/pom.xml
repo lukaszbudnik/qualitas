@@ -24,8 +24,8 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.googlecode.qualitas.internal.model</groupId>
-			<artifactId>qualitas-internal-model-spring</artifactId>
+			<groupId>com.googlecode.qualitas.internal.dao</groupId>
+			<artifactId>qualitas-internal-dao-spring</artifactId>
 		</dependency>
 	</dependencies>
 </project>

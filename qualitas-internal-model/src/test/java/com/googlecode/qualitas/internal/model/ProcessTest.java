@@ -11,7 +11,6 @@ import javax.persistence.criteria.Root;
 
 import junit.framework.Assert;
 
-import org.hsqldb.util.DatabaseManagerSwing;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -32,7 +31,7 @@ public class ProcessTest {
                 .createEntityManagerFactory("qualitas-pu-test");
         em = emf.createEntityManager();
         
-        DatabaseManagerSwing.main(new String[] { "--url","jdbc:hsqldb:mem:test", "--noexit" });
+//        DatabaseManagerSwing.main(new String[] { "--url","jdbc:hsqldb:mem:test", "--noexit" });
     }
     
     @Before
