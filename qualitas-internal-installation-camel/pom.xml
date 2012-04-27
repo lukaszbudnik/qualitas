@@ -17,40 +17,52 @@
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-spring</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-amqp</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jms_1.1_spec</artifactId>
-			<version>1.1.1</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.qualitas.engines.ode</groupId>
 			<artifactId>qualitas-engines-ode-spring</artifactId>
+			<scope>compile</scope>
 		</dependency>
-		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.qualitas.internal.bpel</groupId>
 			<artifactId>qualitas-internal-bpel-spring</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.qualitas.internal.services</groupId>
+			<artifactId>qualitas-internal-services-spring</artifactId>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

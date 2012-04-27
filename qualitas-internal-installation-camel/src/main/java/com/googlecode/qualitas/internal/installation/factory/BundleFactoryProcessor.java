@@ -3,6 +3,7 @@ package com.googlecode.qualitas.internal.installation.factory;
 import java.util.Map;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.Message;
 import org.springframework.stereotype.Component;
 
 import com.googlecode.qualitas.engines.api.configuration.ProcessType;
@@ -23,18 +24,19 @@ public class BundleFactoryProcessor extends AbstractProcessor {
      */
     @Override
     public void process(Exchange exchange) throws Exception {
+        Message in = exchange.getIn();
         
-        Map<String, Object> headers = exchange.getIn().getHeaders();
-        String qualitasProcessTypeString = (String) headers.get("qualitasprocesstype");
+        String qualitasProcessTypeString = (String) in.getHeader("qualitas_process_type");
         ProcessType processType = ProcessType.valueOf(qualitasProcessTypeString);
         
         byte[] contents = exchange.getIn().getBody(byte[].class);
         
         BundleFactory factory = findQualitasComponent(BundleFactory.class, processType);
-
         Bundle bundle = factory.createProcessBundle(contents);
         
-        exchange.getOut().setBody(bundle);
+        Message out = exchange.getOut();
+        out.setBody(bundle);
+        out.setHeaders(in.getHeaders());
     }
 
 }

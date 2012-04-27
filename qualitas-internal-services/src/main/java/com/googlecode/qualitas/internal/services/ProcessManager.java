@@ -34,8 +34,7 @@ public class ProcessManager {
      * @param repository
      *            the repository
      */
-    public ProcessManager(InstallationService installationService,
-            Repository repository) {
+    public ProcessManager(InstallationService installationService, Repository repository) {
         super();
         this.installationService = installationService;
         this.repository = repository;
@@ -49,7 +48,7 @@ public class ProcessManager {
      * @param processStatus
      *            the process status
      */
-    public void updateProcessStatus(Long processId, ProcessStatus processStatus) {
+    public void updateProcessStatus(long processId, ProcessStatus processStatus) {
         Process process = repository.findById(Process.class, processId);
         process.setProcessStatus(processStatus);
         repository.merge(process);
@@ -68,10 +67,10 @@ public class ProcessManager {
      *            the bundle
      * @return the process
      */
-    public Process installNewProcess(String username, ProcessType processType,
-            String contentType, byte[] bundle) {
-        User user = repository.getSingleResultBySingularAttribute(User.class,
-                User_.openIDUsername, username);
+    public Process installNewProcess(String username, ProcessType processType, String contentType,
+            byte[] bundle) {
+        User user = repository.getSingleResultBySingularAttribute(User.class, User_.openIDUsername,
+                username);
 
         Process process = new Process();
         process.setUser(user);
@@ -109,11 +108,11 @@ public class ProcessManager {
      * @return the processes by username
      */
     public List<Process> getProcessesByUsername(String username) {
-        User user = repository.getSingleResultBySingularAttribute(User.class,
-                User_.openIDUsername, username);
+        User user = repository.getSingleResultBySingularAttribute(User.class, User_.openIDUsername,
+                username);
 
-        List<Process> processes = repository.getResultListBySingularAttribute(
-                Process.class, Process_.user, user);
+        List<Process> processes = repository.getResultListBySingularAttribute(Process.class,
+                Process_.user, user);
 
         return processes;
     }

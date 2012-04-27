@@ -34,15 +34,6 @@ import com.googlecode.qualitas.internal.model.converters.ProcessTypeConverter;
  */
 @Entity
 @Table(name = "PROCESSES")
-//@ObjectTypeConverter(name = "processStatus", objectType = ProcessStatus.class, dataType = Short.class, 
-//conversionValues = { @ConversionValue(objectValue = "UPLOADED", dataValue = "0"),
-//    @ConversionValue(objectValue="PROCESSING", dataValue="1"),
-//    @ConversionValue(objectValue="INSTALLED", dataValue="2"),
-//    @ConversionValue(objectValue="CREATION_ERROR", dataValue="3"),
-//    @ConversionValue(objectValue="VALIDATION_ERROR", dataValue="4"),
-//    @ConversionValue(objectValue="INSTRUMENTATION_ERROR", dataValue="5"),
-//    @ConversionValue(objectValue="INSTALLATION_ERROR", dataValue="6"),
-//    @ConversionValue(objectValue="UNINSTALLATION_ERROR", dataValue="7")})
 @Converters({
     @Converter(name="processStatus", converterClass=ProcessStatusConverter.class),
     @Converter(name="processType", converterClass=ProcessTypeConverter.class)

@@ -23,13 +23,13 @@ import com.googlecode.qualitas.internal.integration.api.InstallationService;
 public class InstallationServiceImpl implements InstallationService {
 
     /** The Constant QUALITAS_PROCESS_TYPE_HEADER. */
-    private static final String QUALITAS_PROCESS_TYPE_HEADER = "qualitasprocesstype";
+    private static final String QUALITAS_PROCESS_TYPE_HEADER = "qualitas_process_type";
 
     /** The Constant QUALITAS_PROCESS_ID_HEADER. */
-    private static final String QUALITAS_PROCESS_ID_HEADER = "qualitasprocessid";
+    private static final String QUALITAS_PROCESS_ID_HEADER = "qualitas_process_id";
 
     /** The Constant QUALITAS_USERNAME_HEADER. */
-    private static final String QUALITAS_USERNAME_HEADER = "qualitasusername";
+    private static final String QUALITAS_USERNAME_HEADER = "qualitas_username";
 
     /** The Constant LOG. */
     private static final Log LOG = LogFactory.getLog(InstallationServiceImpl.class);

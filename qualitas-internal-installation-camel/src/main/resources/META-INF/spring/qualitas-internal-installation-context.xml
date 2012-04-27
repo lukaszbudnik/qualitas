@@ -8,28 +8,30 @@
 
 	<import resource="classpath*:META-INF/spring/qualitas-engines-ode-context.xml" />
 	<import resource="classpath*:META-INF/spring/qualitas-internal-bpel-context.xml" />
-
+	<import resource="classpath*:META-INF/spring/qualitas-internal-services-context.xml" />
+	
 	<context:component-scan
 		base-package="com.googlecode.qualitas.internal.installation" />
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<route>
 			<from uri="amqp:queue:queue" />
+			<process ref="startRouteLifeCycleProcessor" />
 			<process ref="bundleFactoryProcessor" />
 			<process ref="propertiesResolverProcessor" />
 			<process ref="validatorProcessor" />
-			<setHeader headerName="qualitasinstrumentationphase">
+			<setHeader headerName="qualitas_instrumentation_phase">
 				<simple>PreInstrumentationPhase</simple>
 			</setHeader>
 			<process ref="instrumentorProcessor" />
 			<process ref="validatorProcessor" />
-			<setHeader headerName="qualitasinstrumentationphase">
+			<setHeader headerName="qualitas_instrumentation_phase">
 				<simple>InstrumentationPhase</simple>
 			</setHeader>
 			<process ref="instrumentorProcessor" />
 			<process ref="validatorProcessor" />
 			<doTry>
-				<setHeader headerName="qualitasinstrumentationphase">
+				<setHeader headerName="qualitas_instrumentation_phase">
 					<simple>PostInstrumentationPhase</simple>
 				</setHeader>
 				<process ref="instrumentorProcessor" />
@@ -41,6 +43,7 @@
 				</doCatch>
 			</doTry>
 			<process ref="deployerProcessor" />
+			<process ref="endRouteLifeCycleProcessor" />
 		</route>
 	</camelContext>
 

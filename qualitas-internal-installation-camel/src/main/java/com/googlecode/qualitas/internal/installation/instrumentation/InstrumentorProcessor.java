@@ -4,11 +4,13 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.Message;
 import org.springframework.stereotype.Component;
 
 import com.googlecode.qualitas.engines.api.core.Bundle;
 import com.googlecode.qualitas.engines.api.instrumentation.Instrumentor;
 import com.googlecode.qualitas.internal.installation.core.AbstractProcessor;
+import com.googlecode.qualitas.internal.installation.core.QualitasHeadersNames;
 
 /**
  * The Class InstrumentorProcessor.
@@ -23,10 +25,9 @@ public class InstrumentorProcessor extends AbstractProcessor {
      */
     @Override
     public void process(Exchange exchange) throws Exception {
+        Message in = exchange.getIn();
 
-        Map<String, Object> headers = exchange.getIn().getHeaders();
-
-        String instrumentationPhase = (String) headers.get("qualitasinstrumentationphase");
+        String instrumentationPhase = (String) in.getHeader(QualitasHeadersNames.QUALITAS_INSTRUMENTATION_PHASE);
 
         @SuppressWarnings("unchecked")
         Class<Annotation> annotationType = (Class<Annotation>) Class.forName(Instrumentor.class
@@ -38,5 +39,9 @@ public class InstrumentorProcessor extends AbstractProcessor {
                 bundle.getProcessType(), annotationType);
 
         instrumentor.instrument(bundle);
+        
+        Message out = exchange.getOut();
+        out.setBody(bundle);
+        out.setHeaders(in.getHeaders());
     }
 }
