@@ -2,16 +2,31 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:amq="http://activemq.apache.org/schema/core"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  	http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
 	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.9.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<import resource="classpath*:META-INF/spring/qualitas-engines-ode-context.xml" />
 	<import resource="classpath*:META-INF/spring/qualitas-internal-bpel-context.xml" />
-	<import resource="classpath*:META-INF/spring/qualitas-internal-services-context.xml" />
-	
-	<context:component-scan
-		base-package="com.googlecode.qualitas.internal.installation" />
+	<import
+		resource="classpath*:META-INF/spring/qualitas-internal-services-context.xml" />
+
+	<bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">org.eclipse.jetty.jndi.InitialContextFactory</prop>
+				<prop key="java.naming.factory.url.pkgs">org.eclipse.jetty.jndi</prop>
+			</props>
+		</property>
+	</bean>
+
+	<amq:topic id="eclipseLinkCacheTopic" physicalName="Qualitas.EclipseLinkCacheTopic" />
+
+	<amq:connectionFactory id="eclipseLinkCacheConnectionFactory" brokerURL="nio://localhost:61616" />
+
+	<context:component-scan base-package="com.googlecode.qualitas.internal.installation" />
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<route>
@@ -39,7 +54,8 @@
 				<doCatch>
 					<!-- It is perfectly fine not to have PostInstrument Instrumentor. Skip 
 						post instrumentation phase and continue. -->
-					<exception>com.googlecode.qualitas.internal.installation.core.ComponentNotFoundException</exception>
+					<exception>com.googlecode.qualitas.internal.installation.core.ComponentNotFoundException
+					</exception>
 				</doCatch>
 			</doTry>
 			<process ref="deployerProcessor" />

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+
+	<New id="eclipseLinkCacheConnectionFactory" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>jms/Qualitas.EclipseLinkCacheConnectionFactory</Arg>
+		<Arg>
+			<New class="org.apache.activemq.ActiveMQConnectionFactory">
+				<!-- <Arg>vm://localhost?broker.persistent=false</Arg> -->
+				<Arg>nio://localhost:61616</Arg>
+			</New>
+		</Arg>
+	</New>
+
+	<New id="eclipseLinkCacheTopic" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>jms/Qualitas.EclipseLinkCacheTopic</Arg>
+		<Arg>
+			<New class="org.apache.activemq.command.ActiveMQTopic">
+				<Arg>Qualitas.EclipseLinkCacheTopic</Arg>
+			</New>
+		</Arg>
+	</New>
+
+</Configure>
