@@ -1,6 +1,7 @@
 package com.googlecode.qualitas.internal.installation.deployment;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.Message;
 import org.springframework.stereotype.Component;
 
 import com.googlecode.qualitas.engines.api.core.Bundle;
@@ -20,11 +21,17 @@ public class DeployerProcessor extends AbstractProcessor {
      */
     @Override
     public void process(Exchange exchange) throws Exception {
-        Bundle bundle = exchange.getIn().getBody(Bundle.class);
+        Message in = exchange.getIn();
+        
+        Bundle bundle = in.getBody(Bundle.class);
 
         Deployer deployer = findQualitasComponent(Deployer.class, bundle.getProcessType());
 
         deployer.deploy(bundle);
+        
+        Message out = exchange.getOut();
+        out.setBody(bundle);
+        out.setHeaders(in.getHeaders());
     }
 
 }
