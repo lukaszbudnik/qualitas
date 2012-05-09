@@ -10,10 +10,8 @@ import org.aspectj.lang.annotation.Aspect;
 public class CamelHeadersCopierAspect {
     
     @Around("execution(* com.googlecode.qualitas.internal.installation..*.process(org.apache.camel.Exchange)) && args(exchange) && target(org.apache.camel.Processor)")
-    public Object copyHeaders(ProceedingJoinPoint pjp, Exchange exchange) throws Throwable {
+    public Object copyHeadersAndBody(ProceedingJoinPoint pjp, Exchange exchange) throws Throwable {
         Object retValue = pjp.proceed();
-        
-        System.out.println(pjp.getTarget());
         
         Message in = exchange.getIn();
         Message out = exchange.getOut();
