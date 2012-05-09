@@ -1,7 +1,5 @@
 package com.googlecode.qualitas.internal.installation.factory;
 
-import java.util.Map;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.springframework.stereotype.Component;
@@ -10,9 +8,10 @@ import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 import com.googlecode.qualitas.engines.api.core.Bundle;
 import com.googlecode.qualitas.engines.api.factory.BundleFactory;
 import com.googlecode.qualitas.internal.installation.core.AbstractProcessor;
+import com.googlecode.qualitas.internal.installation.core.QualitasHeadersNames;
 
 /**
- * The Class DeployerProcessor.
+ * The Class BundleFactoryProcessor.
  */
 @Component
 public class BundleFactoryProcessor extends AbstractProcessor {
@@ -26,7 +25,7 @@ public class BundleFactoryProcessor extends AbstractProcessor {
     public void process(Exchange exchange) throws Exception {
         Message in = exchange.getIn();
         
-        String qualitasProcessTypeString = (String) in.getHeader("qualitas_process_type");
+        String qualitasProcessTypeString = (String) in.getHeader(QualitasHeadersNames.QUALITAS_PROCESS_TYPE_HEADER);
         ProcessType processType = ProcessType.valueOf(qualitasProcessTypeString);
         
         byte[] contents = exchange.getIn().getBody(byte[].class);
@@ -36,7 +35,6 @@ public class BundleFactoryProcessor extends AbstractProcessor {
         
         Message out = exchange.getOut();
         out.setBody(bundle);
-        out.setHeaders(in.getHeaders());
     }
 
 }

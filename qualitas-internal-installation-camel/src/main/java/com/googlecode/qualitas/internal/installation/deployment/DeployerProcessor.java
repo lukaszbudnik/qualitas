@@ -26,12 +26,7 @@ public class DeployerProcessor extends AbstractProcessor {
         Bundle bundle = in.getBody(Bundle.class);
 
         Deployer deployer = findQualitasComponent(Deployer.class, bundle.getProcessType());
-
         deployer.deploy(bundle);
-        
-        Message out = exchange.getOut();
-        out.setBody(bundle);
-        out.setHeaders(in.getHeaders());
     }
 
 }

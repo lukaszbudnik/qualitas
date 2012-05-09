@@ -27,10 +27,6 @@ public class ValidatorProcessor extends AbstractProcessor {
 
         Validator validator = findQualitasComponent(Validator.class, bundle.getProcessType());
         validator.validate(bundle);
-        
-        Message out = exchange.getOut();
-        out.setBody(bundle);
-        out.setHeaders(in.getHeaders());
     }
 
 }

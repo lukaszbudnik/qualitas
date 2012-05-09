@@ -27,10 +27,6 @@ public class UndeployerProcessor extends AbstractProcessor {
 
         Undeployer undeployer = findQualitasComponent(Undeployer.class, bundle.getProcessType());
         undeployer.undeploy(bundle);
-        
-        Message out = exchange.getOut();
-        out.setBody(bundle);
-        out.setHeaders(in.getHeaders());
     }
 
 }

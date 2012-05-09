@@ -26,12 +26,7 @@ public class PropertiesResolverProcessor extends AbstractProcessor {
 
         PropertiesResolver resolver = findQualitasComponent(PropertiesResolver.class,
                 bundle.getProcessType());
-
         Properties properties = resolver.resolve(bundle);
-        
-        Message out = exchange.getOut();
-        out.setBody(bundle);
-        out.setHeaders(in.getHeaders());
     }
 
 }

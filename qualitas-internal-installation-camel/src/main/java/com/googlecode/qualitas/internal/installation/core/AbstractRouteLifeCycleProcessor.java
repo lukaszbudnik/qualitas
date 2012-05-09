@@ -22,10 +22,6 @@ public abstract class AbstractRouteLifeCycleProcessor implements Processor {
         Long processId = (Long) in.getHeader(QualitasHeadersNames.QUALITAS_PROCESS_ID_HEADER);
         
         processManager.updateProcessStatus(processId, processStatus);
-        
-        Message out = exchange.getOut();
-        out.setBody(in.getBody());
-        out.setHeaders(in.getHeaders());
     }
 
 }

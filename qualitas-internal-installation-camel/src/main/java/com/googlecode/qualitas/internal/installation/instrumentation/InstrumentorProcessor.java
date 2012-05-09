@@ -1,7 +1,6 @@
 package com.googlecode.qualitas.internal.installation.instrumentation;
 
 import java.lang.annotation.Annotation;
-import java.util.Map;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
@@ -42,6 +41,5 @@ public class InstrumentorProcessor extends AbstractProcessor {
         
         Message out = exchange.getOut();
         out.setBody(bundle);
-        out.setHeaders(in.getHeaders());
     }
 }
