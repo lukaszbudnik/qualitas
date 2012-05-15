@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:camel="http://camel.apache.org/schema/spring" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:camel="http://camel.apache.org/schema/spring"
 	xmlns:amq="http://activemq.apache.org/schema/core"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
   	http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
@@ -15,11 +13,12 @@
 	<import resource="classpath*:META-INF/spring/qualitas-internal-bpel-context.xml" />
 	<import
 		resource="classpath*:META-INF/spring/qualitas-internal-services-context.xml" />
-		
+
 	<aop:aspectj-autoproxy />
-	
-	<bean class="com.googlecode.qualitas.internal.installation.core.CamelHeadersCopierAspect" />
-	
+
+	<bean
+		class="com.googlecode.qualitas.internal.installation.core.CamelHeadersCopierAspect" />
+
 	<bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
 		<property name="environment">
 			<props>
@@ -31,7 +30,8 @@
 
 	<amq:topic id="eclipseLinkCacheTopic" physicalName="Qualitas.EclipseLinkCacheTopic" />
 
-	<amq:connectionFactory id="eclipseLinkCacheConnectionFactory" brokerURL="nio://localhost:61616" />
+	<amq:connectionFactory id="eclipseLinkCacheConnectionFactory"
+		brokerURL="nio://localhost:61616" />
 
 	<context:component-scan base-package="com.googlecode.qualitas.internal.installation" />
 
