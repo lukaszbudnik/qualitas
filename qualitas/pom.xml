@@ -4,7 +4,7 @@
 
 	<groupId>com.googlecode.qualitas</groupId>
 	<artifactId>qualitas</artifactId>
-	<version>0.0.5-SNAPSHOT</version>
+	<version>0.0.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>qualitas</name>
