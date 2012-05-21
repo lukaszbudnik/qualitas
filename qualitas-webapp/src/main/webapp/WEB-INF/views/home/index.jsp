@@ -20,18 +20,26 @@
 		<table>
 			<tr>
 				<th>id</th>
-				<th>installation date</th>
+				<th>uploaded timestamp</th>
+				<th>processing started timestamp</th>
+				<th>processing ended timestamp</th>
 				<th>status</th>
 				<th>process name</th>
 				<th>process epr</th>
+				<th>runnable</th>
+				<!-- <th>error message</th> -->
 			</tr>
 		<c:forEach items="${processes}" var="p">
 			<tr>
 					<td>${p.processId}</td>
-					<td>${p.installationDate}</td>
+					<td>${p.uploadedTimestamp}</td>
+					<td>${p.processingStartedTimestamp}</td>
+					<td>${p.processingFinishedTimestamp}</td>
 					<td>${p.processStatus}</td>
 					<td>${p.processName}</td>
 					<td>${p.processEPR}</td>
+					<td>${p.runnable}</td>
+					<!-- <td>${p.errorMessage}</td> -->
 			</tr>
 		</c:forEach>
 		</table>

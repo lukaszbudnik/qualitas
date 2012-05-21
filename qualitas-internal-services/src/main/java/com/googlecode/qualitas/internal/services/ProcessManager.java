@@ -51,8 +51,12 @@ public class ProcessManager {
     public void updateProcessStatus(long processId, ProcessStatus processStatus) {
         Process process = repository.findById(Process.class, processId);
         process.setProcessStatus(processStatus);
+        if (processStatus == ProcessStatus.PROCESSING_STARTED) {
+            process.setProcessingStartedTimestamp(new Date());
+        }
         if (processStatus == ProcessStatus.INSTALLED) {
             process.setRunnable(true);
+            process.setProcessingFinishedTimestamp(new Date());
         }
         repository.merge(process);
     }
@@ -71,9 +75,8 @@ public class ProcessManager {
         Process process = repository.findById(Process.class, processId);
         process.setProcessStatus(processStatus);
         process.setErrorMessage(errorMessage);
-        process.setRunnable(false);
+        process.setProcessingFinishedTimestamp(new Date());
         repository.merge(process);
-
     }
 
     /**
@@ -96,7 +99,7 @@ public class ProcessManager {
 
         Process process = new Process();
         process.setUser(user);
-        process.setInstallationDate(new Date());
+        process.setUploadedTimestamp(new Date());
         process.setProcessStatus(ProcessStatus.UPLOADED);
         process.setProcessType(processType);
 

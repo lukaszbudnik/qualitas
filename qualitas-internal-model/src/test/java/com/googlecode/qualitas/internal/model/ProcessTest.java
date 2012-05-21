@@ -65,7 +65,7 @@ public class ProcessTest {
         process.setUser(user);
         process.setProcessType(ProcessType.WS_BPEL_2_0_APACHE_ODE);
         process.setProcessStatus(ProcessStatus.UPLOADED);
-        process.setInstallationDate(new Date());
+        process.setUploadedTimestamp(new Date());
         
         ProcessBundle processBundle = new ProcessBundle();
         processBundle.setContents("contents".getBytes());

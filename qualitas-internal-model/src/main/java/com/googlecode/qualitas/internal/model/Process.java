@@ -14,10 +14,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import org.eclipse.persistence.annotations.Convert;
 import org.eclipse.persistence.annotations.Converter;
@@ -34,108 +37,120 @@ import com.googlecode.qualitas.internal.model.converters.ProcessTypeConverter;
  */
 @Entity
 @Table(name = "PROCESSES")
-@Converters({
-    @Converter(name="processStatus", converterClass=ProcessStatusConverter.class),
-    @Converter(name="processType", converterClass=ProcessTypeConverter.class)
-})
+@Converters({ @Converter(name = "processStatus", converterClass = ProcessStatusConverter.class),
+        @Converter(name = "processType", converterClass = ProcessTypeConverter.class) })
 public class Process implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@SequenceGenerator(name = "PROCESSES_PROCESSID_GENERATOR", sequenceName = "PROCESS_ID_SEQUENCE", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROCESSES_PROCESSID_GENERATOR")
-	@Column(name = "PROCESS_ID", nullable = false, precision = 22)
-	private long processId;
+    @Id
+    @SequenceGenerator(name = "PROCESSES_PROCESSID_GENERATOR", sequenceName = "PROCESS_ID_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROCESSES_PROCESSID_GENERATOR")
+    @Column(name = "PROCESS_ID", nullable = false, precision = 22)
+    private long processId;
 
-	@Column
-	private String configuration;
+    @Column
+    private String configuration;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "INSTALLATION_DATE", nullable = false)
-	private Date installationDate;
+    @Column(name = "PROCESS_EPR", unique = true, length = 1000)
+    private String processEPR;
 
-	@Column(name = "PROCESS_EPR", unique = true, length = 1000)
-	private String processEPR;
+    @Column(name = "PROCESS_NAME", length = 1000)
+    private String processName;
 
-	@Column(name = "PROCESS_NAME", length = 1000)
-	private String processName;
-	
-	@Column(name = "RUNNABLE")
-	private boolean runnable;
-	
-	@Column(name = "ERROR_MESSAGE", length = 10000)
-	private String errorMessage;
+    @Column(name = "RUNNABLE")
+    private boolean runnable;
 
-	@Column(name = "PROCESS_TYPE", nullable = false, length = 1)
-	private ProcessType processType;
+    @Column(name = "ERROR_MESSAGE", length = 10000)
+    private String errorMessage;
 
-	@Column(name = "PROCESS_STATUS", nullable = false, length = 1)
-	@Convert("processStatus")
-	private ProcessStatus processStatus;
+    @Column(name = "PROCESS_TYPE", nullable = false, length = 1)
+    private ProcessType processType;
 
-	// bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name = "USER_ID", unique = true, nullable = false)
-	private User user;
+    @Column(name = "PROCESS_STATUS", nullable = false, length = 1)
+    @Convert("processStatus")
+    private ProcessStatus processStatus;
 
-	// bi-directional many-to-one association to ProcessInstance
-	@OneToMany(mappedBy = "process")
-	private List<ProcessInstance> processInstances;
+    @Column(name = "VERSION", nullable = false)
+    @Version
+    private int version;
 
-	// uni-directional one-to-one association to ProcessBundle
-	@OneToOne
-	@JoinColumn(name = "INSTRUMENTED_PROCESS_BUNDLE_ID")
-	private ProcessBundle instrumentedProcessBundle;
+    @Column(name = "PROCESSING_STARTED_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date processingStartedTimestamp;
 
-	// uni-directional one-to-one association to ProcessBundle
-	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	@JoinColumn(name = "ORIGINAL_PROCESS_BUNDLE_ID", nullable = false)
-	private ProcessBundle originalProcessBundle;
+    @Column(name = "PROCESSING_FINISHED_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date processingFinishedTimestamp;
 
-	public Process() {
-	}
+    @Column(name = "LAST_UPDATED_TIMESTAMP", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdatedTimestamp;
 
-	public long getProcessId() {
-		return this.processId;
-	}
+    @Column(name = "UPLOADED_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date uploadedTimestamp;
 
-	public void setProcessId(long processId) {
-		this.processId = processId;
-	}
+    // bi-directional many-to-one association to User
+    @ManyToOne
+    @JoinColumn(name = "USER_ID", unique = true, nullable = false)
+    private User user;
 
-	public String getConfiguration() {
-		return this.configuration;
-	}
+    // bi-directional many-to-one association to ProcessInstance
+    @OneToMany(mappedBy = "process")
+    private List<ProcessInstance> processInstances;
 
-	public void setConfiguration(String configuration) {
-		this.configuration = configuration;
-	}
+    // uni-directional one-to-one association to ProcessBundle
+    @OneToOne
+    @JoinColumn(name = "INSTRUMENTED_PROCESS_BUNDLE_ID")
+    private ProcessBundle instrumentedProcessBundle;
 
-	public Date getInstallationDate() {
-		return this.installationDate;
-	}
+    // uni-directional one-to-one association to ProcessBundle
+    @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+    @JoinColumn(name = "ORIGINAL_PROCESS_BUNDLE_ID", nullable = false)
+    private ProcessBundle originalProcessBundle;
 
-	public void setInstallationDate(Date installationDate) {
-		this.installationDate = installationDate;
-	}
+    public Process() {
+    }
 
-	public String getProcessEPR() {
-		return this.processEPR;
-	}
+    @PrePersist
+    @PreUpdate
+    void updateTimestamp() {
+        lastUpdatedTimestamp = new Date();
+    }
 
-	public void setProcessEPR(String processEPR) {
-		this.processEPR = processEPR;
-	}
+    public long getProcessId() {
+        return this.processId;
+    }
 
-	public String getProcessName() {
-		return this.processName;
-	}
+    public void setProcessId(long processId) {
+        this.processId = processId;
+    }
 
-	public void setProcessName(String processName) {
-		this.processName = processName;
-	}
+    public String getConfiguration() {
+        return this.configuration;
+    }
 
-	public boolean isRunnable() {
+    public void setConfiguration(String configuration) {
+        this.configuration = configuration;
+    }
+
+    public String getProcessEPR() {
+        return this.processEPR;
+    }
+
+    public void setProcessEPR(String processEPR) {
+        this.processEPR = processEPR;
+    }
+
+    public String getProcessName() {
+        return this.processName;
+    }
+
+    public void setProcessName(String processName) {
+        this.processName = processName;
+    }
+
+    public boolean isRunnable() {
         return runnable;
     }
 
@@ -152,52 +167,91 @@ public class Process implements Serializable {
     }
 
     public ProcessType getProcessType() {
-		return this.processType;
-	}
+        return this.processType;
+    }
 
-	public void setProcessType(ProcessType processType) {
-		this.processType = processType;
-	}
+    public void setProcessType(ProcessType processType) {
+        this.processType = processType;
+    }
 
-	public ProcessStatus getProcessStatus() {
-		return this.processStatus;
-	}
+    public ProcessStatus getProcessStatus() {
+        return this.processStatus;
+    }
 
-	public void setProcessStatus(ProcessStatus processStatus) {
-		this.processStatus = processStatus;
-	}
+    public void setProcessStatus(ProcessStatus processStatus) {
+        this.processStatus = processStatus;
+    }
 
-	public User getUser() {
-		return this.user;
-	}
+    public int getVersion() {
+        return version;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
-	public List<ProcessInstance> getProcessInstances() {
-		return this.processInstances;
-	}
+    public Date getProcessingStartedTimestamp() {
+        return processingStartedTimestamp;
+    }
 
-	public void setProcessInstances(List<ProcessInstance> processInstances) {
-		this.processInstances = processInstances;
-	}
+    public void setProcessingStartedTimestamp(Date processingStartedTimestamp) {
+        this.processingStartedTimestamp = processingStartedTimestamp;
+    }
 
-	public ProcessBundle getInstrumentedProcessBundle() {
-		return this.instrumentedProcessBundle;
-	}
+    public Date getProcessingFinishedTimestamp() {
+        return processingFinishedTimestamp;
+    }
 
-	public void setInstrumentedProcessBundle(
-			ProcessBundle instrumentedProcessBundle) {
-		this.instrumentedProcessBundle = instrumentedProcessBundle;
-	}
+    public void setProcessingFinishedTimestamp(Date processingFinishedTimestamp) {
+        this.processingFinishedTimestamp = processingFinishedTimestamp;
+    }
 
-	public ProcessBundle getOriginalProcessBundle() {
-		return this.originalProcessBundle;
-	}
+    public Date getLastUpdatedTimestamp() {
+        return lastUpdatedTimestamp;
+    }
 
-	public void setOriginalProcessBundle(ProcessBundle originalProcessBundle) {
-		this.originalProcessBundle = originalProcessBundle;
-	}
+    public void setLastUpdatedTimestamp(Date lastUpdatedTimestamp) {
+        this.lastUpdatedTimestamp = lastUpdatedTimestamp;
+    }
+
+    public Date getUploadedTimestamp() {
+        return uploadedTimestamp;
+    }
+
+    public void setUploadedTimestamp(Date uploadedTimestamp) {
+        this.uploadedTimestamp = uploadedTimestamp;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<ProcessInstance> getProcessInstances() {
+        return this.processInstances;
+    }
+
+    public void setProcessInstances(List<ProcessInstance> processInstances) {
+        this.processInstances = processInstances;
+    }
+
+    public ProcessBundle getInstrumentedProcessBundle() {
+        return this.instrumentedProcessBundle;
+    }
+
+    public void setInstrumentedProcessBundle(ProcessBundle instrumentedProcessBundle) {
+        this.instrumentedProcessBundle = instrumentedProcessBundle;
+    }
+
+    public ProcessBundle getOriginalProcessBundle() {
+        return this.originalProcessBundle;
+    }
+
+    public void setOriginalProcessBundle(ProcessBundle originalProcessBundle) {
+        this.originalProcessBundle = originalProcessBundle;
+    }
 
 }

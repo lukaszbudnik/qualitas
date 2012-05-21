@@ -50,18 +50,15 @@ public class CamelHeadersCopierAspect {
             throw e;
         } catch (Exception e) {
             Object target = pjp.getTarget();
-            boolean unknownError = false;
+            boolean unknownError = true;
             if (target instanceof AbstractProcessor) {
                 AbstractProcessor processor = (AbstractProcessor) target;
                 FailureStatus failureStatus = processor.getClass().getAnnotation(FailureStatus.class);
                 if (failureStatus != null) {
                     ProcessStatus processStatus = failureStatus.value();
                     updateStatus(exchange, processStatus, e.getMessage());
-                } else {
-                    unknownError = true;
+                    unknownError = false;
                 }
-            } else {
-                unknownError = true;
             }
             if (unknownError) {
                 updateStatus(exchange, ProcessStatus.UNKNOWN_ERROR, e.getMessage());
@@ -69,6 +66,7 @@ public class CamelHeadersCopierAspect {
             throw e;
         }
         
+        // no exceptions thrown
         Object target = pjp.getTarget();
         if (target instanceof AbstractProcessor) {
             AbstractProcessor processor = (AbstractProcessor) target;

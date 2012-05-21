@@ -5,7 +5,6 @@
 		<Arg>jms/Qualitas.EclipseLinkCacheConnectionFactory</Arg>
 		<Arg>
 			<New class="org.apache.activemq.ActiveMQConnectionFactory">
-				<!-- <Arg>vm://localhost?broker.persistent=false</Arg> -->
 				<Arg>nio://localhost:61616</Arg>
 			</New>
 		</Arg>
