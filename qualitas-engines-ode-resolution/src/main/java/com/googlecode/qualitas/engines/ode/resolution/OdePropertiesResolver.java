@@ -64,7 +64,7 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
         Element deployElement = document.getDocumentElement();
 
         QName processQName = getProcessQName(deployElement);
-        List<QName> servicesQNames = getServicesQName(deployElement);
+        List<QName> servicesQNames = getServicesQNames(deployElement);
         QualitasConfiguration qualitasConfiguration = null;
 
         try {
@@ -111,7 +111,7 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
      *            the deploy element
      * @return the services q name
      */
-    private List<QName> getServicesQName(Element deployElement) {
+    private List<QName> getServicesQNames(Element deployElement) {
         Element processElement = (Element) deployElement.getElementsByTagName("process").item(0);
 
         NodeList services = processElement.getElementsByTagName("invoke");

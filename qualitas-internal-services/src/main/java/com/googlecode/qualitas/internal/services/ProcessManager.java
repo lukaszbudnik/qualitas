@@ -51,7 +51,29 @@ public class ProcessManager {
     public void updateProcessStatus(long processId, ProcessStatus processStatus) {
         Process process = repository.findById(Process.class, processId);
         process.setProcessStatus(processStatus);
+        if (processStatus == ProcessStatus.INSTALLED) {
+            process.setRunnable(true);
+        }
         repository.merge(process);
+    }
+
+    /**
+     * Update process status.
+     * 
+     * @param processId
+     *            the process id
+     * @param processStatus
+     *            the process status
+     * @param errorMessage
+     *            the error message
+     */
+    public void updateProcessStatus(long processId, ProcessStatus processStatus, String errorMessage) {
+        Process process = repository.findById(Process.class, processId);
+        process.setProcessStatus(processStatus);
+        process.setErrorMessage(errorMessage);
+        process.setRunnable(false);
+        repository.merge(process);
+
     }
 
     /**

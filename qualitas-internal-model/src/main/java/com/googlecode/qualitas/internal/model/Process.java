@@ -59,6 +59,12 @@ public class Process implements Serializable {
 
 	@Column(name = "PROCESS_NAME", length = 1000)
 	private String processName;
+	
+	@Column(name = "RUNNABLE")
+	private boolean runnable;
+	
+	@Column(name = "ERROR_MESSAGE", length = 10000)
+	private String errorMessage;
 
 	@Column(name = "PROCESS_TYPE", nullable = false, length = 1)
 	private ProcessType processType;
@@ -129,7 +135,23 @@ public class Process implements Serializable {
 		this.processName = processName;
 	}
 
-	public ProcessType getProcessType() {
+	public boolean isRunnable() {
+        return runnable;
+    }
+
+    public void setRunnable(boolean runnable) {
+        this.runnable = runnable;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public ProcessType getProcessType() {
 		return this.processType;
 	}
 

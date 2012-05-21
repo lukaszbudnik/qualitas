@@ -4,16 +4,21 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.springframework.stereotype.Component;
 
+import com.googlecode.qualitas.engines.api.configuration.ProcessStatus;
 import com.googlecode.qualitas.engines.api.configuration.ProcessType;
 import com.googlecode.qualitas.engines.api.core.Bundle;
 import com.googlecode.qualitas.engines.api.factory.BundleFactory;
 import com.googlecode.qualitas.internal.installation.core.AbstractProcessor;
+import com.googlecode.qualitas.internal.installation.core.FailureStatus;
 import com.googlecode.qualitas.internal.installation.core.QualitasHeadersNames;
+import com.googlecode.qualitas.internal.installation.core.SuccessfulStatus;
 
 /**
  * The Class BundleFactoryProcessor.
  */
 @Component
+@SuccessfulStatus(ProcessStatus.CREATION_OK)
+@FailureStatus(ProcessStatus.CREATION_ERROR)
 public class BundleFactoryProcessor extends AbstractProcessor {
 
     /*

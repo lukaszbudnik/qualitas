@@ -7,8 +7,8 @@ import com.googlecode.qualitas.internal.installation.core.FailureStatus;
 import com.googlecode.qualitas.internal.installation.core.SuccessfulStatus;
 
 @Component
-@SuccessfulStatus(ProcessStatus.VALIDATION_OK)
-@FailureStatus(ProcessStatus.VALIDATION_ERROR)
-public class ValidatorProcessor extends BaseValidatorProcessor {
+@SuccessfulStatus(ProcessStatus.PRE_INSTRUMENTATION_VALIDATION_OK)
+@FailureStatus(ProcessStatus.PRE_INSTRUMENTATION_VALIDATION_ERROR)
+public class PreInstrumentationValidatorProcessor extends BaseValidatorProcessor {
 
 }

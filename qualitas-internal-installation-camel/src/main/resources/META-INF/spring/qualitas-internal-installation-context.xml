@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:camel="http://camel.apache.org/schema/spring"
 	xmlns:amq="http://activemq.apache.org/schema/core"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-  	http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
-	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.9.0.xsd
-	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	xmlns:v2.9="http://camel.apache.org/schema/spring/v2.9"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://camel.apache.org/schema/spring/v2.9 http://camel.apache.org/schema/spring/v2.9
+		http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring-2.9.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<import resource="classpath*:META-INF/spring/qualitas-engines-ode-context.xml" />
 	<import resource="classpath*:META-INF/spring/qualitas-internal-bpel-context.xml" />
@@ -43,30 +47,33 @@
 			<process ref="propertiesResolverProcessor" />
 			<process ref="validatorProcessor" />
 			<setHeader headerName="qualitas_instrumentation_phase">
-				<simple>PreInstrumentationPhase</simple>
+				<ognl>@com.googlecode.qualitas.engines.api.instrumentation.PreInstrumentationPhase@class</ognl>
 			</setHeader>
-			<process ref="instrumentorProcessor" />
-			<process ref="validatorProcessor" />
+			<process ref="preInstrumentorProcessor" />
+			<process ref="preInstrumentationValidatorProcessor" />
 			<setHeader headerName="qualitas_instrumentation_phase">
-				<simple>InstrumentationPhase</simple>
+				<ognl>@com.googlecode.qualitas.engines.api.instrumentation.InstrumentationPhase@class</ognl>
 			</setHeader>
 			<process ref="instrumentorProcessor" />
 			<process ref="validatorProcessor" />
 			<doTry>
 				<setHeader headerName="qualitas_instrumentation_phase">
-					<simple>PostInstrumentationPhase</simple>
+					<ognl>@com.googlecode.qualitas.engines.api.instrumentation.PostInstrumentationPhase@class</ognl>
 				</setHeader>
-				<process ref="instrumentorProcessor" />
-				<process ref="validatorProcessor" />
+				<process ref="postInstrumentorProcessor" />
+				<process ref="postInstrumentationValidatorProcessor" />
 				<doCatch>
 					<!-- It is perfectly fine not to have PostInstrument Instrumentor. Skip 
 						post instrumentation phase and continue. -->
-					<exception>com.googlecode.qualitas.internal.installation.core.ComponentNotFoundException
+					<exception>com.googlecode.qualitas.internal.installation.core.PhaseSkippedException
 					</exception>
 				</doCatch>
+				<doFinally>
+					<removeHeader headerName="qualitas_instrumentation_phase" />
+				</doFinally>
 			</doTry>
 			<process ref="deployerProcessor" />
-			<process ref="endRouteLifeCycleProcessor" />
+			<process ref="endRouteLifeCycleProcessor" /> 
 		</route>
 	</camelContext>
 

@@ -10,7 +10,7 @@ public class StartRouteLifeCycleProcessor extends AbstractRouteLifeCycleProcesso
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        ProcessStatus processStatus = ProcessStatus.PROCESSING;
+        ProcessStatus processStatus = ProcessStatus.PROCESSING_STARTED;
         updateProcessStatus(exchange, processStatus);
     }
 

@@ -160,13 +160,33 @@
 	<xs:simpleType name="ProcessStatus">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="UPLOADED"></xs:enumeration>
-			<xs:enumeration value="PROCESSING"></xs:enumeration>
-			<xs:enumeration value="INSTALLED"></xs:enumeration>
+			<xs:enumeration value="PROCESSING_STARTED"></xs:enumeration>
+			<xs:enumeration value="CREATION_OK"></xs:enumeration>
 			<xs:enumeration value="CREATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="PROPERTIES_RESOLUTION_OK"></xs:enumeration>
+			<xs:enumeration value="PROPERTIES_RESOLUTION_ERROR"></xs:enumeration>
+			<xs:enumeration value="VALIDATION_OK"></xs:enumeration>
 			<xs:enumeration value="VALIDATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="PRE_INSTRUMENTATION_OK"></xs:enumeration>
+			<xs:enumeration value="PRE_INSTRUMENTATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="PRE_INSTRUMENTATION_VALIDATION_OK"></xs:enumeration>
+			<xs:enumeration value="PRE_INSTRUMENTATION_VALIDATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="INSTRUMENTATION_OK"></xs:enumeration>
 			<xs:enumeration value="INSTRUMENTATION_ERROR"></xs:enumeration>
-			<xs:enumeration value="INSTALLATION_ERROR"></xs:enumeration>
-			<xs:enumeration value="UNINSTALLATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="INSTRUMENTATION_VALIDATION_OK"></xs:enumeration>
+			<xs:enumeration value="INSTRUMENTATION_VALIDATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="POST_INSTRUMENTATION_OK"></xs:enumeration>
+			<xs:enumeration value="POST_INSTRUMENTATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="POST_INSTRUMENTATION_SKIPPED"></xs:enumeration>
+			<xs:enumeration value="POST_INSTRUMENTATION_VALIDATION_OK"></xs:enumeration>
+			<xs:enumeration value="POST_INSTRUMENTATION_VALIDATION_ERROR"></xs:enumeration>
+			<xs:enumeration value="DEPLOYMENT_OK"></xs:enumeration>
+			<xs:enumeration value="DEPLOYMENT_ERROR"></xs:enumeration>
+			<xs:enumeration value="UNDEPLOYMENT_OK"></xs:enumeration>
+			<xs:enumeration value="UNDEPLOYMENT_ERROR"></xs:enumeration>
+			<xs:enumeration value="COMPONENT_NOT_FOUND"></xs:enumeration>
+			<xs:enumeration value="UNKNOWN_ERROR"></xs:enumeration>
+			<xs:enumeration value="INSTALLED"></xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
 	

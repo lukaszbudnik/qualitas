@@ -4,14 +4,19 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.springframework.stereotype.Component;
 
+import com.googlecode.qualitas.engines.api.configuration.ProcessStatus;
 import com.googlecode.qualitas.engines.api.core.Bundle;
 import com.googlecode.qualitas.engines.api.deployment.Deployer;
 import com.googlecode.qualitas.internal.installation.core.AbstractProcessor;
+import com.googlecode.qualitas.internal.installation.core.FailureStatus;
+import com.googlecode.qualitas.internal.installation.core.SuccessfulStatus;
 
 /**
  * The Class DeployerProcessor.
  */
 @Component
+@SuccessfulStatus(ProcessStatus.DEPLOYMENT_OK)
+@FailureStatus(ProcessStatus.DEPLOYMENT_ERROR)
 public class DeployerProcessor extends AbstractProcessor {
 
     /*
