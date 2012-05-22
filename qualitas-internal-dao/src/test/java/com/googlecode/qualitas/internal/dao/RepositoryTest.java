@@ -94,7 +94,7 @@ public class RepositoryTest {
     @Test
     public void testGetResultListBySingularAttributeFK() {
         Process process = new Process();
-        process.setInstallationDate(new Date());
+        process.setUploadedTimestamp(new Date());
         ProcessBundle originalProcessBundle = new ProcessBundle();
         originalProcessBundle.setContents("cpntents".getBytes());
         process.setOriginalProcessBundle(originalProcessBundle);
