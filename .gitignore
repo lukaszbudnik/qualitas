@@ -12,3 +12,4 @@ Servers
 pom.xml.versionsBackup
 createDDL.jdbc
 dropDDL.jdbc
+nb-configuration.xml
