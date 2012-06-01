@@ -70,4 +70,11 @@ public class Entry {
         this.content = Arrays.copyOf(content, content.length);
     }
 
+    @Override
+    public String toString() {
+        return "Entry [name=" + name + ", content=" + Arrays.toString(content) + "]";
+    }
+    
+    
+
 }

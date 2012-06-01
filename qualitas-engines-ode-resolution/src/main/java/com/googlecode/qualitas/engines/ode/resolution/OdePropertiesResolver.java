@@ -8,6 +8,11 @@ import java.util.List;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -20,6 +25,7 @@ import org.w3c.dom.NodeList;
 
 import com.googlecode.qualitas.engines.api.configuration.QualitasConfiguration;
 import com.googlecode.qualitas.engines.api.core.Bundle;
+import com.googlecode.qualitas.engines.api.core.Entry;
 import com.googlecode.qualitas.engines.api.resolution.Properties;
 import com.googlecode.qualitas.engines.api.resolution.PropertiesResolver;
 import com.googlecode.qualitas.engines.api.resolution.ResolutionException;
@@ -33,7 +39,13 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
 
     /** The Constant LOG. */
     private static final Log LOG = LogFactory.getLog(OdePropertiesResolver.class);
-
+    
+    /** The process q name. */
+    private QName processQName;
+    
+    /** The service q name. */
+    private QName serviceQName;
+    
     /*
      * (non-Javadoc)
      * 
@@ -48,6 +60,113 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
 
         OdeBundle odeBundle = (OdeBundle) bundle;
 
+        Document deploy = getDeployDocument(odeBundle);
+
+        resolveProcessQName(deploy);
+        resolveServiceQName(deploy);
+
+        List<QName> servicesQNames = getServicesQNames(deploy);
+
+        QualitasConfiguration qualitasConfiguration = doGetQualitasConfiguration(odeBundle);
+
+        Document wsdl = getWSDLDocument(odeBundle);
+
+        String processEPR = getProcessEPR(deploy, wsdl);
+
+        bundle.setMainProcessQName(processQName);
+
+        Properties properties = new Properties();
+        properties.setProcessQName(processQName);
+        properties.setServiceQName(serviceQName);
+        properties.setServicesQNames(servicesQNames);
+        properties.setQualitasConfiguration(qualitasConfiguration);
+        properties.setProcessEPR(processEPR);
+
+        return properties;
+    }
+
+    private Document getWSDLDocument(OdeBundle odeBundle) throws ResolutionException {
+        try {
+            QName processQName = odeBundle.getMainProcessQName();
+            List<Entry> wsdls = odeBundle.getEntries("*.wsdl");
+            
+            for (Entry wsdl: wsdls) {
+                InputStream is = new ByteArrayInputStream(wsdl.getContent());
+                Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(is);
+                is.close();
+                
+                Element definitions = document.getDocumentElement();
+                String targetNamespace = definitions.getAttribute("targetNamespace");
+                
+                if (targetNamespace.equals(serviceQName.getNamespaceURI())) {
+                    return document;
+                }
+            }
+        } catch (Exception e) {
+            String msg = "Could not read main process WSDL from bundle "
+                    + odeBundle.getDirTempPath();
+            LOG.error(msg, e);
+            throw new ResolutionException(msg, e);
+        }
+
+        throw new ResolutionException("Could not find WSDL file for process " + processQName + " and service " + serviceQName);
+    }
+
+    private String getProcessEPR(Document deploy, Document wsdl)
+            throws ResolutionException  {
+        XPathFactory factory = XPathFactory.newInstance();
+        XPath xpath = factory.newXPath();
+        String serviceName = null;
+        String servicePort = null;
+        try {
+            XPathExpression nameExpr = xpath.compile("/deploy/process/provide/service/@name");
+            serviceName = (String) nameExpr.evaluate(deploy, XPathConstants.STRING);
+            XPathExpression portExpr = xpath.compile("/deploy/process/provide/service/@port");
+            servicePort = (String) portExpr.evaluate(deploy, XPathConstants.STRING);
+        } catch (XPathExpressionException e) {
+            String msg = "Could not parse deploy.xml file";
+            LOG.error(msg, e);
+            throw new ResolutionException(msg, e);
+        }
+
+
+        String namePrefix = serviceName.substring(0, serviceName.indexOf(':'));
+        String nameLocalPart = serviceName.substring(serviceName.indexOf(':') + 1);
+        String nameNamespaceURI = findNamespaceForPrefix(deploy, namePrefix);
+
+        // TODO check WSDL files
+
+        XPathExpression soapAddressExpr;
+        String location = null;
+        try {
+            soapAddressExpr = xpath.compile("/definitions/service[@name = '"
+                    + nameLocalPart + "']/port[@name='" + servicePort + "']/address/@location");
+            location = (String) soapAddressExpr.evaluate(wsdl, XPathConstants.STRING);
+        } catch (XPathExpressionException e) {
+            String msg = "Could not parse deploy.xml file";
+            LOG.error(msg, e);
+            throw new ResolutionException(msg, e);
+        }
+
+        return location;
+    }
+
+    private QualitasConfiguration doGetQualitasConfiguration(OdeBundle odeBundle)
+            throws ResolutionException {
+        QualitasConfiguration qualitasConfiguration = null;
+
+        try {
+            qualitasConfiguration = getQualitasConfiguration(odeBundle);
+        } catch (IOException e) {
+            String msg = "Could not read Qualitas Configuration from bundle "
+                    + odeBundle.getDirTempPath();
+            LOG.error(msg, e);
+            throw new ResolutionException(msg, e);
+        }
+        return qualitasConfiguration;
+    }
+
+    private Document getDeployDocument(OdeBundle odeBundle) throws ResolutionException {
         Document document = null;
 
         try {
@@ -59,30 +178,7 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
             throw new ResolutionException(msg, e);
         }
 
-        Properties properties = new Properties();
-
-        Element deployElement = document.getDocumentElement();
-
-        QName processQName = getProcessQName(deployElement);
-        List<QName> servicesQNames = getServicesQNames(deployElement);
-        QualitasConfiguration qualitasConfiguration = null;
-
-        try {
-            qualitasConfiguration = getQualitasConfiguration(odeBundle);
-        } catch (IOException e) {
-            String msg = "Could not read Qualitas Configuration from bundle "
-                    + odeBundle.getDirTempPath();
-            LOG.error(msg, e);
-            throw new ResolutionException(msg, e);
-        }
-
-        properties.setProcessQName(processQName);
-        properties.setServicesQNames(servicesQNames);
-        properties.setQualitasConfiguration(qualitasConfiguration);
-
-        bundle.setMainProcessQName(processQName);
-
-        return properties;
+        return document;
     }
 
     /**
@@ -91,40 +187,97 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
      * @param deployElement
      *            the deploy element
      * @return the process q name
+     * @throws ResolutionException
      */
-    private QName getProcessQName(Element deployElement) {
-        Element processElement = (Element) deployElement.getElementsByTagName("process").item(0);
-        String processName = processElement.getAttribute("name");
+    private void resolveProcessQName(Document deploy) throws ResolutionException {
+
+        XPathFactory factory = XPathFactory.newInstance();
+        XPath xpath = factory.newXPath();
+        XPathExpression nameExpr;
+        String processName = null;
+        try {
+            nameExpr = xpath.compile("/deploy/process/@name");
+            processName = (String) nameExpr.evaluate(deploy, XPathConstants.STRING);
+        } catch (XPathExpressionException e) {
+            String msg = "Could not parse deploy.xml file";
+            LOG.error(msg, e);
+            throw new ResolutionException(msg, e);
+        }
+
         String prefix = processName.substring(0, processName.indexOf(':'));
         String localPart = processName.substring(processName.indexOf(':') + 1);
 
-        String namespaceURI = findNamespaceForPrefix(processElement, prefix);
+        String namespaceURI = findNamespaceForPrefix(deploy, prefix);
 
-        QName processQName = new QName(namespaceURI, localPart, prefix);
-        return processQName;
+        processQName = new QName(namespaceURI, localPart, prefix);
+    }
+    
+    /**
+     * Gets the process q name.
+     * 
+     * @param deployElement
+     *            the deploy element
+     * @return the process q name
+     * @throws ResolutionException
+     */
+    private void resolveServiceQName(Document deploy) throws ResolutionException {
+
+        XPathFactory factory = XPathFactory.newInstance();
+        XPath xpath = factory.newXPath();
+        XPathExpression nameExpr;
+        String serviceName = null;
+        try {
+            nameExpr = xpath.compile("/deploy/process[@name='" + processQName.getPrefix() + ":" + processQName.getLocalPart() + "']/provide/service/@name");
+            serviceName = (String) nameExpr.evaluate(deploy, XPathConstants.STRING);
+        } catch (XPathExpressionException e) {
+            String msg = "Could not parse deploy.xml file";
+            LOG.error(msg, e);
+            throw new ResolutionException(msg, e);
+        }
+
+        String prefix = serviceName.substring(0, serviceName.indexOf(':'));
+        String localPart = serviceName.substring(serviceName.indexOf(':') + 1);
+
+        String namespaceURI = findNamespaceForPrefix(deploy, prefix);
+
+        serviceQName = new QName(namespaceURI, localPart, prefix);
     }
 
     /**
      * Gets the services q name.
      * 
+     * @param processQName
+     * 
      * @param deployElement
      *            the deploy element
      * @return the services q name
+     * @throws ResolutionException
      */
-    private List<QName> getServicesQNames(Element deployElement) {
-        Element processElement = (Element) deployElement.getElementsByTagName("process").item(0);
+    private List<QName> getServicesQNames(Document deploy)
+            throws ResolutionException {
 
-        NodeList services = processElement.getElementsByTagName("invoke");
+        XPathFactory factory = XPathFactory.newInstance();
+        XPath xpath = factory.newXPath();
+        XPathExpression nameExpr;
+        NodeList services = null;
+        try {
+            nameExpr = xpath.compile("/deploy/process[@name = '" + processQName.getPrefix() + ":"
+                    + processQName.getLocalPart() + "']/invoke/service");
+            services = (NodeList) nameExpr.evaluate(deploy, XPathConstants.NODESET);
+        } catch (XPathExpressionException e) {
+            String msg = "Could not parse deploy.xml file";
+            LOG.error(msg, e);
+            throw new ResolutionException(msg, e);
+        }
 
         List<QName> servicesQNames = new ArrayList<QName>();
         for (int i = 0; i < services.getLength(); i++) {
-            Element serviceElement = (Element) ((Element) services.item(i)).getElementsByTagName(
-                    "service").item(0);
+            Element serviceElement = (Element) services.item(i);
             String serviceName = serviceElement.getAttribute("name");
             String prefix = serviceName.substring(0, serviceName.indexOf(':'));
             String localPart = serviceName.substring(serviceName.indexOf(':') + 1);
 
-            String namespaceURI = findNamespaceForPrefix(processElement, prefix);
+            String namespaceURI = findNamespaceForPrefix(deploy, prefix);
 
             servicesQNames.add(new QName(namespaceURI, localPart, prefix));
         }
@@ -144,14 +297,23 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
     private String findNamespaceForPrefix(Node node, String prefix) {
         NamedNodeMap namedNodeMap = node.getAttributes();
 
-        for (int i = 0; i < namedNodeMap.getLength(); i++) {
-            Attr attribute = (Attr) namedNodeMap.item(i);
-            String attributeName = attribute.getNodeName();
-            if (attributeName.equals("xmlns:" + prefix)) {
-                return attribute.getNodeValue();
+        if (namedNodeMap != null) {
+            for (int i = 0; i < namedNodeMap.getLength(); i++) {
+                Attr attribute = (Attr) namedNodeMap.item(i);
+                String attributeName = attribute.getNodeName();
+                if (attributeName.equals("xmlns:" + prefix)) {
+                    return attribute.getNodeValue();
+                }
             }
         }
 
-        return findNamespaceForPrefix(node.getParentNode(), prefix);
+        for (int i = 0; i < node.getChildNodes().getLength(); i++) {
+            String namespace = findNamespaceForPrefix(node.getChildNodes().item(i), prefix);
+            if (namespace != null) {
+                return namespace;
+            }
+        }
+
+        return null;
     }
 }

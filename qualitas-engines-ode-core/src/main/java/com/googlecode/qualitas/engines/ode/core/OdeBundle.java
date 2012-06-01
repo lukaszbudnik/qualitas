@@ -2,11 +2,16 @@ package com.googlecode.qualitas.engines.ode.core;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 
 import javax.xml.namespace.QName;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.TrueFileFilter;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -208,6 +213,27 @@ public class OdeBundle extends AbstractBundle {
                 }
             }
         }
+    }
+    
+    private static Entry fileToEntry(File file) throws IOException {
+        Entry entry = new Entry();
+        entry.setName(file.getName());
+        byte[] content = FileUtils.readFileToByteArray(file);
+        entry.setContent(content);
+        return entry;
+    }
+    
+    public List<Entry> getEntries(String pattern) throws IOException {
+        List<Entry> entries = new ArrayList<Entry>();
+        
+        Iterator<File> it = FileUtils.iterateFiles(tmpDir, new WildcardFileFilter(pattern), TrueFileFilter.TRUE);
+        
+        while(it.hasNext()) {
+            Entry entry = fileToEntry(it.next());
+            entries.add(entry);
+        }
+        
+        return entries;
     }
 
     /**

@@ -6,6 +6,7 @@ import javax.xml.namespace.QName;
 
 import com.googlecode.qualitas.engines.api.configuration.QualitasConfiguration;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Properties.
  */
@@ -13,6 +14,12 @@ public class Properties {
 
     /** The process q name. */
     private QName processQName;
+    
+    /** The service q name. */
+    private QName serviceQName;
+    
+    /** The process epr. */
+    private String processEPR;
     
     /** The services q names. */
     private List<QName> servicesQNames;
@@ -36,6 +43,32 @@ public class Properties {
      */
     public void setProcessQName(QName processQName) {
         this.processQName = processQName;
+    }
+
+    public QName getServiceQName() {
+        return serviceQName;
+    }
+
+    public void setServiceQName(QName serviceQName) {
+        this.serviceQName = serviceQName;
+    }
+
+    /**
+     * Gets the process epr.
+     *
+     * @return the process epr
+     */
+    public String getProcessEPR() {
+        return processEPR;
+    }
+
+    /**
+     * Sets the process epr.
+     *
+     * @param processEPR the new process epr
+     */
+    public void setProcessEPR(String processEPR) {
+        this.processEPR = processEPR;
     }
 
     /**

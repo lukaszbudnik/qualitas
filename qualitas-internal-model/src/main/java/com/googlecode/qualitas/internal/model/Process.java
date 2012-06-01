@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -48,8 +49,9 @@ public class Process implements Serializable {
     @Column(name = "PROCESS_ID", nullable = false, precision = 22)
     private long processId;
 
-    @Column
-    private String configuration;
+    @Column(name = "QUALITAS_CONFIGURATION")
+    @Lob
+    private String qualitasConfiguration;
 
     @Column(name = "PROCESS_EPR", unique = true, length = 1000)
     private String processEPR;
@@ -126,12 +128,12 @@ public class Process implements Serializable {
         this.processId = processId;
     }
 
-    public String getConfiguration() {
-        return this.configuration;
+    public String getQualitasConfiguration() {
+        return this.qualitasConfiguration;
     }
 
-    public void setConfiguration(String configuration) {
-        this.configuration = configuration;
+    public void setQualitasConfiguration(String qualitasConfiguration) {
+        this.qualitasConfiguration = qualitasConfiguration;
     }
 
     public String getProcessEPR() {

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="XhGPWWhile"
+	targetNamespace="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl"
+	xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+		<xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl">
+			<xsd:element name="buy">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="companyName" type="xsd:string">
+						</xsd:element>
+						<xsd:element name="price" type="xsd:int"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="buyResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:boolean"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="buyRequest">
+		<wsdl:part name="parameters" element="tns:buy"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="buyResponse">
+		<wsdl:part name="parameters" element="tns:buyResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="XhGPWWhilePortType">
+		<wsdl:operation name="buy">
+			<wsdl:input message="tns:buyRequest"></wsdl:input>
+			<wsdl:output message="tns:buyResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="XhGPWWhileBinding" type="tns:XhGPWWhilePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="buy">
+			<soap:operation 
+				soapAction="http://examples.bpel.nuntius.xh.org/xhGPWWhile.wsdl/buy" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="XhGPWWhileService">
+		<wsdl:port name="XhGPWWhilePort"
+			binding="tns:XhGPWWhileBinding">
+			<soap:address
+				location="http://localhost:8181/ode/processes/xhGPWWhile"></soap:address>
+		</wsdl:port>
+	</wsdl:service>
+    <plnk:partnerLinkType name="xhGPWWhilePartnerLinkType">
+        <plnk:role name="xhGPWWhileProvider" portType="tns:XhGPWWhilePortType"/>
+    </plnk:partnerLinkType>
+</wsdl:definitions>

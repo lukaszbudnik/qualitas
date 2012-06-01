@@ -2,6 +2,7 @@ package com.googlecode.qualitas.engines.ode.core;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.namespace.QName;
 
@@ -40,6 +41,13 @@ public class OdeBundleTest {
 		Entry entry = odeArchive.getEntry(entryName);
 		Assert.assertEquals(entryName, entry.getName());
 		Assert.assertNotNull(entry.getContent());
+	}
+	
+	@Test
+	public void testGetEntries() throws IOException {
+	    String pattern = "*.wsdl";
+	    List<Entry> entries = odeArchive.getEntries(pattern);
+	    Assert.assertEquals(3, entries.size());
 	}
 
 	@Test

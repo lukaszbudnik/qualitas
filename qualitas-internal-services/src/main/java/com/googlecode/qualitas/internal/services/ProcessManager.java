@@ -1,10 +1,16 @@
 package com.googlecode.qualitas.internal.services;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.JAXB;
+import javax.xml.namespace.QName;
+
 import com.googlecode.qualitas.engines.api.configuration.ProcessStatus;
 import com.googlecode.qualitas.engines.api.configuration.ProcessType;
+import com.googlecode.qualitas.engines.api.configuration.QualitasConfiguration;
 import com.googlecode.qualitas.internal.dao.Repository;
 import com.googlecode.qualitas.internal.integration.api.InstallationException;
 import com.googlecode.qualitas.internal.integration.api.InstallationOrder;
@@ -140,6 +146,35 @@ public class ProcessManager {
                 Process_.user, user);
 
         return processes;
+    }
+
+    /**
+     * Update process properties.
+     * 
+     * @param processId
+     *            the process id
+     * @param processQName
+     *            the process QName
+     * @param processEPR
+     *            the process EPR
+     * @param qualitasConfiguration
+     *            the qualitas configuration
+     * @param contents
+     *            the contents
+     */
+    public void updateProcessProperties(long processId, QName processQName, String processEPR,
+            QualitasConfiguration qualitasConfiguration) {
+        Process process = repository.findById(Process.class, processId);
+
+        OutputStream xml = new ByteArrayOutputStream();
+        JAXB.marshal(qualitasConfiguration, xml);
+        String qualitasConfigurationString = xml.toString();
+
+        process.setProcessName(processQName.toString());
+        process.setProcessEPR(processEPR);
+        process.setQualitasConfiguration(qualitasConfigurationString);
+
+        repository.merge(process);
     }
 
 }
