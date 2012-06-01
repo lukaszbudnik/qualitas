@@ -66,7 +66,7 @@ public class OdeInstrumentorTest {
         
         Assert.assertEquals(expectedInstrumentedDescriptor, instrumentedDescriptor);
         
-        Entry process = processBundle.getMainProcessDefinition();
+        Entry process = processBundle.getEntries("*.bpel").get(0);
         String instrumentedProcess = new String(process.getContent());
         String expectedInstrumentedProcess = FileUtils.readFileToString(new File(
                 EXPECTED_INSTRUMENTED_PROCESS_FILE));

@@ -1,6 +1,7 @@
 package com.googlecode.qualitas.engines.api.core;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.namespace.QName;
 
@@ -68,13 +69,13 @@ public interface Bundle {
     Entry getQualitasConfiguration() throws IOException;
 
     /**
-     * Gets the main process definition.
-     * 
-     * @return the main process definition
-     * @throws IOException
-     *             the IO exception
+     * Gets the entries.
+     *
+     * @param pattern the pattern
+     * @return the entries
+     * @throws IOException Signals that an I/O exception has occurred.
      */
-    Entry getMainProcessDefinition() throws IOException;
+    List<Entry> getEntries(String pattern) throws IOException;
 
     /**
      * Checks if is instrumentable. Returns true if scenario bundle contains

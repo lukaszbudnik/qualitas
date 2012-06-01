@@ -7,8 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-import javax.xml.namespace.QName;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
@@ -48,12 +46,6 @@ public class OdeBundle extends AbstractBundle {
 
     /** The temporary process bundle. */
     private File tmpProcessBundle;
-
-    /**
-     * Instantiates a new ode process bundle.
-     */
-    public OdeBundle() {
-    }
 
     /* (non-Javadoc)
      * @see com.google.code.qualitas.engines.api.core.ProcessBundle#getProcessType()
@@ -215,6 +207,13 @@ public class OdeBundle extends AbstractBundle {
         }
     }
     
+    /**
+     * File to entry.
+     *
+     * @param file the file
+     * @return the entry
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static Entry fileToEntry(File file) throws IOException {
         Entry entry = new Entry();
         entry.setName(file.getName());
@@ -223,6 +222,13 @@ public class OdeBundle extends AbstractBundle {
         return entry;
     }
     
+    /**
+     * Gets the entries.
+     *
+     * @param pattern the pattern
+     * @return the entries
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public List<Entry> getEntries(String pattern) throws IOException {
         List<Entry> entries = new ArrayList<Entry>();
         
@@ -255,19 +261,6 @@ public class OdeBundle extends AbstractBundle {
      */
     public Entry getProcessDefinition(String processName) throws IOException {
         return getEntry(processName + WS_BPEL_EXTENSION);
-    }
-
-    /**
-     * Gets the main process definition.
-     *
-     * @return the main process definition
-     * @throws IOException the IO exception
-     */
-    public Entry getMainProcessDefinition() throws IOException {
-        // TODO this assumes that MainProcessDefinition's name matches main process QName which 
-        // is not a correct assumption!
-        QName mainProcessQName = getMainProcessQName();
-        return getProcessDefinition(mainProcessQName.getLocalPart());
     }
 
     /**

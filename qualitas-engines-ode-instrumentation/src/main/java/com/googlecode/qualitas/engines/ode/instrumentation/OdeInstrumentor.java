@@ -1,6 +1,7 @@
 package com.googlecode.qualitas.engines.ode.instrumentation;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.transform.TransformerException;
 
@@ -73,27 +74,31 @@ public class OdeInstrumentor extends AbstractOdeComponent implements Instrumento
     /**
      * Enhance process definition.
      * 
-     * @param processBundle
+     * @param bundle
      *            the process bundle
      * @throws IOException
      *             the IO exception
      * @throws TransformerException
      *             the transformer exception
      */
-    private void enhanceProcessDefinition(OdeBundle processBundle) throws IOException,
+    private void enhanceProcessDefinition(OdeBundle bundle) throws IOException,
             TransformerException {
         // read the stylesheet
         byte[] stylesheet = IOUtils.toByteArray(OdeInstrumentor.class
                 .getResourceAsStream(WS_BPEL_TRANSFORM_XSL));
-        // get the descriptor
-        Entry processDefinition = processBundle.getMainProcessDefinition();
-        // in-memory transformation
-        byte[] result = XSLTUtils.transformDocument(stylesheet, processDefinition.getContent(),
-                null);
-        // copy results
-        processDefinition.setContent(result);
-        // override existing process definition
-        processBundle.addEntry(processDefinition);
+        
+        List<Entry> entries = bundle.getEntries("*.bpel");
+        
+        for (Entry entry: entries) {
+            // in-memory transformation
+            byte[] result = XSLTUtils.transformDocument(stylesheet, entry.getContent(),
+                    null);
+            // copy results
+            entry.setContent(result);
+            // override existing process definition
+            bundle.addEntry(entry);
+        }
+        
     }
 
     /**

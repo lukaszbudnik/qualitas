@@ -151,14 +151,6 @@ public class OdeBundleTest {
 	}
 
 	@Test
-	public void testGetMainProcessDefinition() throws IOException {
-		QName mainProcessName = new QName("XhGPWWhile");
-		odeArchive.setMainProcessQName(mainProcessName);
-		Entry mainProcessEntry = odeArchive.getMainProcessDefinition();
-		Assert.assertEquals(mainProcessName + ".bpel", mainProcessEntry.getName());
-	}
-
-	@Test
 	public void testGetProcessDefinition() throws IOException {
 		String mainProcessName = "XhGPWWhile";
 		Entry mainProcessEntry = odeArchive.getProcessDefinition(mainProcessName);
