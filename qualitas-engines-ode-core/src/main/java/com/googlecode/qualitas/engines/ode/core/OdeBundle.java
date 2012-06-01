@@ -264,6 +264,8 @@ public class OdeBundle extends AbstractBundle {
      * @throws IOException the IO exception
      */
     public Entry getMainProcessDefinition() throws IOException {
+        // TODO this assumes that MainProcessDefinition's name matches main process QName which 
+        // is not a correct assumption!
         QName mainProcessQName = getMainProcessQName();
         return getProcessDefinition(mainProcessQName.getLocalPart());
     }

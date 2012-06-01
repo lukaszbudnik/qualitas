@@ -69,7 +69,7 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
 
         QualitasConfiguration qualitasConfiguration = doGetQualitasConfiguration(odeBundle);
 
-        Document wsdl = getWSDLDocument(odeBundle);
+        Document wsdl = getMainProcessWSDLDocument(odeBundle);
 
         String processEPR = getProcessEPR(deploy, wsdl);
 
@@ -85,9 +85,8 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
         return properties;
     }
 
-    private Document getWSDLDocument(OdeBundle odeBundle) throws ResolutionException {
+    private Document getMainProcessWSDLDocument(OdeBundle odeBundle) throws ResolutionException {
         try {
-            QName processQName = odeBundle.getMainProcessQName();
             List<Entry> wsdls = odeBundle.getEntries("*.wsdl");
             
             for (Entry wsdl: wsdls) {
@@ -116,11 +115,8 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
             throws ResolutionException  {
         XPathFactory factory = XPathFactory.newInstance();
         XPath xpath = factory.newXPath();
-        String serviceName = null;
         String servicePort = null;
         try {
-            XPathExpression nameExpr = xpath.compile("/deploy/process/provide/service/@name");
-            serviceName = (String) nameExpr.evaluate(deploy, XPathConstants.STRING);
             XPathExpression portExpr = xpath.compile("/deploy/process/provide/service/@port");
             servicePort = (String) portExpr.evaluate(deploy, XPathConstants.STRING);
         } catch (XPathExpressionException e) {
@@ -129,18 +125,11 @@ public class OdePropertiesResolver extends AbstractOdeComponent implements Prope
             throw new ResolutionException(msg, e);
         }
 
-
-        String namePrefix = serviceName.substring(0, serviceName.indexOf(':'));
-        String nameLocalPart = serviceName.substring(serviceName.indexOf(':') + 1);
-        String nameNamespaceURI = findNamespaceForPrefix(deploy, namePrefix);
-
-        // TODO check WSDL files
-
         XPathExpression soapAddressExpr;
         String location = null;
         try {
             soapAddressExpr = xpath.compile("/definitions/service[@name = '"
-                    + nameLocalPart + "']/port[@name='" + servicePort + "']/address/@location");
+                    + serviceQName.getLocalPart() + "']/port[@name='" + servicePort + "']/address/@location");
             location = (String) soapAddressExpr.evaluate(wsdl, XPathConstants.STRING);
         } catch (XPathExpressionException e) {
             String msg = "Could not parse deploy.xml file";
